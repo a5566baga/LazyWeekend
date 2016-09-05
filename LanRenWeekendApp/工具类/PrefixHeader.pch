@@ -1,0 +1,35 @@
+//
+//  PrefixHeader.pch
+//  01-BaiSiBuDeJie
+//
+//  Created by 张永刚 on 16/8/30.
+//  Copyright © 2016年 YG. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//获取设置view 宽、高、X,Y,Size,Orinigo
+#import "UIView+MyPositionSize.h"
+//生成一个BarButtonItem
+#import "UIBarButtonItem+MyBarButtonItem.h"
+
+#import "UINavigationItem+MyNavItem.h"
+
+
+#ifdef DEBUG
+#define FCLog(...) NSLog(__VA_ARGS__)
+#else
+#define FCLog(...)
+#endif
+
+#define FCLogFunct  FCLog(@"%s", __func__)
+
+//应用程序的主色调。
+#define FCMainColor(r,g,b)  [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+
+
+#endif /* PrefixHeader_pch */

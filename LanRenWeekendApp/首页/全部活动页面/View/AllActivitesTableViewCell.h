@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AllActiviteModel.h"
 
 @interface AllActivitesTableViewCell : UITableViewCell
+
+-(void)setCellStyle:(AllActiviteModel *)model;
 
 @end

@@ -25,9 +25,10 @@
     
     MainViewController * mainVC = [[MainViewController alloc] init];
     UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:mainVC];
-    _window.rootViewController = nvc;
+#warning RootController change
+//    _window.rootViewController = nvc;
     
-//    _window.rootViewController = customerTabBarVC;
+    _window.rootViewController = customerTabBarVC;
     [_window makeKeyAndVisible];
     return YES;
 }

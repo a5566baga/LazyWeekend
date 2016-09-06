@@ -6,6 +6,10 @@ pod 'SDWebImage', '~> 3.8.1'
 pod 'JSONModel', '~> 1.3.0'
 pod 'BaiduMapKit', '~> 3.0.0'
 pod 'FMDB', '~> 2.6.2'
+pod 'MJExtension', '~> 3.0.13'
+pod 'MJRefresh', '~> 3.1.12'
+pod 'SVProgressHUD', '~> 2.0.3'
+pod 'UCZProgressView', '~> 1.0.2'
 
 target :'LanRenWeekendApp' do
   # pod 'Kiwi'

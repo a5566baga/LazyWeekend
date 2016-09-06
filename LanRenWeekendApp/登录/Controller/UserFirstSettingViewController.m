@@ -46,11 +46,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)nextButtonAction:(UIButton *)button{
-    NSLog(@"%@", _mySettingDic);
+//    NSLog(@"%@", _mySettingDic);
 //    回调字典
     NSString * sexStr = _mySettingDic[@"性别"];
     NSString * nowstatusStr = _mySettingDic[@"当前状态"];
     if (![sexStr isEqualToString:@"未知"] && ![nowstatusStr isEqualToString:@"未知"]) {
+#warning DB Save
 //        写入数据库
 //        视图跳转
         UserSecondSettingViewController * secondVC = [[UserSecondSettingViewController alloc] init];

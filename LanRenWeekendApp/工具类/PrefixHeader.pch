@@ -19,6 +19,7 @@
 
 #import "UINavigationItem+MyNavItem.h"
 
+#import "UIImage+LoadImg.h"
 
 #ifdef DEBUG
 #define FCLog(...) NSLog(__VA_ARGS__)

@@ -43,8 +43,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)nextButtonAction:(UIButton *)button{
+#warning DB Save
 //    用block跳转。把内容提交到数据库
-    NSLog(@"%@", _mySecSettingDic);
+//    NSLog(@"%@", _mySecSettingDic);
     
     CustomerTabBarViewController * tabBarController = [[CustomerTabBarViewController alloc] init];
     [UIView animateWithDuration:0.5 animations:^{

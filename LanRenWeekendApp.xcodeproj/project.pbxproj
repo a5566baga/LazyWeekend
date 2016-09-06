@@ -28,6 +28,8 @@
 		BCB513EF1D7DA18E00A29769 /* AllActiviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513EE1D7DA18E00A29769 /* AllActiviteView.m */; };
 		BCB513F21D7DA1AA00A29769 /* AllActiviteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513F11D7DA1AA00A29769 /* AllActiviteModel.m */; };
 		BCB513F51D7DA1E300A29769 /* AllActivitesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513F41D7DA1E300A29769 /* AllActivitesTableViewCell.m */; };
+		BCB513F81D7DDADF00A29769 /* AutoFitImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513F71D7DDADF00A29769 /* AutoFitImageButton.m */; };
+		BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514081D7E8B9F00A29769 /* UIImage+LoadImg.m */; };
 		BCC2D2591D770FB300B70A1C /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCC2D2571D770FB300B70A1C /* Gotham-Light.otf */; };
 		BCC2D25A1D770FB300B70A1C /* Lantinghei_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCC2D2581D770FB300B70A1C /* Lantinghei_0.ttf */; };
 		BCC2D2771D77193200B70A1C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D2761D77193200B70A1C /* SearchViewController.m */; };
@@ -81,6 +83,10 @@
 		BCB513F11D7DA1AA00A29769 /* AllActiviteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllActiviteModel.m; sourceTree = "<group>"; };
 		BCB513F31D7DA1E300A29769 /* AllActivitesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllActivitesTableViewCell.h; sourceTree = "<group>"; };
 		BCB513F41D7DA1E300A29769 /* AllActivitesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllActivitesTableViewCell.m; sourceTree = "<group>"; };
+		BCB513F61D7DDADF00A29769 /* AutoFitImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoFitImageButton.h; sourceTree = "<group>"; };
+		BCB513F71D7DDADF00A29769 /* AutoFitImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoFitImageButton.m; sourceTree = "<group>"; };
+		BCB514071D7E8B9F00A29769 /* UIImage+LoadImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LoadImg.h"; sourceTree = "<group>"; };
+		BCB514081D7E8B9F00A29769 /* UIImage+LoadImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LoadImg.m"; sourceTree = "<group>"; };
 		BCC2D2571D770FB300B70A1C /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
 		BCC2D2581D770FB300B70A1C /* Lantinghei_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lantinghei_0.ttf; sourceTree = "<group>"; };
 		BCC2D2741D77136400B70A1C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -316,6 +322,8 @@
 				BCB513EE1D7DA18E00A29769 /* AllActiviteView.m */,
 				BCB513F31D7DA1E300A29769 /* AllActivitesTableViewCell.h */,
 				BCB513F41D7DA1E300A29769 /* AllActivitesTableViewCell.m */,
+				BCB513F61D7DDADF00A29769 /* AutoFitImageButton.h */,
+				BCB513F71D7DDADF00A29769 /* AutoFitImageButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -580,6 +588,8 @@
 				BCC2D2891D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m */,
 				BCB513C81D7B0EA200A29769 /* UINavigationItem+MyNavItem.h */,
 				BCB513C91D7B0EA200A29769 /* UINavigationItem+MyNavItem.m */,
+				BCB514071D7E8B9F00A29769 /* UIImage+LoadImg.h */,
+				BCB514081D7E8B9F00A29769 /* UIImage+LoadImg.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -729,8 +739,10 @@
 				BCB513DA1D7CFA5300A29769 /* UserSecondSettingCollectionViewCell.m in Sources */,
 				BCB513CE1D7B10E400A29769 /* UserDB.m in Sources */,
 				BCB513EF1D7DA18E00A29769 /* AllActiviteView.m in Sources */,
+				BCB513F81D7DDADF00A29769 /* AutoFitImageButton.m in Sources */,
 				BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */,
 				BC14AFDA1D7478B000FA0048 /* AllActivitesViewController.m in Sources */,
+				BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

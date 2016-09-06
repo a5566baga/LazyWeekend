@@ -11,3 +11,6 @@
 @implementation AllActiviteModel
 
 @end
+@implementation Time
+
+@end

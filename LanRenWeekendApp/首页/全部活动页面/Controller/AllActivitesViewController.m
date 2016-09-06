@@ -37,8 +37,7 @@
 #pragma mark ========= 主页面
 -(void)initForView{
     self.automaticallyAdjustsScrollViewInsets = NO;
-    AllActiviteView * allActiviesView = [[AllActiviteView alloc] init];
-    allActiviesView.frame = CGRectMake(0, 64, self.view.width, self.view.height-64-49);
+    AllActiviteView * allActiviesView = [[AllActiviteView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64-49)];
     [self.view addSubview:allActiviesView];
 }
 

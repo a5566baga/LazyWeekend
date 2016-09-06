@@ -12,6 +12,7 @@
 #import <AFNetworking.h>
 #import <UIImageView+AFNetworking.h>
 #import <SVProgressHUD.h>
+#import <UCZProgressView.h>
 
 @interface AllActivitesTableViewCell ()
 
@@ -27,6 +28,7 @@
 
 @property(nonatomic, strong)AllActiviteModel * model;
 
+@property(nonatomic, strong)UCZProgressView * progressView;
 
 @end
 
@@ -37,12 +39,18 @@
 -(void)setCellStyle:(AllActiviteModel *)model{
     [self initForCellView];
     _model = model;
-
-#warning 想要实现动态加载
+//    动态展示
+    _progressView = [[UCZProgressView alloc] init];
+    _progressView.center = CGPointMake(self.width/2, self.width/2.5);
+    _progressView.size = CGSizeMake(60, 60);
+    _progressView.translatesAutoresizingMaskIntoConstraints = NO;
+    _progressView.indeterminate = YES;
+    [self.picView addSubview:_progressView];
 //   图片下载
     [_picView sd_setImageWithURL:[NSURL URLWithString:model.front_cover_image_list.firstObject] placeholderImage:nil options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [_progressView removeFromSuperview];
+        _picView.image = image;
     }];
     
     _titleLabel.text = model.title;

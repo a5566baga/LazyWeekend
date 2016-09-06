@@ -142,6 +142,7 @@
         }
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.layer.masksToBounds = YES;
     [cell setCellStyle:_modelArray[indexPath.section]];
     return cell;
 }

@@ -50,6 +50,7 @@
     [_picView sd_setImageWithURL:[NSURL URLWithString:model.front_cover_image_list.firstObject] placeholderImage:nil options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [_progressView removeFromSuperview];
+        
         _picView.image = image;
     }];
     
@@ -94,32 +95,34 @@
     
     _timeLabel = [[UILabel alloc] init];
     _timeLabel.textAlignment = NSTextAlignmentCenter;
-    _timeLabel.layer.borderColor = [UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0].CGColor;
+    _timeLabel.layer.borderColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0].CGColor;
     _timeLabel.layer.borderWidth = 1;
     _timeLabel.textColor = [UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0];
     _timeLabel.font = [UIFont fontWithName:@"Lantinghei_0" size:13];
+    _timeLabel.layer.cornerRadius = 5;
     [self.bgView addSubview:_timeLabel];
     
     _favButton = [AutoFitImageButton buttonWithType:UIButtonTypeCustom];
     [_favButton setImage:[UIImage imageNamed:@"ic_nav_black_heart_off"] forState:UIControlStateNormal];
     [_favButton setImage:[UIImage imageNamed:@"ic_nav_black_heart_on"] forState:UIControlStateSelected];
     _favButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    [_favButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 0)];
-//    [_favButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-    _favButton.layer.borderColor = [UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0].CGColor;
+    [_favButton setImageEdgeInsets:UIEdgeInsetsMake(5, 8, 5, 0)];
+    _favButton.layer.borderColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0].CGColor;
     _favButton.layer.borderWidth = 1;
     _favButton.titleLabel.numberOfLines = 1;
     [_favButton setTitleColor:[UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0] forState:UIControlStateNormal];
+    _favButton.layer.cornerRadius = 5;
     _favButton.titleLabel.font = [UIFont fontWithName:@"Lantinghei_0" size:13];
     [self.bgView addSubview:_favButton];
     [_favButton addTarget:self action:@selector(favAction:) forControlEvents:UIControlEventTouchUpInside];
     
     _priceLabel = [[UILabel alloc] init];
     _priceLabel.textColor = [UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0];
-    _priceLabel.layer.borderColor = [UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0].CGColor;
+    _priceLabel.layer.borderColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0].CGColor;
     _priceLabel.layer.borderWidth = 1;
     _priceLabel.textAlignment = NSTextAlignmentCenter;
     _priceLabel.font = [UIFont fontWithName:@"Lantinghei_0" size:13];
+    _priceLabel.layer.cornerRadius = 5;
     [self.bgView addSubview:_priceLabel];
     
     _lineLabel = [[UILabel alloc] init];
@@ -148,7 +151,7 @@
     float leftMargin  = 15;
     float topMaring = 10;
     
-    _picView.frame = CGRectMake(0, 0, self.width, 340);
+    _picView.frame = CGRectMake(0, -100, self.width, 500);
     
     _bgView.frame = CGRectMake(0, 100, self.width, 120);
     
@@ -161,7 +164,7 @@
     _timeLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_poiLabel.frame)+topMaring, timeWidth+leftMargin, 25);
     
     float favWidth = [self rowWidthByString:_favButton.titleLabel.text font:[UIFont systemFontOfSize:14]];
-    _favButton.frame = CGRectMake(CGRectGetMaxX(_timeLabel.frame)+topMaring, CGRectGetMaxY(_poiLabel.frame)+topMaring, favWidth+2*topMaring+leftMargin, 25);
+    _favButton.frame = CGRectMake(CGRectGetMaxX(_timeLabel.frame)+topMaring, CGRectGetMaxY(_poiLabel.frame)+topMaring, favWidth+topMaring+2*leftMargin, 25);
     
     float priceWidth = [self rowWidthByString:_priceLabel.text font:[UIFont systemFontOfSize:14]];
     _priceLabel.frame = CGRectMake(self.width-2*leftMargin-priceWidth, CGRectGetMaxY(_poiLabel.frame)+topMaring, priceWidth+topMaring, 25);

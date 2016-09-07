@@ -84,7 +84,7 @@
     _titleLabel.numberOfLines = 0;
     _titleLabel.font = [UIFont fontWithName:@"Lantinghei_0" size:20];
     _titleLabel.textAlignment = NSTextAlignmentLeft;
-    _titleLabel.textColor = [UIColor colorWithRed:0.502 green:0.502 blue:0.502 alpha:1.0];
+    _titleLabel.textColor = [UIColor colorWithRed:0.498 green:0.498 blue:0.498 alpha:1.0];
     [self.bgView addSubview:_titleLabel];
     
     _poiLabel = [[UILabel alloc] init];
@@ -151,7 +151,7 @@
     float leftMargin  = 15;
     float topMaring = 10;
     
-    _picView.frame = CGRectMake(0, -100, self.width, 500);
+    _picView.frame = CGRectMake(0, -self.width/3.5, self.width, self.width/3*4);
     
     _bgView.frame = CGRectMake(0, 100, self.width, 120);
     

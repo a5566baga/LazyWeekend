@@ -61,7 +61,7 @@
     return _manager;
 }
 -(void)initForData{
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"加载中..."];
     
     _nowPage = 1;
     NSMutableDictionary * dataDic = [NSMutableDictionary dictionary];
@@ -147,7 +147,7 @@
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 400;
+    return self.width/3.0*4.0;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView * view = [[UIView alloc] init];

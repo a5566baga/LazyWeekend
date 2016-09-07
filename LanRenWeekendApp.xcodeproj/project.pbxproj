@@ -30,6 +30,14 @@
 		BCB513F51D7DA1E300A29769 /* AllActivitesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513F41D7DA1E300A29769 /* AllActivitesTableViewCell.m */; };
 		BCB513F81D7DDADF00A29769 /* AutoFitImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513F71D7DDADF00A29769 /* AutoFitImageButton.m */; };
 		BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514081D7E8B9F00A29769 /* UIImage+LoadImg.m */; };
+		BCB5140C1D7EBAF600A29769 /* CityButtonLayoutImg.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5140B1D7EBAF600A29769 /* CityButtonLayoutImg.m */; };
+		BCB5140F1D7F0E0700A29769 /* BodyCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5140E1D7F0E0700A29769 /* BodyCollectionView.m */; };
+		BCB514121D7F0F4E00A29769 /* BodyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514111D7F0F4E00A29769 /* BodyCollectionViewCell.m */; };
+		BCB514181D7F975400A29769 /* TalkTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514171D7F975400A29769 /* TalkTableView.m */; };
+		BCB5141B1D7F976800A29769 /* TalkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5141A1D7F976800A29769 /* TalkTableViewCell.m */; };
+		BCB5141E1D7F977C00A29769 /* TalkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5141D1D7F977C00A29769 /* TalkHeaderView.m */; };
+		BCB514211D7F9BF900A29769 /* SearchTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514201D7F9BF900A29769 /* SearchTypeModel.m */; };
+		BCB514241D7FA15700A29769 /* TalkMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514231D7FA15700A29769 /* TalkMessageModel.m */; };
 		BCC2D2591D770FB300B70A1C /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCC2D2571D770FB300B70A1C /* Gotham-Light.otf */; };
 		BCC2D25A1D770FB300B70A1C /* Lantinghei_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCC2D2581D770FB300B70A1C /* Lantinghei_0.ttf */; };
 		BCC2D2771D77193200B70A1C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D2761D77193200B70A1C /* SearchViewController.m */; };
@@ -87,6 +95,22 @@
 		BCB513F71D7DDADF00A29769 /* AutoFitImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoFitImageButton.m; sourceTree = "<group>"; };
 		BCB514071D7E8B9F00A29769 /* UIImage+LoadImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LoadImg.h"; sourceTree = "<group>"; };
 		BCB514081D7E8B9F00A29769 /* UIImage+LoadImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LoadImg.m"; sourceTree = "<group>"; };
+		BCB5140A1D7EBAF600A29769 /* CityButtonLayoutImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityButtonLayoutImg.h; sourceTree = "<group>"; };
+		BCB5140B1D7EBAF600A29769 /* CityButtonLayoutImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityButtonLayoutImg.m; sourceTree = "<group>"; };
+		BCB5140D1D7F0E0700A29769 /* BodyCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyCollectionView.h; sourceTree = "<group>"; };
+		BCB5140E1D7F0E0700A29769 /* BodyCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyCollectionView.m; sourceTree = "<group>"; };
+		BCB514101D7F0F4E00A29769 /* BodyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyCollectionViewCell.h; sourceTree = "<group>"; };
+		BCB514111D7F0F4E00A29769 /* BodyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyCollectionViewCell.m; sourceTree = "<group>"; };
+		BCB514161D7F975400A29769 /* TalkTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkTableView.h; sourceTree = "<group>"; };
+		BCB514171D7F975400A29769 /* TalkTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkTableView.m; sourceTree = "<group>"; };
+		BCB514191D7F976800A29769 /* TalkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkTableViewCell.h; sourceTree = "<group>"; };
+		BCB5141A1D7F976800A29769 /* TalkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkTableViewCell.m; sourceTree = "<group>"; };
+		BCB5141C1D7F977C00A29769 /* TalkHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkHeaderView.h; sourceTree = "<group>"; };
+		BCB5141D1D7F977C00A29769 /* TalkHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkHeaderView.m; sourceTree = "<group>"; };
+		BCB5141F1D7F9BF900A29769 /* SearchTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTypeModel.h; sourceTree = "<group>"; };
+		BCB514201D7F9BF900A29769 /* SearchTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTypeModel.m; sourceTree = "<group>"; };
+		BCB514221D7FA15700A29769 /* TalkMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkMessageModel.h; sourceTree = "<group>"; };
+		BCB514231D7FA15700A29769 /* TalkMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkMessageModel.m; sourceTree = "<group>"; };
 		BCC2D2571D770FB300B70A1C /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
 		BCC2D2581D770FB300B70A1C /* Lantinghei_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lantinghei_0.ttf; sourceTree = "<group>"; };
 		BCC2D2741D77136400B70A1C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -407,6 +431,8 @@
 		BCC2D25C1D77113900B70A1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCB514221D7FA15700A29769 /* TalkMessageModel.h */,
+				BCB514231D7FA15700A29769 /* TalkMessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +440,12 @@
 		BCC2D25D1D77113900B70A1C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BCB514161D7F975400A29769 /* TalkTableView.h */,
+				BCB514171D7F975400A29769 /* TalkTableView.m */,
+				BCB5141C1D7F977C00A29769 /* TalkHeaderView.h */,
+				BCB5141D1D7F977C00A29769 /* TalkHeaderView.m */,
+				BCB514191D7F976800A29769 /* TalkTableViewCell.h */,
+				BCB5141A1D7F976800A29769 /* TalkTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -524,6 +556,8 @@
 		BCC2D26C1D7712E900B70A1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCB5141F1D7F9BF900A29769 /* SearchTypeModel.h */,
+				BCB514201D7F9BF900A29769 /* SearchTypeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -531,6 +565,12 @@
 		BCC2D26D1D7712E900B70A1C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BCB5140A1D7EBAF600A29769 /* CityButtonLayoutImg.h */,
+				BCB5140B1D7EBAF600A29769 /* CityButtonLayoutImg.m */,
+				BCB5140D1D7F0E0700A29769 /* BodyCollectionView.h */,
+				BCB5140E1D7F0E0700A29769 /* BodyCollectionView.m */,
+				BCB514101D7F0F4E00A29769 /* BodyCollectionViewCell.h */,
+				BCB514111D7F0F4E00A29769 /* BodyCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -721,11 +761,17 @@
 				BCB513D41D7BC36400A29769 /* UserFirstSettingView.m in Sources */,
 				BC3F16CB1D72EC5C0002A97B /* AppDelegate.m in Sources */,
 				BC79C7F21D77094C00F4D39D /* CustomerTabBarViewController.m in Sources */,
+				BCB5140F1D7F0E0700A29769 /* BodyCollectionView.m in Sources */,
+				BCB514181D7F975400A29769 /* TalkTableView.m in Sources */,
 				BCC2D28A1D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m in Sources */,
 				BC1619A71D790B3F0024B0DC /* MainViewController.m in Sources */,
 				BCC2D28D1D773CC900B70A1C /* CustomerNavViewController.m in Sources */,
+				BCB514241D7FA15700A29769 /* TalkMessageModel.m in Sources */,
+				BCB5140C1D7EBAF600A29769 /* CityButtonLayoutImg.m in Sources */,
 				BCC2D27D1D77194A00B70A1C /* MeSettingViewController.m in Sources */,
 				BCB513F21D7DA1AA00A29769 /* AllActiviteModel.m in Sources */,
+				BCB5141B1D7F976800A29769 /* TalkTableViewCell.m in Sources */,
+				BCB514211D7F9BF900A29769 /* SearchTypeModel.m in Sources */,
 				BC3F16C81D72EC5C0002A97B /* main.m in Sources */,
 				BCB513BE1D7AF0BF00A29769 /* UserFirstSettingViewController.m in Sources */,
 				BCB513CA1D7B0EA200A29769 /* UINavigationItem+MyNavItem.m in Sources */,
@@ -740,7 +786,9 @@
 				BCB513CE1D7B10E400A29769 /* UserDB.m in Sources */,
 				BCB513EF1D7DA18E00A29769 /* AllActiviteView.m in Sources */,
 				BCB513F81D7DDADF00A29769 /* AutoFitImageButton.m in Sources */,
+				BCB5141E1D7F977C00A29769 /* TalkHeaderView.m in Sources */,
 				BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */,
+				BCB514121D7F0F4E00A29769 /* BodyCollectionViewCell.m in Sources */,
 				BC14AFDA1D7478B000FA0048 /* AllActivitesViewController.m in Sources */,
 				BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */,
 			);

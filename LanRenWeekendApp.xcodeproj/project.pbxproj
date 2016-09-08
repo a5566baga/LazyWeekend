@@ -58,6 +58,9 @@
 		BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D2861D77365700B70A1C /* UIView+MyPositionSize.m */; };
 		BCC2D28A1D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D2891D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m */; };
 		BCC2D28D1D773CC900B70A1C /* CustomerNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D28C1D773CC900B70A1C /* CustomerNavViewController.m */; };
+		BCF6A96D1D8142220001E62D /* InterestPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A96C1D8142220001E62D /* InterestPointViewController.m */; };
+		BCF6A9701D8142380001E62D /* ReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A96F1D8142380001E62D /* ReserveViewController.m */; };
+		BCF6A9731D814DD10001E62D /* SettingDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +164,12 @@
 		BCC2D2891D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+MyBarButtonItem.m"; sourceTree = "<group>"; };
 		BCC2D28B1D773CC900B70A1C /* CustomerNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerNavViewController.h; sourceTree = "<group>"; };
 		BCC2D28C1D773CC900B70A1C /* CustomerNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerNavViewController.m; sourceTree = "<group>"; };
+		BCF6A96B1D8142220001E62D /* InterestPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestPointViewController.h; sourceTree = "<group>"; };
+		BCF6A96C1D8142220001E62D /* InterestPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestPointViewController.m; sourceTree = "<group>"; };
+		BCF6A96E1D8142380001E62D /* ReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReserveViewController.h; sourceTree = "<group>"; };
+		BCF6A96F1D8142380001E62D /* ReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReserveViewController.m; sourceTree = "<group>"; };
+		BCF6A9711D814DD10001E62D /* SettingDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingDetailTableViewCell.h; sourceTree = "<group>"; };
+		BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingDetailTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -646,6 +655,10 @@
 				BCC2D27C1D77194A00B70A1C /* MeSettingViewController.m */,
 				BCB514481D81125400A29769 /* SettingViewController.h */,
 				BCB514491D81125400A29769 /* SettingViewController.m */,
+				BCF6A96B1D8142220001E62D /* InterestPointViewController.h */,
+				BCF6A96C1D8142220001E62D /* InterestPointViewController.m */,
+				BCF6A96E1D8142380001E62D /* ReserveViewController.h */,
+				BCF6A96F1D8142380001E62D /* ReserveViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -670,6 +683,8 @@
 				BCB514311D801D6400A29769 /* MeSettingHeaderView.m */,
 				BCB514331D804C9D00A29769 /* SettingButton.h */,
 				BCB514341D804C9D00A29769 /* SettingButton.m */,
+				BCF6A9711D814DD10001E62D /* SettingDetailTableViewCell.h */,
+				BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -823,6 +838,7 @@
 				BCB514321D801D6400A29769 /* MeSettingHeaderView.m in Sources */,
 				BCC2D28A1D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m in Sources */,
 				BC1619A71D790B3F0024B0DC /* MainViewController.m in Sources */,
+				BCF6A9731D814DD10001E62D /* SettingDetailTableViewCell.m in Sources */,
 				BCC2D28D1D773CC900B70A1C /* CustomerNavViewController.m in Sources */,
 				BCB514241D7FA15700A29769 /* TalkMessageModel.m in Sources */,
 				BCB5140C1D7EBAF600A29769 /* CityButtonLayoutImg.m in Sources */,
@@ -833,6 +849,7 @@
 				BCB514211D7F9BF900A29769 /* SearchTypeModel.m in Sources */,
 				BC3F16C81D72EC5C0002A97B /* main.m in Sources */,
 				BCB513BE1D7AF0BF00A29769 /* UserFirstSettingViewController.m in Sources */,
+				BCF6A9701D8142380001E62D /* ReserveViewController.m in Sources */,
 				BCB514411D80F9F200A29769 /* ChangCityHeaderView.m in Sources */,
 				BCB5143B1D80F4BC00A29769 /* ChangeCityViewController.m in Sources */,
 				BCB513CA1D7B0EA200A29769 /* UINavigationItem+MyNavItem.m in Sources */,
@@ -853,6 +870,7 @@
 				BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */,
 				BCB514121D7F0F4E00A29769 /* BodyCollectionViewCell.m in Sources */,
 				BC14AFDA1D7478B000FA0048 /* AllActivitesViewController.m in Sources */,
+				BCF6A96D1D8142220001E62D /* InterestPointViewController.m in Sources */,
 				BCB514471D81009600A29769 /* CitysModel.m in Sources */,
 				BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */,
 				BCB5142F1D801B9400A29769 /* MeSettingCollectionViewCell.m in Sources */,

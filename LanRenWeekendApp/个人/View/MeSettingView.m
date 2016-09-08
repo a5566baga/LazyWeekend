@@ -86,9 +86,6 @@
     _headerView.delegate = self;
     return _headerView;
 }
--(void)jumpToSettingViewController:(SettingViewController *)settingVC{
-    [self.delegate jumpToNext:settingVC];
-}
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     float height = 230 + self.width/3 + 2*20 + 50;
     CGSize size = CGSizeMake(300, height);
@@ -101,6 +98,24 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%ld 个人cell 取消", indexPath.row);
+}
+
+#pragma mark
+#pragma mark ========== 页面的设置跳转
+-(void)jumpToReserveViewController:(ReserveViewController *)reserveVC{
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumpToNextRes:)]) {
+        [self.delegate jumpToNextRes:reserveVC];
+    }
+}
+-(void)jumoToInterestViewController:(InterestPointViewController *)interestVC{
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumpToNextInter:)]) {
+        [self.delegate jumpToNextInter: interestVC];
+    }
+}
+-(void)jumpToSettingViewController:(SettingViewController *)settingVC{
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumpToNext:)]) {
+        [self.delegate jumpToNext:settingVC];
+    }
 }
 
 /*

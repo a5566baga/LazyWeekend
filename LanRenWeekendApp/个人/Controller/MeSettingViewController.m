@@ -8,6 +8,9 @@
 
 #import "MeSettingViewController.h"
 #import "MeSettingView.h"
+#import "SettingViewController.h"
+#import "InterestPointViewController.h"
+#import "ReserveViewController.h"
 
 @interface MeSettingViewController ()<MeSettingViewProtocal>
 
@@ -33,8 +36,14 @@
     [self.view addSubview:meView];
 }
 
+-(void)jumpToNextRes:(ReserveViewController *)reseverVC{
+    [self.navigationController pushViewController:reseverVC animated:YES];
+}
+-(void)jumpToNextInter:(InterestPointViewController *)interestVC{
+    [self.navigationController pushViewController:interestVC animated:YES];
+}
 -(void)jumpToNext:(SettingViewController *)settingVC{
-    [self.navigationController pushViewController:settingVC animated:YES];
+        [self.navigationController pushViewController:settingVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

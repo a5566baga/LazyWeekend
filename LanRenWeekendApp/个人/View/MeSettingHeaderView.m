@@ -26,6 +26,8 @@
 @property(nonatomic, strong)UILabel * downLineLabel;
 
 @property(nonatomic, strong)SettingViewController * settingVC;
+@property(nonatomic, strong)InterestPointViewController * interestVC;
+@property(nonatomic, strong)ReserveViewController * reserveVC;
 
 @end
 
@@ -131,17 +133,29 @@
 //预定
 -(void)reserveAction:(UIButton *)button{
     NSLog(@"reserve");
+    _reserveVC = [[ReserveViewController alloc] init];
+    _reserveVC.view.backgroundColor = [UIColor whiteColor];
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumpToReserveViewController:)]) {
+        [self.delegate jumpToReserveViewController:_reserveVC];
+    }
 }
 //兴趣
 -(void)interestAction:(UIButton *)button{
     NSLog(@"interest");
+    _interestVC = [[InterestPointViewController alloc] init];
+    _interestVC.view.backgroundColor = [UIColor whiteColor];
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumoToInterestViewController:)]){
+        [self.delegate jumoToInterestViewController:_interestVC];
+    }
 }
 //设置
 -(void)settingAction:(UIButton *)button{
     NSLog(@"setting");
     _settingVC = [[SettingViewController alloc] init];
     _settingVC.view.backgroundColor = [UIColor whiteColor];
-    [self.delegate jumpToSettingViewController:_settingVC];
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumpToSettingViewController:)]) {
+        [self.delegate jumpToSettingViewController:_settingVC];
+    }
 }
 
 

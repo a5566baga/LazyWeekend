@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingViewController.h"
+#import "InterestPointViewController.h"
+#import "ReserveViewController.h"
 
 @protocol SettingViewControllerProtocol <NSObject>
 
 -(void)jumpToSettingViewController:(SettingViewController *) settingVC;
+-(void)jumoToInterestViewController:(InterestPointViewController *)interestVC;
+-(void)jumpToReserveViewController:(ReserveViewController *)reserveVC;
 
 @end
 

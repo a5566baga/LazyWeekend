@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "SettingViewController.h"
 #import "MeSettingHeaderView.h"
+#import "InterestPointViewController.h"
+#import "ReserveViewController.h"
 
 @protocol MeSettingViewProtocal <NSObject>
 
 -(void)jumpToNext:(SettingViewController *)settingVC;
+-(void)jumpToNextInter:(InterestPointViewController *)interestVC;
+-(void)jumpToNextRes:(ReserveViewController *)reseverVC;
 
 @end
 

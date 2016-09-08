@@ -7,8 +7,9 @@
 //
 
 #import "MeSettingViewController.h"
+#import "MeSettingView.h"
 
-@interface MeSettingViewController ()
+@interface MeSettingViewController ()<MeSettingViewProtocal>
 
 @end
 
@@ -16,9 +17,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initForView];
+}
+#pragma mark
+#pragma mark ========== 隐藏nav
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
+}
+#pragma mark
+#pragma mark ========== 创建collectionView
+-(void)initForView{
+    MeSettingView * meView = [[MeSettingView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-49)];
+    meView.delegate = self;
+    [self.view addSubview:meView];
 }
 
+-(void)jumpToNext:(SettingViewController *)settingVC{
+    [self.navigationController pushViewController:settingVC animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

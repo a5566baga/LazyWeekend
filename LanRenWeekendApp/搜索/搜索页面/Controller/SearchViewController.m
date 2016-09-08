@@ -9,6 +9,7 @@
 #import "SearchViewController.h"
 #import "CityButtonLayoutImg.h"
 #import "BodyCollectionView.h"
+#import "ChangeCityViewController.h"
 
 @interface SearchViewController ()<UISearchResultsUpdating, UISearchControllerDelegate>
 
@@ -65,7 +66,9 @@
 }
 -(void)selectCity:(UIButton *)button{
 #warning create View to Show citys
-    
+    ChangeCityViewController * changeCityVC = [[ChangeCityViewController alloc] init];
+    UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:changeCityVC];
+    [self presentViewController:nvc animated:YES completion:nil];
 }
 #pragma mark
 #pragma mark =========== searchController的代理方法

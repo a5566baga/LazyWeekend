@@ -30,8 +30,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initForData];
-        [self initForView];
+//        [self initForData];
         [self noticeFicKeyBoard];
     }
     return self;
@@ -47,11 +46,13 @@
     return _manager;
 }
 -(void)initForData{
+#warning 参数尚未决定是存到数据库还是网络请求
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     params[@""] = @"";
     [self.manager GET:@"http://api.lanrenzhoumo.com/tailor/requirement/list?start_id=&session_id=00004061a9f934aa1954907af22163863e8d00" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary * dic = responseObject[@"result"];
         _modelArray = [TalkMessageModel mj_objectArrayWithKeyValuesArray:dic[@"result_list"]];
+        [self initForView];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -60,7 +61,7 @@
 #pragma mark ========= 设置tableView
 -(void)initForView{
     //    一个tableView
-    _tableView = [[UITableView alloc] init];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height-40) style:UITableViewStyleGrouped];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -78,7 +79,7 @@
     [self addSubview:_textBgView];
     
     _textField = [[UITextField alloc] init];
-    NSDictionary * dic = @{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light" size:18], NSForegroundColorAttributeName:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]};
+    NSDictionary * dic = @{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light" size:18], NSForegroundColorAttributeName:[UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0]};
     NSAttributedString * string = [[NSAttributedString alloc] initWithString:@"告诉我你的周末需求吧 · · · " attributes:dic];
     [_textField setAttributedPlaceholder:string];
     [self.textBgView addSubview:_textField];
@@ -105,6 +106,8 @@
     if (cell == nil) {
         cell = [[TalkTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cellID"];
     }
+    cell.textLabel.text = [_modelArray[indexPath.row] requirement_text];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

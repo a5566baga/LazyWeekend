@@ -38,6 +38,17 @@
 		BCB5141E1D7F977C00A29769 /* TalkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5141D1D7F977C00A29769 /* TalkHeaderView.m */; };
 		BCB514211D7F9BF900A29769 /* SearchTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514201D7F9BF900A29769 /* SearchTypeModel.m */; };
 		BCB514241D7FA15700A29769 /* TalkMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514231D7FA15700A29769 /* TalkMessageModel.m */; };
+		BCB5142C1D80189A00A29769 /* MeSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5142B1D80189A00A29769 /* MeSettingView.m */; };
+		BCB5142F1D801B9400A29769 /* MeSettingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5142E1D801B9400A29769 /* MeSettingCollectionViewCell.m */; };
+		BCB514321D801D6400A29769 /* MeSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514311D801D6400A29769 /* MeSettingHeaderView.m */; };
+		BCB514351D804C9D00A29769 /* SettingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514341D804C9D00A29769 /* SettingButton.m */; };
+		BCB514381D8059C800A29769 /* FavActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514371D8059C800A29769 /* FavActivityModel.m */; };
+		BCB5143B1D80F4BC00A29769 /* ChangeCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5143A1D80F4BC00A29769 /* ChangeCityViewController.m */; };
+		BCB5143E1D80F90700A29769 /* ChangeCityView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5143D1D80F90700A29769 /* ChangeCityView.m */; };
+		BCB514411D80F9F200A29769 /* ChangCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514401D80F9F200A29769 /* ChangCityHeaderView.m */; };
+		BCB514441D80FAD100A29769 /* ChangeCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514431D80FAD100A29769 /* ChangeCityTableViewCell.m */; };
+		BCB514471D81009600A29769 /* CitysModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514461D81009600A29769 /* CitysModel.m */; };
+		BCB5144A1D81125400A29769 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB514491D81125400A29769 /* SettingViewController.m */; };
 		BCC2D2591D770FB300B70A1C /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCC2D2571D770FB300B70A1C /* Gotham-Light.otf */; };
 		BCC2D25A1D770FB300B70A1C /* Lantinghei_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCC2D2581D770FB300B70A1C /* Lantinghei_0.ttf */; };
 		BCC2D2771D77193200B70A1C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D2761D77193200B70A1C /* SearchViewController.m */; };
@@ -111,6 +122,28 @@
 		BCB514201D7F9BF900A29769 /* SearchTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTypeModel.m; sourceTree = "<group>"; };
 		BCB514221D7FA15700A29769 /* TalkMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkMessageModel.h; sourceTree = "<group>"; };
 		BCB514231D7FA15700A29769 /* TalkMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkMessageModel.m; sourceTree = "<group>"; };
+		BCB5142A1D80189A00A29769 /* MeSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeSettingView.h; sourceTree = "<group>"; };
+		BCB5142B1D80189A00A29769 /* MeSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeSettingView.m; sourceTree = "<group>"; };
+		BCB5142D1D801B9400A29769 /* MeSettingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeSettingCollectionViewCell.h; sourceTree = "<group>"; };
+		BCB5142E1D801B9400A29769 /* MeSettingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeSettingCollectionViewCell.m; sourceTree = "<group>"; };
+		BCB514301D801D6400A29769 /* MeSettingHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeSettingHeaderView.h; sourceTree = "<group>"; };
+		BCB514311D801D6400A29769 /* MeSettingHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeSettingHeaderView.m; sourceTree = "<group>"; };
+		BCB514331D804C9D00A29769 /* SettingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingButton.h; sourceTree = "<group>"; };
+		BCB514341D804C9D00A29769 /* SettingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingButton.m; sourceTree = "<group>"; };
+		BCB514361D8059C800A29769 /* FavActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavActivityModel.h; sourceTree = "<group>"; };
+		BCB514371D8059C800A29769 /* FavActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavActivityModel.m; sourceTree = "<group>"; };
+		BCB514391D80F4BC00A29769 /* ChangeCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeCityViewController.h; sourceTree = "<group>"; };
+		BCB5143A1D80F4BC00A29769 /* ChangeCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeCityViewController.m; sourceTree = "<group>"; };
+		BCB5143C1D80F90700A29769 /* ChangeCityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeCityView.h; sourceTree = "<group>"; };
+		BCB5143D1D80F90700A29769 /* ChangeCityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeCityView.m; sourceTree = "<group>"; };
+		BCB5143F1D80F9F200A29769 /* ChangCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangCityHeaderView.h; sourceTree = "<group>"; };
+		BCB514401D80F9F200A29769 /* ChangCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangCityHeaderView.m; sourceTree = "<group>"; };
+		BCB514421D80FAD100A29769 /* ChangeCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeCityTableViewCell.h; sourceTree = "<group>"; };
+		BCB514431D80FAD100A29769 /* ChangeCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeCityTableViewCell.m; sourceTree = "<group>"; };
+		BCB514451D81009600A29769 /* CitysModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitysModel.h; sourceTree = "<group>"; };
+		BCB514461D81009600A29769 /* CitysModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitysModel.m; sourceTree = "<group>"; };
+		BCB514481D81125400A29769 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		BCB514491D81125400A29769 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		BCC2D2571D770FB300B70A1C /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
 		BCC2D2581D770FB300B70A1C /* Lantinghei_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lantinghei_0.ttf; sourceTree = "<group>"; };
 		BCC2D2741D77136400B70A1C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -578,6 +611,8 @@
 		BCC2D26E1D7712F000B70A1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BCB514391D80F4BC00A29769 /* ChangeCityViewController.h */,
+				BCB5143A1D80F4BC00A29769 /* ChangeCityViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -585,6 +620,8 @@
 		BCC2D26F1D7712F000B70A1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCB514451D81009600A29769 /* CitysModel.h */,
+				BCB514461D81009600A29769 /* CitysModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -592,6 +629,12 @@
 		BCC2D2701D7712F000B70A1C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BCB5143C1D80F90700A29769 /* ChangeCityView.h */,
+				BCB5143D1D80F90700A29769 /* ChangeCityView.m */,
+				BCB5143F1D80F9F200A29769 /* ChangCityHeaderView.h */,
+				BCB514401D80F9F200A29769 /* ChangCityHeaderView.m */,
+				BCB514421D80FAD100A29769 /* ChangeCityTableViewCell.h */,
+				BCB514431D80FAD100A29769 /* ChangeCityTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -601,6 +644,8 @@
 			children = (
 				BCC2D27B1D77194A00B70A1C /* MeSettingViewController.h */,
 				BCC2D27C1D77194A00B70A1C /* MeSettingViewController.m */,
+				BCB514481D81125400A29769 /* SettingViewController.h */,
+				BCB514491D81125400A29769 /* SettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -608,6 +653,8 @@
 		BCC2D2721D77133100B70A1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCB514361D8059C800A29769 /* FavActivityModel.h */,
+				BCB514371D8059C800A29769 /* FavActivityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -615,6 +662,14 @@
 		BCC2D2731D77133100B70A1C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BCB5142A1D80189A00A29769 /* MeSettingView.h */,
+				BCB5142B1D80189A00A29769 /* MeSettingView.m */,
+				BCB5142D1D801B9400A29769 /* MeSettingCollectionViewCell.h */,
+				BCB5142E1D801B9400A29769 /* MeSettingCollectionViewCell.m */,
+				BCB514301D801D6400A29769 /* MeSettingHeaderView.h */,
+				BCB514311D801D6400A29769 /* MeSettingHeaderView.m */,
+				BCB514331D804C9D00A29769 /* SettingButton.h */,
+				BCB514341D804C9D00A29769 /* SettingButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -759,38 +814,49 @@
 			files = (
 				BC14AFD31D74781500FA0048 /* LoginView.m in Sources */,
 				BCB513D41D7BC36400A29769 /* UserFirstSettingView.m in Sources */,
+				BCB5143E1D80F90700A29769 /* ChangeCityView.m in Sources */,
 				BC3F16CB1D72EC5C0002A97B /* AppDelegate.m in Sources */,
 				BC79C7F21D77094C00F4D39D /* CustomerTabBarViewController.m in Sources */,
 				BCB5140F1D7F0E0700A29769 /* BodyCollectionView.m in Sources */,
 				BCB514181D7F975400A29769 /* TalkTableView.m in Sources */,
+				BCB514351D804C9D00A29769 /* SettingButton.m in Sources */,
+				BCB514321D801D6400A29769 /* MeSettingHeaderView.m in Sources */,
 				BCC2D28A1D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m in Sources */,
 				BC1619A71D790B3F0024B0DC /* MainViewController.m in Sources */,
 				BCC2D28D1D773CC900B70A1C /* CustomerNavViewController.m in Sources */,
 				BCB514241D7FA15700A29769 /* TalkMessageModel.m in Sources */,
 				BCB5140C1D7EBAF600A29769 /* CityButtonLayoutImg.m in Sources */,
+				BCB5144A1D81125400A29769 /* SettingViewController.m in Sources */,
 				BCC2D27D1D77194A00B70A1C /* MeSettingViewController.m in Sources */,
 				BCB513F21D7DA1AA00A29769 /* AllActiviteModel.m in Sources */,
 				BCB5141B1D7F976800A29769 /* TalkTableViewCell.m in Sources */,
 				BCB514211D7F9BF900A29769 /* SearchTypeModel.m in Sources */,
 				BC3F16C81D72EC5C0002A97B /* main.m in Sources */,
 				BCB513BE1D7AF0BF00A29769 /* UserFirstSettingViewController.m in Sources */,
+				BCB514411D80F9F200A29769 /* ChangCityHeaderView.m in Sources */,
+				BCB5143B1D80F4BC00A29769 /* ChangeCityViewController.m in Sources */,
 				BCB513CA1D7B0EA200A29769 /* UINavigationItem+MyNavItem.m in Sources */,
 				BCC2D2801D7733F200B70A1C /* CustomTabBar.m in Sources */,
 				BCC2D27A1D77193F00B70A1C /* HelpViewController.m in Sources */,
 				BCB513F51D7DA1E300A29769 /* AllActivitesTableViewCell.m in Sources */,
+				BCB514381D8059C800A29769 /* FavActivityModel.m in Sources */,
 				BCB513C11D7B0BE800A29769 /* UserSecondSettingViewController.m in Sources */,
 				BCB513D71D7BC37100A29769 /* UserSecondSettingVIew.m in Sources */,
 				BCC2D2771D77193200B70A1C /* SearchViewController.m in Sources */,
 				BCB513D11D7B294800A29769 /* LocationDB.m in Sources */,
 				BCB513DA1D7CFA5300A29769 /* UserSecondSettingCollectionViewCell.m in Sources */,
 				BCB513CE1D7B10E400A29769 /* UserDB.m in Sources */,
+				BCB5142C1D80189A00A29769 /* MeSettingView.m in Sources */,
 				BCB513EF1D7DA18E00A29769 /* AllActiviteView.m in Sources */,
 				BCB513F81D7DDADF00A29769 /* AutoFitImageButton.m in Sources */,
 				BCB5141E1D7F977C00A29769 /* TalkHeaderView.m in Sources */,
 				BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */,
 				BCB514121D7F0F4E00A29769 /* BodyCollectionViewCell.m in Sources */,
 				BC14AFDA1D7478B000FA0048 /* AllActivitesViewController.m in Sources */,
+				BCB514471D81009600A29769 /* CitysModel.m in Sources */,
 				BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */,
+				BCB5142F1D801B9400A29769 /* MeSettingCollectionViewCell.m in Sources */,
+				BCB514441D80FAD100A29769 /* ChangeCityTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

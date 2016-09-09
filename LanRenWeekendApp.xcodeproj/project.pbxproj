@@ -61,6 +61,8 @@
 		BCF6A96D1D8142220001E62D /* InterestPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A96C1D8142220001E62D /* InterestPointViewController.m */; };
 		BCF6A9701D8142380001E62D /* ReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A96F1D8142380001E62D /* ReserveViewController.m */; };
 		BCF6A9731D814DD10001E62D /* SettingDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */; };
+		BCF6A9A71D82E7A30001E62D /* DetailActivtyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9A61D82E7A30001E62D /* DetailActivtyViewController.m */; };
+		BCF6A9AA1D82E7B80001E62D /* DetailActivtyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9A91D82E7B80001E62D /* DetailActivtyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +172,10 @@
 		BCF6A96F1D8142380001E62D /* ReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReserveViewController.m; sourceTree = "<group>"; };
 		BCF6A9711D814DD10001E62D /* SettingDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingDetailTableViewCell.h; sourceTree = "<group>"; };
 		BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingDetailTableViewCell.m; sourceTree = "<group>"; };
+		BCF6A9A51D82E7A30001E62D /* DetailActivtyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailActivtyViewController.h; sourceTree = "<group>"; };
+		BCF6A9A61D82E7A30001E62D /* DetailActivtyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailActivtyViewController.m; sourceTree = "<group>"; };
+		BCF6A9A81D82E7B80001E62D /* DetailActivtyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailActivtyView.h; sourceTree = "<group>"; };
+		BCF6A9A91D82E7B80001E62D /* DetailActivtyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailActivtyView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				BC14AFD41D74787600FA0048 /* 全部活动页面 */,
+				BCF6A9A11D82E78B0001E62D /* 详细页面 */,
 				BC14AFC61D74754200FA0048 /* 付款页面 */,
 				BC14AFC71D74754200FA0048 /* 地址页面 */,
 				BC14AFC81D74754200FA0048 /* 提问页面 */,
@@ -704,6 +711,41 @@
 			path = category;
 			sourceTree = "<group>";
 		};
+		BCF6A9A11D82E78B0001E62D /* 详细页面 */ = {
+			isa = PBXGroup;
+			children = (
+				BCF6A9A21D82E78B0001E62D /* Controller */,
+				BCF6A9A31D82E78B0001E62D /* Model */,
+				BCF6A9A41D82E78B0001E62D /* View */,
+			);
+			path = "详细页面";
+			sourceTree = "<group>";
+		};
+		BCF6A9A21D82E78B0001E62D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BCF6A9A51D82E7A30001E62D /* DetailActivtyViewController.h */,
+				BCF6A9A61D82E7A30001E62D /* DetailActivtyViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BCF6A9A31D82E78B0001E62D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BCF6A9A41D82E78B0001E62D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCF6A9A81D82E7B80001E62D /* DetailActivtyView.h */,
+				BCF6A9A91D82E7B80001E62D /* DetailActivtyView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -827,6 +869,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCF6A9AA1D82E7B80001E62D /* DetailActivtyView.m in Sources */,
 				BC14AFD31D74781500FA0048 /* LoginView.m in Sources */,
 				BCB513D41D7BC36400A29769 /* UserFirstSettingView.m in Sources */,
 				BCB5143E1D80F90700A29769 /* ChangeCityView.m in Sources */,
@@ -860,6 +903,7 @@
 				BCB513C11D7B0BE800A29769 /* UserSecondSettingViewController.m in Sources */,
 				BCB513D71D7BC37100A29769 /* UserSecondSettingVIew.m in Sources */,
 				BCC2D2771D77193200B70A1C /* SearchViewController.m in Sources */,
+				BCF6A9A71D82E7A30001E62D /* DetailActivtyViewController.m in Sources */,
 				BCB513D11D7B294800A29769 /* LocationDB.m in Sources */,
 				BCB513DA1D7CFA5300A29769 /* UserSecondSettingCollectionViewCell.m in Sources */,
 				BCB513CE1D7B10E400A29769 /* UserDB.m in Sources */,

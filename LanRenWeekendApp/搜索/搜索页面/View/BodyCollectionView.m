@@ -59,7 +59,6 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD dismiss];
     }];
-    
 }
 
 #pragma mark

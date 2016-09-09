@@ -27,6 +27,7 @@
 //请求的数据
 @property(nonatomic, strong)AFHTTPSessionManager * manager;
 @property(nonatomic, strong)NSArray<AllActiviteModel *> * modelArray;
+@property(nonatomic, strong)NSMutableArray<AllActiviteModel *> * allModelArray;
 
 @end
 
@@ -37,9 +38,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self getLocation];
-        [self refresh];
         [self initForData];
         [self initForTableView];
+        [self refresh];
     }
     return self;
 }
@@ -47,7 +48,8 @@
 #pragma mark
 #pragma mark ======== 定位，确定lon和lat(界面搞定在写)
 -(void)getLocation{
-    
+    _lon = 113.556002;
+    _lat = 34.809942;
 }
 #pragma mark
 #pragma mark ======== 数据的处理
@@ -61,44 +63,53 @@
     return _manager;
 }
 -(void)initForData{
+    _allModelArray = [[NSMutableArray alloc] init];
     [SVProgressHUD showWithStatus:@"加载中..."];
     
     _nowPage = 1;
     NSMutableDictionary * dataDic = [NSMutableDictionary dictionary];
     dataDic[@"page"] = @(self.nowPage);
-    dataDic[@"lon"] = @(113.556002);
-    dataDic[@"lat"] = @(34.809942);
+    dataDic[@"lon"] = @(_lon);
+    dataDic[@"lat"] = @(_lat);
     [self.manager GET:@"http://api.lanrenzhoumo.com/main/recommend/index?" parameters:dataDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _modelArray = [AllActiviteModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
+        [_allModelArray addObjectsFromArray:_modelArray];
         [_myTableView reloadData];
         _pageTotal = [responseObject[@"page_total"] integerValue];
         if (_nowPage < _pageTotal) {
             _nowPage++;
         }
         [SVProgressHUD dismiss];
+        [self.myTableView.mj_header endRefreshing];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"对不起，网络出错"];
         NSLog(@"Failed");
         NSLog(@"%@", error);
+        [self.myTableView.mj_header endRefreshing];
     }];
 }
 #pragma mark
 #pragma mark ======== 请求新数据
 -(void)initForNewData{
+    [self.myTableView.mj_footer beginRefreshing];
+    _nowPage = 2;
     NSMutableDictionary * dataDic = [NSMutableDictionary dictionary];
     dataDic[@"page"] = @(self.nowPage);
-    dataDic[@"lon"] = @(113.556002);
-    dataDic[@"lat"] = @(34.809942);
+    dataDic[@"lon"] = @(_lon);
+    dataDic[@"lat"] = @(_lat);
     [self.manager GET:@"http://api.lanrenzhoumo.com/main/recommend/index?" parameters:dataDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _modelArray = [AllActiviteModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
+        [_allModelArray addObjectsFromArray:_modelArray];
         [_myTableView reloadData];
         _pageTotal = [responseObject[@"page_total"] integerValue];
         if (_nowPage < _pageTotal) {
             _nowPage++;
         }
+        [self.myTableView.mj_footer endRefreshing];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Failed");
         NSLog(@"%@", error);
+        [self.myTableView.mj_footer endRefreshing];
     }];
 }
 #pragma mark
@@ -108,10 +119,9 @@
     [self.myTableView.mj_header beginRefreshing];
     
     self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
-    [self.myTableView.mj_footer beginRefreshing];
 }
 -(void)headerAction{
-    [self initForNewData];
+    [self initForData];
 }
 -(void)footerAction{
     [self initForNewData];
@@ -122,7 +132,7 @@
     _myTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStyleGrouped];
     _myTableView.showsHorizontalScrollIndicator = NO;
     _myTableView.showsVerticalScrollIndicator = NO;
-//    _myTableView.bounces = NO;
+    _myTableView.bounces = YES;
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
@@ -139,7 +149,7 @@
     return 1;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _modelArray.count;
+    return _allModelArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AllActivitesTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
@@ -153,7 +163,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.layer.masksToBounds = YES;
-    [cell setCellStyle:_modelArray[indexPath.section]];
+    [cell setCellStyle:_allModelArray[indexPath.section]];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

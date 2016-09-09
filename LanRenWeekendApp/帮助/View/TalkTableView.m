@@ -34,7 +34,7 @@
     if (self) {
         [self initForData];
         [self noticeFicKeyBoard];
-//        [self initForView];
+        [self initForView];
     }
     return self;
 }
@@ -59,7 +59,6 @@
         for (TalkMessageModel * model in _modelArray) {
             [_revModelArray insertObject:model atIndex:0];
         }
-        [self initForView];
         [_tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -117,6 +116,8 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor colorWithRed:1.00 green:0.99 blue:0.97 alpha:1.00];
     [cell setCellValue:_revModelArray[indexPath.row]];
+//    自动降到底部
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

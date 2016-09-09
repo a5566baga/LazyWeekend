@@ -46,7 +46,7 @@
 #pragma mark ========== 初始化页面
 -(void)initForView{
     _bgMaskView = [[UIImageView alloc] init];
-    _bgMaskView.image = [UIImage imageNamed:@"angle-mask@3x"];
+    _bgMaskView.image = [UIImage imageNamed:@"mask"];
     _bgMaskView.userInteractionEnabled = YES;
     [self addSubview:_bgMaskView];
 

@@ -37,8 +37,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self getLocation];
-        [self initForData];
         [self refresh];
+        [self initForData];
         [self initForTableView];
     }
     return self;
@@ -104,7 +104,17 @@
 #pragma mark
 #pragma mark ======== 数据刷新方式
 -(void)refresh{
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerAction)];
+    [self.myTableView.mj_header beginRefreshing];
     
+    self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
+    [self.myTableView.mj_footer beginRefreshing];
+}
+-(void)headerAction{
+    [self initForNewData];
+}
+-(void)footerAction{
+    [self initForNewData];
 }
 #pragma mark
 #pragma mark ======== tableView的创建
@@ -112,7 +122,7 @@
     _myTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStyleGrouped];
     _myTableView.showsHorizontalScrollIndicator = NO;
     _myTableView.showsVerticalScrollIndicator = NO;
-    _myTableView.bounces = NO;
+//    _myTableView.bounces = NO;
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _myTableView.delegate = self;
     _myTableView.dataSource = self;

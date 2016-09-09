@@ -53,7 +53,7 @@
 -(void)initForData{
     _cityNameArray = [NSMutableArray array];
     _allCity = [NSMutableArray array];
-    [_manager GET:@"http://api.lanrenzhoumo.com/district/list/allcity" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager GET:@"http://api.lanrenzhoumo.com/district/list/allcity" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray * allCity = responseObject[@"result"];
         for (NSDictionary * dic in allCity) {
             NSString * indexStr = dic[@"begin_key"];
@@ -61,7 +61,7 @@
             _cityArray = [CitysModel mj_objectArrayWithKeyValuesArray:dic[@"city_list"]];
             [_allCity addObject:_cityArray];
         }
-        NSLog(@"");
+        [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败");
     }];
@@ -88,21 +88,18 @@
     if (section == 0) {
         return 0;
     }else
-//        return  [_allCity[section] count];
-        return 10;
+        return  [_allCity[section] count];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return _allCity.count+1;
-    return 10;
+    return _allCity.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ChangeCityTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"changeCityCell"];
     if (cell == nil) {
         cell = [[ChangeCityTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"changeCityCell"];
     }
-    cell.backgroundColor = [UIColor orangeColor];
     cell.frame = CGRectMake(15, 0, self.width-30, 40);
-    cell.textLabel.text = @"bzs";
+    cell.textLabel.text = [_allCity[indexPath.section][indexPath.row] city_name];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -111,18 +108,21 @@
 //headerView
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return 200;
+        return 500;
     }
         return 30;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        ChangCityHeaderView * headerView = [[ChangCityHeaderView alloc] initWithFrame:CGRectMake(20, 0, self.width-40, 30)];
-        headerView.backgroundColor = [UIColor purpleColor];
+        ChangCityHeaderView * headerView = [[ChangCityHeaderView alloc] init];
+        [headerView setHotCityArray:_allCity[section]];
         return headerView;
     }else{
         UILabel * titleLabel = [[UILabel alloc] init];
-//        titleLabel.text = _cityNameArray[section-1];
+        titleLabel.frame = CGRectMake(20, 0, 100, 30);
+        titleLabel.textColor = [UIColor grayColor];
+        titleLabel.text = [NSString stringWithFormat:@"  %@", _cityNameArray[section]];
+        titleLabel.backgroundColor = [UIColor whiteColor];
         return titleLabel;
     }
 }

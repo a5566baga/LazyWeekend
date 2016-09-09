@@ -8,17 +8,35 @@
 
 #import "TalkTableViewCell.h"
 
+@interface TalkTableViewCell ()
+@property(nonatomic, assign)UILabel * myLabel;
+@property(nonatomic, strong)UIImageView * bgImage;
+@property(nonatomic, strong)UIImageView * quoImage;
+@property(nonatomic, strong)UILabel * timeLabl;
+@end
+
 @implementation TalkTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        [self initForCell];
     }
     return self;
 }
 
+-(void)initForCell{
+    
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+}
+
+-(float)cellHeight{
+    return 20;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

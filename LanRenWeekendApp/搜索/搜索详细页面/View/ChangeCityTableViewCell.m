@@ -28,7 +28,14 @@
 -(void)initForCell{
     
 }
-
+-(void)setFrame:(CGRect)frame{
+    
+    frame.origin.x = 10;
+    frame.size.width = frame.size.width - 40;
+    
+    [super setFrame:frame];
+    
+}
 -(void)layoutSubviews{
     [super layoutSubviews];
 }

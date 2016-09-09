@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CitysModel.h"
 
 @interface ChangCityHeaderView : UIView
+
+-(void)setHotCityArray:(NSArray<CitysModel *> *)cityArray;
 
 @end

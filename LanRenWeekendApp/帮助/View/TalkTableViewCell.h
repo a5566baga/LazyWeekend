@@ -10,4 +10,7 @@
 
 @interface TalkTableViewCell : UITableViewCell
 
+@property(nonatomic, assign)float cellHeight;
+
+
 @end

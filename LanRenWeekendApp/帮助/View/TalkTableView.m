@@ -9,6 +9,7 @@
 #import "TalkTableView.h"
 #import "TalkMessageModel.h"
 #import "TalkTableViewCell.h"
+#import "TalkHeaderView.h"
 #import <AFNetworking.h>
 #import <MJExtension.h>
 
@@ -32,6 +33,7 @@
     if (self) {
 //        [self initForData];
         [self noticeFicKeyBoard];
+        [self initForView];
     }
     return self;
 }
@@ -99,7 +101,8 @@
 #pragma mark
 #pragma mark =========== tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  _modelArray.count;
+//    return  _modelArray.count;
+    return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TalkTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
@@ -108,7 +111,19 @@
     }
     cell.textLabel.text = [_modelArray[indexPath.row] requirement_text];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor colorWithRed:1.00 green:0.99 blue:0.97 alpha:1.00];
     return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    TalkHeaderView * headerView = [[TalkHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.width, 200)];
+    headerView.backgroundColor = [UIColor colorWithRed:1.00 green:0.99 blue:0.97 alpha:1.00];
+    return headerView;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 180;
 }
 
 #pragma mark

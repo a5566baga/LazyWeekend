@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TalkMessageModel.h"
 
 @interface TalkTableViewCell : UITableViewCell
 
-@property(nonatomic, assign)float cellHeight;
-
+-(void)setCellValue:(TalkMessageModel *)model;
 
 @end

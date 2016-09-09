@@ -26,5 +26,6 @@
 
 @property (nonatomic, strong) NSArray *result_list;
 
+@property(nonatomic, assign) float cellHeight;
 
 @end

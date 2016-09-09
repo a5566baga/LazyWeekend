@@ -22,6 +22,7 @@
 
 @property(nonatomic, strong)AFHTTPSessionManager * manager;
 @property(nonatomic, strong)NSArray<TalkMessageModel *> * modelArray;
+@property(nonatomic, strong)NSMutableArray<TalkMessageModel *> * revModelArray;
 
 @end
 
@@ -31,9 +32,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        [self initForData];
+        [self initForData];
         [self noticeFicKeyBoard];
-        [self initForView];
+//        [self initForView];
     }
     return self;
 }
@@ -48,13 +49,18 @@
     return _manager;
 }
 -(void)initForData{
+    _revModelArray = [[NSMutableArray alloc] init];
 #warning 参数尚未决定是存到数据库还是网络请求
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     params[@""] = @"";
     [self.manager GET:@"http://api.lanrenzhoumo.com/tailor/requirement/list?start_id=&session_id=00004061a9f934aa1954907af22163863e8d00" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary * dic = responseObject[@"result"];
         _modelArray = [TalkMessageModel mj_objectArrayWithKeyValuesArray:dic[@"result_list"]];
+        for (TalkMessageModel * model in _modelArray) {
+            [_revModelArray insertObject:model atIndex:0];
+        }
         [self initForView];
+        [_tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -101,21 +107,20 @@
 #pragma mark
 #pragma mark =========== tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return  _modelArray.count;
-    return 3;
+    return  _revModelArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TalkTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
     if (cell == nil) {
         cell = [[TalkTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cellID"];
     }
-    cell.textLabel.text = [_modelArray[indexPath.row] requirement_text];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor colorWithRed:1.00 green:0.99 blue:0.97 alpha:1.00];
+    [cell setCellValue:_revModelArray[indexPath.row]];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+    return [_revModelArray[indexPath.row] cellHeight];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TalkHeaderView * headerView = [[TalkHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.width, 200)];

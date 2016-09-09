@@ -37,7 +37,7 @@
     [self addSubview:_iconView];
     
     _talkView = [[UIImageView alloc] init];
-    _talkView.image = [[UIImage imageNamed:@"rc_left_chat_wind.9"] stretchableImageWithLeftCapWidth:30 topCapHeight:60];
+    _talkView.image = [[UIImage imageNamed:@"rc_left_chat_wind.9"] stretchableImageWithLeftCapWidth:30 topCapHeight:30];
     [self addSubview:_talkView];
     
     _mainLabel = [[UILabel alloc] init];

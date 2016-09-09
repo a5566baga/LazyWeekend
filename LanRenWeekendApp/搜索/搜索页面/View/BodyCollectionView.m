@@ -35,6 +35,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self initForData];
+         [self initForView];
     }
     return self;
 }
@@ -53,8 +54,8 @@
     [SVProgressHUD show];
     [self.manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _modelArray = [SearchTypeModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
-        [self initForView];
         [SVProgressHUD dismiss];
+        [self.collectionView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD dismiss];
     }];
@@ -81,8 +82,6 @@
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
-    [self initForData];
-    [self initForView];
     self.collectionView.frame = self.bounds;
 }
 #pragma mark

@@ -139,6 +139,7 @@
             [view removeFromSuperview];
         }
     }
+    cell.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1.0];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setCellStyle:_descriptionArray[indexPath.row]];
     return cell;
@@ -151,7 +152,7 @@
     return headerView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 680;
+    return 700;
 }
 
 @end

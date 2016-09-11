@@ -9,7 +9,7 @@
 #import "AllActiviteView.h"
 #import "AllActivitesTableViewCell.h"
 #import "AllActiviteModel.h"
-
+#import <CoreLocation/CoreLocation.h>
 //第三方
 #import <AFNetworking.h>
 #import <MJRefresh.h>
@@ -17,12 +17,16 @@
 #import <SVProgressHUD.h>
 
 #define CELL_ID @"allActivitesCell"
-@interface AllActiviteView ()<UITableViewDelegate, UITableViewDataSource>
+@interface AllActiviteView ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+
+//定位
+@property(nonatomic, strong)CLLocationManager * lm;
+@property(nonatomic, strong  )CLLocation *  OldL;
 
 @property(nonatomic, strong)UITableView * myTableView;
 //get请求的参数
-@property(nonatomic, assign)double lon;
-@property(nonatomic, assign)double lat;
+@property(nonatomic, assign)float lon;
+@property(nonatomic, assign)float lat;
 @property(nonatomic, assign)NSInteger pageTotal;
 @property(nonatomic, assign)NSInteger nowPage;
 //请求的数据
@@ -44,12 +48,36 @@
     }
     return self;
 }
+-(CLLocationManager *)lm{
+    if (nil == _lm) {
+        _lm = [[CLLocationManager alloc]init];
+
+        _lm.delegate = self;
+        
+        _lm.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
+            _lm.allowsBackgroundLocationUpdates = YES;
+        }
+        
+        [_lm requestAlwaysAuthorization];
+    }
+    return _lm;
+}
 
 #pragma mark
 #pragma mark ======== 定位，确定lon和lat(界面搞定在写)
 -(void)getLocation{
+    [self.lm startUpdatingLocation];
     _lon = 113.556002;
     _lat = 34.809942;
+}
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    CLLocation * locaton = locations.lastObject;
+    _lon = locaton.coordinate.longitude;
+    _lat = locaton.coordinate.latitude;
+    NSLog(@"%lf %lf", _lon, _lat);
 }
 #pragma mark
 #pragma mark ======== 数据的处理

@@ -105,6 +105,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40;
 }
+//选中后跳转
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+#warning 页面跳转传的参数是http://api.lanrenzhoumo.com/wh/common/leos?category=all&city_id=321&page=1
+//    city_id
+}
 //headerView
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {

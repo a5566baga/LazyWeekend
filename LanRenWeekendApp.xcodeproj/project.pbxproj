@@ -63,6 +63,10 @@
 		BCF6A9731D814DD10001E62D /* SettingDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */; };
 		BCF6A9A71D82E7A30001E62D /* DetailActivtyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9A61D82E7A30001E62D /* DetailActivtyViewController.m */; };
 		BCF6A9AA1D82E7B80001E62D /* DetailActivtyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9A91D82E7B80001E62D /* DetailActivtyView.m */; };
+		BCF6A9DF1D83DAEC0001E62D /* Booking_policy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9DE1D83DAEC0001E62D /* Booking_policy.m */; };
+		BCF6A9E21D83E26A0001E62D /* DetailCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9E11D83E26A0001E62D /* DetailCellTableViewCell.m */; };
+		BCF6A9E51D83E3650001E62D /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9E41D83E3650001E62D /* HeaderView.m */; };
+		BCF6A9E81D8505C30001E62D /* LocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9E71D8505C30001E62D /* LocationButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +180,14 @@
 		BCF6A9A61D82E7A30001E62D /* DetailActivtyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailActivtyViewController.m; sourceTree = "<group>"; };
 		BCF6A9A81D82E7B80001E62D /* DetailActivtyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailActivtyView.h; sourceTree = "<group>"; };
 		BCF6A9A91D82E7B80001E62D /* DetailActivtyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailActivtyView.m; sourceTree = "<group>"; };
+		BCF6A9DD1D83DAEC0001E62D /* Booking_policy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Booking_policy.h; sourceTree = "<group>"; };
+		BCF6A9DE1D83DAEC0001E62D /* Booking_policy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Booking_policy.m; sourceTree = "<group>"; };
+		BCF6A9E01D83E26A0001E62D /* DetailCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCellTableViewCell.h; sourceTree = "<group>"; };
+		BCF6A9E11D83E26A0001E62D /* DetailCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCellTableViewCell.m; sourceTree = "<group>"; };
+		BCF6A9E31D83E3650001E62D /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		BCF6A9E41D83E3650001E62D /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		BCF6A9E61D8505C30001E62D /* LocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationButton.h; sourceTree = "<group>"; };
+		BCF6A9E71D8505C30001E62D /* LocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -733,6 +745,8 @@
 		BCF6A9A31D82E78B0001E62D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCF6A9DD1D83DAEC0001E62D /* Booking_policy.h */,
+				BCF6A9DE1D83DAEC0001E62D /* Booking_policy.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -742,6 +756,12 @@
 			children = (
 				BCF6A9A81D82E7B80001E62D /* DetailActivtyView.h */,
 				BCF6A9A91D82E7B80001E62D /* DetailActivtyView.m */,
+				BCF6A9E01D83E26A0001E62D /* DetailCellTableViewCell.h */,
+				BCF6A9E11D83E26A0001E62D /* DetailCellTableViewCell.m */,
+				BCF6A9E31D83E3650001E62D /* HeaderView.h */,
+				BCF6A9E41D83E3650001E62D /* HeaderView.m */,
+				BCF6A9E61D8505C30001E62D /* LocationButton.h */,
+				BCF6A9E71D8505C30001E62D /* LocationButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -874,13 +894,16 @@
 				BCB513D41D7BC36400A29769 /* UserFirstSettingView.m in Sources */,
 				BCB5143E1D80F90700A29769 /* ChangeCityView.m in Sources */,
 				BC3F16CB1D72EC5C0002A97B /* AppDelegate.m in Sources */,
+				BCF6A9E51D83E3650001E62D /* HeaderView.m in Sources */,
 				BC79C7F21D77094C00F4D39D /* CustomerTabBarViewController.m in Sources */,
 				BCB5140F1D7F0E0700A29769 /* BodyCollectionView.m in Sources */,
 				BCB514181D7F975400A29769 /* TalkTableView.m in Sources */,
 				BCB514351D804C9D00A29769 /* SettingButton.m in Sources */,
 				BCB514321D801D6400A29769 /* MeSettingHeaderView.m in Sources */,
 				BCC2D28A1D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m in Sources */,
+				BCF6A9E81D8505C30001E62D /* LocationButton.m in Sources */,
 				BC1619A71D790B3F0024B0DC /* MainViewController.m in Sources */,
+				BCF6A9DF1D83DAEC0001E62D /* Booking_policy.m in Sources */,
 				BCF6A9731D814DD10001E62D /* SettingDetailTableViewCell.m in Sources */,
 				BCC2D28D1D773CC900B70A1C /* CustomerNavViewController.m in Sources */,
 				BCB514241D7FA15700A29769 /* TalkMessageModel.m in Sources */,
@@ -914,6 +937,7 @@
 				BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */,
 				BCB514121D7F0F4E00A29769 /* BodyCollectionViewCell.m in Sources */,
 				BC14AFDA1D7478B000FA0048 /* AllActivitesViewController.m in Sources */,
+				BCF6A9E21D83E26A0001E62D /* DetailCellTableViewCell.m in Sources */,
 				BCF6A96D1D8142220001E62D /* InterestPointViewController.m in Sources */,
 				BCB514471D81009600A29769 /* CitysModel.m in Sources */,
 				BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */,

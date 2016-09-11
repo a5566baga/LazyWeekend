@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailActivtyViewController.h"
 
 @interface AllActiviteView : UIView
+
+@property(nonatomic, copy)void(^jumpToDetail)(DetailActivtyViewController * detailVC, NSInteger leo_id);
 
 @end

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailActivtyViewController : UIViewController
-
+@property(nonatomic, assign)NSInteger leo_id;
 @end

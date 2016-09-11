@@ -10,6 +10,8 @@
 
 @interface DetailActivtyView : UIView
 
+@property(nonatomic, assign)NSInteger leo_id;
 
+-(void)setLeo_id:(NSInteger)leo_id;
 
 @end

@@ -39,10 +39,6 @@
     
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-}
-
 -(void)setStyleWithImage:(NSString *)imageStr selectImage:(NSString *)selectImageStr viewController:(UIViewController *)viewController{
     CustomerNavViewController * nvc = [[CustomerNavViewController alloc] initWithRootViewController:viewController];
     

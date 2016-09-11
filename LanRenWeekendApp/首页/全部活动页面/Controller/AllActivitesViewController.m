@@ -38,6 +38,10 @@
 -(void)initForView{
     self.automaticallyAdjustsScrollViewInsets = NO;
     AllActiviteView * allActiviesView = [[AllActiviteView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64-49)];
+    [allActiviesView setJumpToDetail:^(DetailActivtyViewController * detailVC, NSInteger leo_id) {
+        detailVC.leo_id = leo_id;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }];
     [self.view addSubview:allActiviesView];
 }
 

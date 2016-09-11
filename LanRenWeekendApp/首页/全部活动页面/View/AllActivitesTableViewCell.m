@@ -196,7 +196,7 @@
 #pragma mark ========= 跳转到二级页面
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    NSLog(@"cell");
+//    NSLog(@"cell");
 }
 
 @end

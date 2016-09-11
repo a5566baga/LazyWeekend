@@ -9,6 +9,7 @@
 #import "AllActiviteView.h"
 #import "AllActivitesTableViewCell.h"
 #import "AllActiviteModel.h"
+
 //第三方
 #import <AFNetworking.h>
 #import <MJRefresh.h>
@@ -38,7 +39,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self getLocation];
-        [self initForData];
         [self initForTableView];
         [self refresh];
     }
@@ -64,7 +64,7 @@
 }
 -(void)initForData{
     _allModelArray = [[NSMutableArray alloc] init];
-    [SVProgressHUD showWithStatus:@"加载中..."];
+    [SVProgressHUD showWithStatus:@"加载中"];
     
     _nowPage = 1;
     NSMutableDictionary * dataDic = [NSMutableDictionary dictionary];
@@ -73,7 +73,9 @@
     dataDic[@"lat"] = @(_lat);
     [self.manager GET:@"http://api.lanrenzhoumo.com/main/recommend/index?" parameters:dataDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _modelArray = [AllActiviteModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
-        [_allModelArray addObjectsFromArray:_modelArray];
+        for (AllActiviteModel * model in _modelArray) {
+            [_allModelArray addObject:model];
+        }
         [_myTableView reloadData];
         _pageTotal = [responseObject[@"page_total"] integerValue];
         if (_nowPage < _pageTotal) {
@@ -92,14 +94,16 @@
 #pragma mark ======== 请求新数据
 -(void)initForNewData{
     [self.myTableView.mj_footer beginRefreshing];
-    _nowPage = 2;
+    _nowPage ++;
     NSMutableDictionary * dataDic = [NSMutableDictionary dictionary];
     dataDic[@"page"] = @(self.nowPage);
     dataDic[@"lon"] = @(_lon);
     dataDic[@"lat"] = @(_lat);
     [self.manager GET:@"http://api.lanrenzhoumo.com/main/recommend/index?" parameters:dataDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _modelArray = [AllActiviteModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
-        [_allModelArray addObjectsFromArray:_modelArray];
+        for (AllActiviteModel * model in _modelArray) {
+            [_allModelArray addObject:model];
+        }
         [_myTableView reloadData];
         _pageTotal = [responseObject[@"page_total"] integerValue];
         if (_nowPage < _pageTotal) {
@@ -132,7 +136,6 @@
     _myTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStyleGrouped];
     _myTableView.showsHorizontalScrollIndicator = NO;
     _myTableView.showsVerticalScrollIndicator = NO;
-    _myTableView.bounces = YES;
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
@@ -179,6 +182,11 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.1;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%ld", indexPath.section);
+    DetailActivtyViewController * detailVC = [[DetailActivtyViewController alloc] init];
+    self.jumpToDetail(detailVC, [_allModelArray[indexPath.section] leo_id]);
 }
 
 @end

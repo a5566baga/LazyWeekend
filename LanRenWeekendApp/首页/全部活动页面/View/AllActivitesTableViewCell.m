@@ -41,13 +41,15 @@
     _model = model;
 //    动态展示
     _progressView = [[UCZProgressView alloc] init];
-    _progressView.center = CGPointMake(self.width/2, self.width/2.5);
+    _progressView.center = CGPointMake(self.width/2, self.picView.width/2);
     _progressView.size = CGSizeMake(60, 60);
     _progressView.translatesAutoresizingMaskIntoConstraints = NO;
+//    _progressView.backgroundColor = [UIColor clearColor];
     _progressView.indeterminate = YES;
     [self.picView addSubview:_progressView];
 //   图片下载
     [_picView sd_setImageWithURL:[NSURL URLWithString:model.front_cover_image_list.firstObject] placeholderImage:nil options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [_progressView removeFromSuperview];
         
@@ -63,9 +65,9 @@
     
     _timeLabel.text = model.time_info;
     
-    _priceLabel.text = [NSString stringWithFormat:@"￥%ld",model.price];
+    _priceLabel.text = [NSString stringWithFormat:@"￥%ld",(long)model.price];
     
-    [_favButton setTitle:[NSString stringWithFormat:@"%ld人收藏", model.collected_num] forState:UIControlStateNormal];
+    [_favButton setTitle:[NSString stringWithFormat:@"%ld人收藏", (long)model.collected_num] forState:UIControlStateNormal];
 }
 
 #pragma mark
@@ -140,7 +142,7 @@
         }else{
             _model.collected_num -= 1;
         }
-        [button setTitle:[NSString stringWithFormat:@"%ld人收藏", _model.collected_num] forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%ld人收藏", (long)_model.collected_num] forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
         button.imageView.transform = CGAffineTransformIdentity;
     }];

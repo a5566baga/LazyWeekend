@@ -21,16 +21,20 @@
 
 #import "UIImage+LoadImg.h"
 
+#import "UserDB.h"
+#import "LocationDB.h"
+#import "FavouriteDB.h"
+
 #ifdef DEBUG
-#define FCLog(...) NSLog(__VA_ARGS__)
+#define ZZQLog(...) NSLog(__VA_ARGS__)
 #else
-#define FCLog(...)
+#define ZZQLog(...)
 #endif
 
-#define FCLogFunct  FCLog(@"%s", __func__)
+#define ZZQLogFunct  FCLog(@"%s", __func__)
 
 //应用程序的主色调。
-#define FCMainColor(r,g,b)  [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+#define ZZQMainColor(r,g,b)  [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
 
 
 #endif /* PrefixHeader_pch */

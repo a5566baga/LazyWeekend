@@ -45,7 +45,10 @@
         CGSize size = [_dic[@"content"] boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil].size;
         _txtLabel.frame = CGRectMake(10, 10, self.width-20, size.height);
     }else{
-        _picImage.frame = CGRectMake(0, 0, self.width, self.width);
+        NSArray * size = _dic[@"size"];
+        float width = [size[0] floatValue];
+        float height = [size[1] floatValue];
+        _picImage.frame = CGRectMake(0, 10, self.width, self.width * (height/width));
     }
 }
 

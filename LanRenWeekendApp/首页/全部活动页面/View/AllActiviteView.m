@@ -71,6 +71,9 @@
     [self.lm startUpdatingLocation];
     _lon = 113.556002;
     _lat = 34.809942;
+    CLLocation * location = self.lm.location;
+    _lon = self.lm.location.coordinate.longitude;
+    _lat = self.lm.location.coordinate.latitude;
 }
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations{
@@ -194,7 +197,9 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.layer.masksToBounds = YES;
-    [cell setCellStyle:_allModelArray[indexPath.section]];
+    if (_allModelArray.count > 0) {
+        [cell setCellStyle:_allModelArray[indexPath.section]];
+    }
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -212,11 +217,10 @@
     return 0.1;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld", indexPath.section);
+    NSLog(@"%ld", (long)indexPath.section);
     DetailActivtyViewController * detailVC = [[DetailActivtyViewController alloc] init];
     self.jumpToDetail(detailVC, [_allModelArray[indexPath.section] leo_id]);
 }
 
 @end
-
 

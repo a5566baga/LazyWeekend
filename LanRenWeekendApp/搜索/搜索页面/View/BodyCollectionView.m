@@ -97,10 +97,10 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 #warning 拼接数据接口
-    NSLog(@"select === %ld", indexPath.row);
+    NSLog(@"select === %ld", (long)indexPath.row);
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cancel === %ld", indexPath.row);
+    NSLog(@"cancel === %ld", (long)indexPath.row);
 }
 
 /*

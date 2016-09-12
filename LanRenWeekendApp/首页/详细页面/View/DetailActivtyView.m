@@ -126,8 +126,12 @@
         CGSize mySize = CGSizeMake(self.width-20, CGFLOAT_MAX);
         CGSize size = [_descriptionArray[indexPath.row][@"content"] boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil].size;
         return size.height + 20;
-    }else
-        return self.width;
+    }else{
+        NSArray * size = _descriptionArray[indexPath.row][@"size"];
+        float width = [size[0] floatValue];
+        float height = [size[1] floatValue];
+        return self.width*height/width+20;
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailCellTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];

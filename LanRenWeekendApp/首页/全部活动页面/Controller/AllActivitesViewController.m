@@ -30,7 +30,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
     label.font = [UIFont fontWithName:@"Gotham-Light" size:17];
-    label.text = @"懒人周末";
+    label.text = @"周末去哪耍";
     self.navigationItem.titleView = label;
 }
 #pragma mark

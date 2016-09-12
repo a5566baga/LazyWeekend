@@ -14,7 +14,7 @@
 
 //轮播图
 @property(nonatomic, strong)UIScrollView * scrollView;
-@property(nonatomic, strong)NSArray * imagesArray;
+@property(nonatomic, strong)NSMutableArray * imagesArray;
 //title的label
 @property(nonatomic, strong)UILabel * titleLabel;
 //价格区间
@@ -69,6 +69,13 @@
 #pragma mark ============ scrollView的代理(轮播处理)
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
     //    设置轮播图
+    NSInteger index = scrollView.contentOffset.x / self.width;
+    if (index == 0) {
+        scrollView.contentOffset = CGPointMake(self.width * (_imagesArray.count-2), 0);
+    }else if (index == _imagesArray.count){
+        
+    }
+    
 }
 
 #pragma mark
@@ -168,7 +175,7 @@
     float height = [self rowHeightByString:_titleLabel.text font:[UIFont systemFontOfSize:24]];
     _titleLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_scrollView.frame)+topMargin, self.width-2*leftMargin, height);
 // 价格区间的大小
-    float priceWidth = (self.width-5*leftMargin-40)/2;
+    float priceWidth = (self.width-5*leftMargin-40);
     _priceBg.frame = CGRectMake(0, CGRectGetMaxY(_titleLabel.frame)+topMargin, self.width, 60);
     _iconPic.frame = CGRectMake(2*leftMargin, topMargin, 40, 40);
     _typeNameLabel.frame = CGRectMake(3*leftMargin+40, topMargin, priceWidth, 40);
@@ -189,7 +196,9 @@
 #pragma mark
 #pragma mark =========== 赋值
 -(void)setHeaderStyle:(NSArray *)imageArray title:(NSString *)title price_info:(NSString *)price_info type:(NSString *)type iconStr:(NSString *)iconStr timeStr:(NSString *)timeStr locationStr:(NSString *)locationStr{
-    _imagesArray = imageArray;
+    _imagesArray = [NSMutableArray arrayWithArray:imageArray];
+    [_imagesArray insertObject:imageArray.firstObject atIndex:imageArray.count-1];
+    [_imagesArray insertObject:imageArray.lastObject atIndex:0];
 //        创建视图
     [self initForView];
 //    赋值

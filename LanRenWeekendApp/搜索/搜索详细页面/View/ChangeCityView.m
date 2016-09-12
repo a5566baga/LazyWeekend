@@ -137,7 +137,7 @@
     return _cityNameArray;
 }
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
-    NSLog(@"index == %ld", index);
+    NSLog(@"index == %ld", (long)index);
     return index;
 }
 //侧边栏消失出现

@@ -69,7 +69,8 @@
 #pragma mark ========== collectionView delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 #warning 数据库取出数据的个数
-    return 10;
+//    return 10;
+    return 0;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MeSettingCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_ID forIndexPath:indexPath];
@@ -94,10 +95,10 @@
 //是否中的cell
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    页面跳转到二级页面，传参数拼接成一个url
-    NSLog(@"%ld 个人cell 选中", indexPath.row);
+    NSLog(@"%ld 个人cell 选中", (long)indexPath.row);
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld 个人cell 取消", indexPath.row);
+    NSLog(@"%ld 个人cell 取消", (long)indexPath.row);
 }
 
 #pragma mark

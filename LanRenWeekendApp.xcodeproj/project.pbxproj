@@ -58,6 +58,10 @@
 		BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D2861D77365700B70A1C /* UIView+MyPositionSize.m */; };
 		BCC2D28A1D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D2891D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m */; };
 		BCC2D28D1D773CC900B70A1C /* CustomerNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC2D28C1D773CC900B70A1C /* CustomerNavViewController.m */; };
+		BCD1523A1D86D2D700932F1F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD152391D86D2D700932F1F /* User.m */; };
+		BCD1523D1D86E0BE00932F1F /* CityLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1523C1D86E0BE00932F1F /* CityLocation.m */; };
+		BCD152401D86EB6500932F1F /* FavouriteDB.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1523F1D86EB6500932F1F /* FavouriteDB.m */; };
+		BCD152431D86EB8200932F1F /* Favourtie.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD152421D86EB8200932F1F /* Favourtie.m */; };
 		BCF6A96D1D8142220001E62D /* InterestPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A96C1D8142220001E62D /* InterestPointViewController.m */; };
 		BCF6A9701D8142380001E62D /* ReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A96F1D8142380001E62D /* ReserveViewController.m */; };
 		BCF6A9731D814DD10001E62D /* SettingDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */; };
@@ -170,6 +174,14 @@
 		BCC2D2891D77368300B70A1C /* UIBarButtonItem+MyBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+MyBarButtonItem.m"; sourceTree = "<group>"; };
 		BCC2D28B1D773CC900B70A1C /* CustomerNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerNavViewController.h; sourceTree = "<group>"; };
 		BCC2D28C1D773CC900B70A1C /* CustomerNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerNavViewController.m; sourceTree = "<group>"; };
+		BCD152381D86D2D700932F1F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		BCD152391D86D2D700932F1F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		BCD1523B1D86E0BE00932F1F /* CityLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityLocation.h; sourceTree = "<group>"; };
+		BCD1523C1D86E0BE00932F1F /* CityLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityLocation.m; sourceTree = "<group>"; };
+		BCD1523E1D86EB6500932F1F /* FavouriteDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteDB.h; sourceTree = "<group>"; };
+		BCD1523F1D86EB6500932F1F /* FavouriteDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteDB.m; sourceTree = "<group>"; };
+		BCD152411D86EB8200932F1F /* Favourtie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favourtie.h; sourceTree = "<group>"; };
+		BCD152421D86EB8200932F1F /* Favourtie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favourtie.m; sourceTree = "<group>"; };
 		BCF6A96B1D8142220001E62D /* InterestPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestPointViewController.h; sourceTree = "<group>"; };
 		BCF6A96C1D8142220001E62D /* InterestPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestPointViewController.m; sourceTree = "<group>"; };
 		BCF6A96E1D8142380001E62D /* ReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReserveViewController.h; sourceTree = "<group>"; };
@@ -365,6 +377,7 @@
 		BC14AFD01D74778200FA0048 /* 工具类 */ = {
 			isa = PBXGroup;
 			children = (
+				BCD152371D86D29100932F1F /* DBmodel */,
 				BCB513CB1D7B10B400A29769 /* DB */,
 				BCC2D2811D7735EC00B70A1C /* category */,
 				BCC2D2741D77136400B70A1C /* PrefixHeader.pch */,
@@ -467,6 +480,8 @@
 				BCB513CD1D7B10E400A29769 /* UserDB.m */,
 				BCB513CF1D7B294800A29769 /* LocationDB.h */,
 				BCB513D01D7B294800A29769 /* LocationDB.m */,
+				BCD1523E1D86EB6500932F1F /* FavouriteDB.h */,
+				BCD1523F1D86EB6500932F1F /* FavouriteDB.m */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -723,6 +738,19 @@
 			path = category;
 			sourceTree = "<group>";
 		};
+		BCD152371D86D29100932F1F /* DBmodel */ = {
+			isa = PBXGroup;
+			children = (
+				BCD152381D86D2D700932F1F /* User.h */,
+				BCD152391D86D2D700932F1F /* User.m */,
+				BCD1523B1D86E0BE00932F1F /* CityLocation.h */,
+				BCD1523C1D86E0BE00932F1F /* CityLocation.m */,
+				BCD152411D86EB8200932F1F /* Favourtie.h */,
+				BCD152421D86EB8200932F1F /* Favourtie.m */,
+			);
+			path = DBmodel;
+			sourceTree = "<group>";
+		};
 		BCF6A9A11D82E78B0001E62D /* 详细页面 */ = {
 			isa = PBXGroup;
 			children = (
@@ -800,6 +828,7 @@
 				TargetAttributes = {
 					BC3F16C21D72EC5C0002A97B = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = P28THB67HH;
 					};
 				};
 			};
@@ -896,6 +925,7 @@
 				BC3F16CB1D72EC5C0002A97B /* AppDelegate.m in Sources */,
 				BCF6A9E51D83E3650001E62D /* HeaderView.m in Sources */,
 				BC79C7F21D77094C00F4D39D /* CustomerTabBarViewController.m in Sources */,
+				BCD152401D86EB6500932F1F /* FavouriteDB.m in Sources */,
 				BCB5140F1D7F0E0700A29769 /* BodyCollectionView.m in Sources */,
 				BCB514181D7F975400A29769 /* TalkTableView.m in Sources */,
 				BCB514351D804C9D00A29769 /* SettingButton.m in Sources */,
@@ -921,6 +951,7 @@
 				BCB513CA1D7B0EA200A29769 /* UINavigationItem+MyNavItem.m in Sources */,
 				BCC2D2801D7733F200B70A1C /* CustomTabBar.m in Sources */,
 				BCC2D27A1D77193F00B70A1C /* HelpViewController.m in Sources */,
+				BCD152431D86EB8200932F1F /* Favourtie.m in Sources */,
 				BCB513F51D7DA1E300A29769 /* AllActivitesTableViewCell.m in Sources */,
 				BCB514381D8059C800A29769 /* FavActivityModel.m in Sources */,
 				BCB513C11D7B0BE800A29769 /* UserSecondSettingViewController.m in Sources */,
@@ -932,6 +963,7 @@
 				BCB513CE1D7B10E400A29769 /* UserDB.m in Sources */,
 				BCB5142C1D80189A00A29769 /* MeSettingView.m in Sources */,
 				BCB513EF1D7DA18E00A29769 /* AllActiviteView.m in Sources */,
+				BCD1523D1D86E0BE00932F1F /* CityLocation.m in Sources */,
 				BCB513F81D7DDADF00A29769 /* AutoFitImageButton.m in Sources */,
 				BCB5141E1D7F977C00A29769 /* TalkHeaderView.m in Sources */,
 				BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */,
@@ -939,6 +971,7 @@
 				BC14AFDA1D7478B000FA0048 /* AllActivitesViewController.m in Sources */,
 				BCF6A9E21D83E26A0001E62D /* DetailCellTableViewCell.m in Sources */,
 				BCF6A96D1D8142220001E62D /* InterestPointViewController.m in Sources */,
+				BCD1523A1D86D2D700932F1F /* User.m in Sources */,
 				BCB514471D81009600A29769 /* CitysModel.m in Sources */,
 				BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */,
 				BCB5142F1D801B9400A29769 /* MeSettingCollectionViewCell.m in Sources */,
@@ -986,7 +1019,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1008,6 +1042,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "20355f24-4b58-4973-90b2-f50f3221e70e";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1030,7 +1065,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1045,6 +1081,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "20355f24-4b58-4973-90b2-f50f3221e70e";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1056,11 +1093,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "LanRenWeekendApp/工具类/PrefixHeader.pch";
 				INFOPLIST_FILE = LanRenWeekendApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.LanRenWeekendApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1070,11 +1111,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "LanRenWeekendApp/工具类/PrefixHeader.pch";
 				INFOPLIST_FILE = LanRenWeekendApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.LanRenWeekendApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

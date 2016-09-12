@@ -88,14 +88,14 @@ _onclickImageArray = @[@"ic_c_montain", @"ic_c_bar", @"ic_c_music", @"ic_c_stage
 }
 //选中
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"selected === %ld", indexPath.row);
+//    NSLog(@"selected === %ld", indexPath.row);
     [self.interestStatus setObject:@(YES) forKey:_titleArray[indexPath.row]];
     
     self.postInterestStatus(self.interestStatus);
 }
 //取消
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cancel === %ld", indexPath.row);
+    NSLog(@"cancel === %ld", (long)indexPath.row);
     [self.interestStatus setObject:@(NO) forKey:_titleArray[indexPath.row]];
     
     self.postInterestStatus(self.interestStatus);

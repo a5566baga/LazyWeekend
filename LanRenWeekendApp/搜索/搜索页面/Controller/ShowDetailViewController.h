@@ -1,5 +1,5 @@
 //
-//  ReserveViewController.h
+//  ShowDetailViewController.h
 //  LanRenWeekendApp
 //
 //  Created by 张增强 on 16/9/13.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReserveViewController : UIViewController
+@interface ShowDetailViewController : UIViewController
+
+@property(nonatomic, strong)NSString * category;
 
 @end

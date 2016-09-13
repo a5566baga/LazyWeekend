@@ -43,9 +43,10 @@ static FMDatabaseQueue * queue = nil;
     [queue inDatabase:^(FMDatabase *db) {
        NSString * querrySql = @"SELECT * FROM t_user";
         FMResultSet * set = [db executeQuery:querrySql];
-        if (set.next) {
+        while (set.next) {
             flag++;
         }
+        [set close];
     }];
     if (flag == 1) {
         return YES;
@@ -58,13 +59,14 @@ static FMDatabaseQueue * queue = nil;
     [queue inDatabase:^(FMDatabase *db) {
         NSString * querrySql = @"SELECT * FROM t_user";
         FMResultSet * set = [db executeQuery:querrySql];
-        if (set.next) {
+        while(set.next) {
             User * user = [[User alloc] init];
             user.username = [set stringForColumn:@"username"];
             user.icon = [set stringForColumn:@"sex"];
             user.nowStatus = [set stringForColumn:@"nowstarus"];
             [array addObject:user];
         }
+        [set close];
     }];
     return array;
 }

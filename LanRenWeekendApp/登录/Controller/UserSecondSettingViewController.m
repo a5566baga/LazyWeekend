@@ -45,8 +45,7 @@
 -(void)nextButtonAction:(UIButton *)button{
 #warning DB Save
 //    用block跳转。把内容提交到数据库
-//    NSLog(@"%@", _mySecSettingDic);
-    
+    [InterestingPointDB insertNewData:_mySecSettingDic];
     CustomerTabBarViewController * tabBarController = [[CustomerTabBarViewController alloc] init];
     [UIView animateWithDuration:0.5 animations:^{
         [UIApplication sharedApplication].keyWindow.rootViewController = tabBarController;
@@ -67,6 +66,7 @@
     [self initForView];
     [_secondView setPostInterestStatus:^(NSMutableDictionary * dic) {
         _mySecSettingDic = [[NSMutableDictionary alloc] initWithDictionary:dic];
+        
     }];
 }
 

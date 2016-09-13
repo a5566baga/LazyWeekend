@@ -24,6 +24,7 @@
 #import "UserDB.h"
 #import "LocationDB.h"
 #import "FavouriteDB.h"
+#import "InterestingPointDB.h"
 
 #ifdef DEBUG
 #define ZZQLog(...) NSLog(__VA_ARGS__)

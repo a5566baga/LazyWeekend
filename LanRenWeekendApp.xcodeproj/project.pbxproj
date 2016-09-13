@@ -62,8 +62,11 @@
 		BCD1523D1D86E0BE00932F1F /* CityLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1523C1D86E0BE00932F1F /* CityLocation.m */; };
 		BCD152401D86EB6500932F1F /* FavouriteDB.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1523F1D86EB6500932F1F /* FavouriteDB.m */; };
 		BCD152431D86EB8200932F1F /* Favourtie.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD152421D86EB8200932F1F /* Favourtie.m */; };
+		BCD152461D870D6200932F1F /* InterestingPointDB.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD152451D870D6200932F1F /* InterestingPointDB.m */; };
+		BCD152491D870D6F00932F1F /* Interest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD152481D870D6F00932F1F /* Interest.m */; };
+		BCD1524C1D87F00400932F1F /* ShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1524B1D87F00400932F1F /* ShowDetailViewController.m */; };
+		BCD152551D87F39300932F1F /* ReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD152541D87F39300932F1F /* ReserveViewController.m */; };
 		BCF6A96D1D8142220001E62D /* InterestPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A96C1D8142220001E62D /* InterestPointViewController.m */; };
-		BCF6A9701D8142380001E62D /* ReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A96F1D8142380001E62D /* ReserveViewController.m */; };
 		BCF6A9731D814DD10001E62D /* SettingDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */; };
 		BCF6A9A71D82E7A30001E62D /* DetailActivtyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9A61D82E7A30001E62D /* DetailActivtyViewController.m */; };
 		BCF6A9AA1D82E7B80001E62D /* DetailActivtyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6A9A91D82E7B80001E62D /* DetailActivtyView.m */; };
@@ -182,10 +185,16 @@
 		BCD1523F1D86EB6500932F1F /* FavouriteDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteDB.m; sourceTree = "<group>"; };
 		BCD152411D86EB8200932F1F /* Favourtie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favourtie.h; sourceTree = "<group>"; };
 		BCD152421D86EB8200932F1F /* Favourtie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favourtie.m; sourceTree = "<group>"; };
+		BCD152441D870D6200932F1F /* InterestingPointDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestingPointDB.h; sourceTree = "<group>"; };
+		BCD152451D870D6200932F1F /* InterestingPointDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestingPointDB.m; sourceTree = "<group>"; };
+		BCD152471D870D6F00932F1F /* Interest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interest.h; sourceTree = "<group>"; };
+		BCD152481D870D6F00932F1F /* Interest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interest.m; sourceTree = "<group>"; };
+		BCD1524A1D87F00400932F1F /* ShowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailViewController.h; sourceTree = "<group>"; };
+		BCD1524B1D87F00400932F1F /* ShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailViewController.m; sourceTree = "<group>"; };
+		BCD152531D87F39300932F1F /* ReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReserveViewController.h; sourceTree = "<group>"; };
+		BCD152541D87F39300932F1F /* ReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReserveViewController.m; sourceTree = "<group>"; };
 		BCF6A96B1D8142220001E62D /* InterestPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestPointViewController.h; sourceTree = "<group>"; };
 		BCF6A96C1D8142220001E62D /* InterestPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestPointViewController.m; sourceTree = "<group>"; };
-		BCF6A96E1D8142380001E62D /* ReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReserveViewController.h; sourceTree = "<group>"; };
-		BCF6A96F1D8142380001E62D /* ReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReserveViewController.m; sourceTree = "<group>"; };
 		BCF6A9711D814DD10001E62D /* SettingDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingDetailTableViewCell.h; sourceTree = "<group>"; };
 		BCF6A9721D814DD10001E62D /* SettingDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingDetailTableViewCell.m; sourceTree = "<group>"; };
 		BCF6A9A51D82E7A30001E62D /* DetailActivtyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailActivtyViewController.h; sourceTree = "<group>"; };
@@ -482,6 +491,8 @@
 				BCB513D01D7B294800A29769 /* LocationDB.m */,
 				BCD1523E1D86EB6500932F1F /* FavouriteDB.h */,
 				BCD1523F1D86EB6500932F1F /* FavouriteDB.m */,
+				BCD152441D870D6200932F1F /* InterestingPointDB.h */,
+				BCD152451D870D6200932F1F /* InterestingPointDB.m */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -625,6 +636,8 @@
 			children = (
 				BCC2D2751D77193200B70A1C /* SearchViewController.h */,
 				BCC2D2761D77193200B70A1C /* SearchViewController.m */,
+				BCD1524A1D87F00400932F1F /* ShowDetailViewController.h */,
+				BCD1524B1D87F00400932F1F /* ShowDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -691,8 +704,8 @@
 				BCB514491D81125400A29769 /* SettingViewController.m */,
 				BCF6A96B1D8142220001E62D /* InterestPointViewController.h */,
 				BCF6A96C1D8142220001E62D /* InterestPointViewController.m */,
-				BCF6A96E1D8142380001E62D /* ReserveViewController.h */,
-				BCF6A96F1D8142380001E62D /* ReserveViewController.m */,
+				BCD152531D87F39300932F1F /* ReserveViewController.h */,
+				BCD152541D87F39300932F1F /* ReserveViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -747,6 +760,8 @@
 				BCD1523C1D86E0BE00932F1F /* CityLocation.m */,
 				BCD152411D86EB8200932F1F /* Favourtie.h */,
 				BCD152421D86EB8200932F1F /* Favourtie.m */,
+				BCD152471D870D6F00932F1F /* Interest.h */,
+				BCD152481D870D6F00932F1F /* Interest.m */,
 			);
 			path = DBmodel;
 			sourceTree = "<group>";
@@ -945,7 +960,6 @@
 				BCB514211D7F9BF900A29769 /* SearchTypeModel.m in Sources */,
 				BC3F16C81D72EC5C0002A97B /* main.m in Sources */,
 				BCB513BE1D7AF0BF00A29769 /* UserFirstSettingViewController.m in Sources */,
-				BCF6A9701D8142380001E62D /* ReserveViewController.m in Sources */,
 				BCB514411D80F9F200A29769 /* ChangCityHeaderView.m in Sources */,
 				BCB5143B1D80F4BC00A29769 /* ChangeCityViewController.m in Sources */,
 				BCB513CA1D7B0EA200A29769 /* UINavigationItem+MyNavItem.m in Sources */,
@@ -954,6 +968,7 @@
 				BCD152431D86EB8200932F1F /* Favourtie.m in Sources */,
 				BCB513F51D7DA1E300A29769 /* AllActivitesTableViewCell.m in Sources */,
 				BCB514381D8059C800A29769 /* FavActivityModel.m in Sources */,
+				BCD152461D870D6200932F1F /* InterestingPointDB.m in Sources */,
 				BCB513C11D7B0BE800A29769 /* UserSecondSettingViewController.m in Sources */,
 				BCB513D71D7BC37100A29769 /* UserSecondSettingVIew.m in Sources */,
 				BCC2D2771D77193200B70A1C /* SearchViewController.m in Sources */,
@@ -964,6 +979,9 @@
 				BCB5142C1D80189A00A29769 /* MeSettingView.m in Sources */,
 				BCB513EF1D7DA18E00A29769 /* AllActiviteView.m in Sources */,
 				BCD1523D1D86E0BE00932F1F /* CityLocation.m in Sources */,
+				BCD152491D870D6F00932F1F /* Interest.m in Sources */,
+				BCD1524C1D87F00400932F1F /* ShowDetailViewController.m in Sources */,
+				BCD152551D87F39300932F1F /* ReserveViewController.m in Sources */,
 				BCB513F81D7DDADF00A29769 /* AutoFitImageButton.m in Sources */,
 				BCB5141E1D7F977C00A29769 /* TalkHeaderView.m in Sources */,
 				BCC2D2871D77365700B70A1C /* UIView+MyPositionSize.m in Sources */,

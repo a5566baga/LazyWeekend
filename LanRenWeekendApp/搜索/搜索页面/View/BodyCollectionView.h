@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ShowDetailViewController.h"
 @interface BodyCollectionView : UIView
+
+@property(nonatomic, copy)void(^jumpToShowDetailVC)(ShowDetailViewController * showDetailVC, NSString * catery);
 
 @end

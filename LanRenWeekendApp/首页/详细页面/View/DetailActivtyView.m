@@ -89,9 +89,9 @@
         _poi = _resultDic[@"poi"];
         _address = _resultDic[@"address"];
         _descriptionArray = _resultDic[@"description"];
+        [SVProgressHUD dismiss];
         [self initForView];
         [_tableView reloadData];
-        [SVProgressHUD dismiss];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"");
         [SVProgressHUD dismiss];
@@ -104,6 +104,8 @@
     _tableView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1.0];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.bounces = NO;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.showsHorizontalScrollIndicator = NO;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self addSubview:_tableView];
@@ -116,7 +118,7 @@
 #pragma mark
 #pragma mark ============ 代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _descriptionArray.count;
+    return _descriptionArray.count-1;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

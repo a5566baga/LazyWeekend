@@ -55,6 +55,11 @@
     [_titleButton setAttributedTitle:string forState:UIControlStateNormal];
 }
 
+-(void)setCellSelectedStatus:(NSNumber *)status{
+    _titleButton.selected = [status boolValue];
+    _imageView.selected = [status boolValue];
+}
+
 -(void)setSelected:(BOOL)selected{
     [super setSelected:selected];
     _titleButton.selected = selected;

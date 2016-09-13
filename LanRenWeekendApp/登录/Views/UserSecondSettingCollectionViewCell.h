@@ -15,4 +15,6 @@
 
 -(void)setCellDetail:(NSString *)imageSelStr imageCancel:(NSString *)imageCancelStr titleName:(NSString *)titleName;
 
+-(void)setCellSelectedStatus:(NSNumber *)status;
+
 @end

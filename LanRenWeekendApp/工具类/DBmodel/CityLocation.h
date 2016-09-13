@@ -11,7 +11,7 @@
 @interface CityLocation : NSObject
 
 @property(nonatomic, copy)NSString * cityName;
-@property(nonatomic, assign)float lon;
-@property(nonatomic, assign)float lat;
+@property(nonatomic, copy)NSString * lon;
+@property(nonatomic, copy)NSString * lat;
 
 @end

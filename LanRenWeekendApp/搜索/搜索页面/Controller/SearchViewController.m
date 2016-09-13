@@ -65,7 +65,6 @@
     [canceLBtn setTitleColor:[UIColor colorWithRed:0.098 green:0.098 blue:0.098 alpha:1.0] forState:UIControlStateNormal];
 }
 -(void)selectCity:(UIButton *)button{
-#warning create View to Show citys
     ChangeCityViewController * changeCityVC = [[ChangeCityViewController alloc] init];
     UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:changeCityVC];
     [self presentViewController:nvc animated:YES completion:nil];
@@ -80,6 +79,13 @@
 -(void)initForView{
     _collectionView = [[BodyCollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64-49)];
     [self.view addSubview:_collectionView];
+    
+    typeof(self) myself = self;
+    [_collectionView setJumpToShowDetailVC:^(ShowDetailViewController * showDetailVC, NSString * category) {
+        showDetailVC.category = category;
+        [myself.navigationController pushViewController:showDetailVC animated:YES];
+    }];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{

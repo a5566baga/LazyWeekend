@@ -90,13 +90,15 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     BodyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_ID forIndexPath:indexPath];
-    
     [cell cellSetStyle:[_modelArray[indexPath.row] cn_name] image:[_modelArray[indexPath.row] icon_view]];
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 #warning 拼接数据接口
+    NSString * paramer = [_modelArray[indexPath.row] cn_name];
+    ShowDetailViewController * showDetailVC = [[ShowDetailViewController alloc] init];
+    self.jumpToShowDetailVC(showDetailVC, paramer);
     NSLog(@"select === %ld", (long)indexPath.row);
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{

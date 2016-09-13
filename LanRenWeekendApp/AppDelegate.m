@@ -12,6 +12,11 @@
 
 @interface AppDelegate ()
 
+@property(nonatomic, strong)UserDB * userDB;
+@property(nonatomic, strong)LocationDB * locationDB;
+@property(nonatomic, strong)FavouriteDB * favouriteDB;
+@property(nonatomic, strong)InterestingPointDB * interDB;
+
 @end
 
 @implementation AppDelegate
@@ -19,6 +24,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    _userDB = [[UserDB alloc] init];
+    _locationDB = [[LocationDB alloc] init];
+    _favouriteDB = [[FavouriteDB alloc] init];
+    _interDB = [[InterestingPointDB alloc] init];
+    ZZQLog(@"%@%@%@ %@", _userDB, _locationDB, _favouriteDB, _interDB);
     
     
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -26,12 +36,17 @@
     CustomerTabBarViewController * customerTabBarVC = [[CustomerTabBarViewController alloc] init];
     customerTabBarVC.tabBar.backgroundColor = [UIColor whiteColor];
     
-    MainViewController * mainVC = [[MainViewController alloc] init];
-    UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:mainVC];
 #warning RootController change
-//    _window.rootViewController = nvc;
+    if ([UserDB queryIsExistUser]) {
+//        主页面
+        _window.rootViewController = customerTabBarVC;
+    }else{
+//        登录页面
+        MainViewController * mainVC = [[MainViewController alloc] init];
+        UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:mainVC];
+        _window.rootViewController = nvc;
+    }
     
-    _window.rootViewController = customerTabBarVC;
     [_window makeKeyAndVisible];
     return YES;
 }

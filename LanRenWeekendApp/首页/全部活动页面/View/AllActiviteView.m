@@ -27,6 +27,7 @@
 //get请求的参数
 @property(nonatomic, assign)float lon;
 @property(nonatomic, assign)float lat;
+@property(nonatomic, strong)NSString * cityName;
 @property(nonatomic, assign)NSInteger pageTotal;
 @property(nonatomic, assign)NSInteger nowPage;
 //请求的数据
@@ -71,16 +72,24 @@
     [self.lm startUpdatingLocation];
     _lon = 113.556002;
     _lat = 34.809942;
-    CLLocation * location = self.lm.location;
-    _lon = self.lm.location.coordinate.longitude;
-    _lat = self.lm.location.coordinate.latitude;
 }
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLLocation * locaton = locations.lastObject;
     _lon = locaton.coordinate.longitude;
     _lat = locaton.coordinate.latitude;
-    NSLog(@"%lf %lf", _lon, _lat);
+    __block NSString * cityName = @"";
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:locaton completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (error == nil) {
+            [placemarks enumerateObjectsUsingBlock:^(CLPlacemark * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                cityName = obj.locality;
+                _cityName = cityName;
+            }];
+        }else{
+            NSLog(@"错误：%@", error);
+        }
+    }];
 }
 #pragma mark
 #pragma mark ======== 数据的处理
@@ -94,6 +103,10 @@
     return _manager;
 }
 -(void)initForData{
+#warning 写入数据库
+    [LocationDB deleteLocation];
+    [LocationDB addLocation:_cityName lon:_lon lat:_lat];
+    
     _allModelArray = [[NSMutableArray alloc] init];
     [SVProgressHUD showWithStatus:@"加载中"];
     
@@ -114,6 +127,7 @@
         }
         [SVProgressHUD dismiss];
         [self.myTableView.mj_header endRefreshing];
+         self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"对不起，网络出错"];
         NSLog(@"Failed");
@@ -152,8 +166,6 @@
 -(void)refresh{
     self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerAction)];
     [self.myTableView.mj_header beginRefreshing];
-    
-    self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
 }
 -(void)headerAction{
     [self initForData];

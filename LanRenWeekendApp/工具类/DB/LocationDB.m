@@ -16,9 +16,10 @@ static FMDatabaseQueue * queue = nil;
 + (void)initialize
 {
     NSString * filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:@"t_cityLocation.sqlite"];
+    ZZQLog(@"%@", filePath);
     queue = [FMDatabaseQueue databaseQueueWithPath:filePath];
     [queue inDatabase:^(FMDatabase *db) {
-        NSString * createSql = @"CREATE TABLE if not exists t_cityLocation (cityName TEXT, lon real, lat real)";
+        NSString * createSql = @"CREATE TABLE if not exists t_cityLocation (cityName TEXT, lon TEXT, lat TEXT)";
         BOOL result = [db executeUpdate:createSql];
         if (result) {
             NSLog(@"地理位置表创建成功");
@@ -30,8 +31,10 @@ static FMDatabaseQueue * queue = nil;
 
 +(void)addLocation:(NSString *)cityName lon:(float)lon lat:(float)lat{
     [queue inDatabase:^(FMDatabase *db) {
+        NSString * lonStr = [NSString stringWithFormat:@"%f", lon];
+        NSString * latStr = [NSString stringWithFormat:@"%f", lat];
         NSString * insertSql = @"INSERT INTO t_cityLocation(cityName, lon, lat) VALUES(?, ?, ?)";
-        BOOL result = [db executeUpdate:insertSql, cityName, lon, lat];
+        BOOL result = [db executeUpdate:insertSql, cityName, lonStr, latStr];
         if (result) {
             NSLog(@"插入城市地理位置成功");
         }else{
@@ -57,13 +60,14 @@ static FMDatabaseQueue * queue = nil;
     [queue inDatabase:^(FMDatabase *db) {
         NSString * querySql = @"SELETE * FROM t_cityLocation";
         FMResultSet * set = [db executeQuery:querySql];
-        if (set.next) {
+        while(set.next) {
             CityLocation * cityLocation = [[CityLocation alloc] init];
             cityLocation.cityName = [set stringForColumn:@"cityName"];
-            cityLocation.lon = [set doubleForColumn:@"lon"];
-            cityLocation.lat = [set doubleForColumn:@"lat"];
+            cityLocation.lon = [set stringForColumn:@"lon"];
+            cityLocation.lat = [set stringForColumn:@"lat"];
             [array addObject:cityLocation];
         }
+        [set close];
     }];
     return array;
 }

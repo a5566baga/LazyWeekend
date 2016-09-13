@@ -8,12 +8,15 @@
 
 #import "DetailCellTableViewCell.h"
 #import <UIImageView+WebCache.h>
+#import <UCZProgressView.h>
 
 @interface DetailCellTableViewCell ()
 
 @property(nonatomic, strong)NSDictionary * dic;
 @property(nonatomic, strong)UIImageView * picImage;
 @property(nonatomic, strong)UILabel * txtLabel;
+
+@property(nonatomic, strong)UCZProgressView * progressView;
 
 @end
 
@@ -59,7 +62,18 @@
         _txtLabel.text = _dic[@"content"];
     }else{
         [self initForViewImg];
-        [_picImage sd_setImageWithURL:[NSURL URLWithString:_dic[@"content"]]];
+        _progressView = [[UCZProgressView alloc] init];
+        _progressView.center = CGPointMake(self.width/2, self.height/2);
+        _progressView.size = CGSizeMake(60, 60);
+        _progressView.indeterminate = YES;
+        _progressView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:_progressView];
+        [_picImage sd_setImageWithURL:[NSURL URLWithString:_dic[@"content"]] placeholderImage:[UIImage imageNamed:@"angle-mask@3x"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            _picImage.image = image;
+            [_progressView removeFromSuperview];
+        }];
+        
     }
 }
 

@@ -16,7 +16,7 @@ static FMDatabaseQueue * queue = nil;
     NSString * filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"t_fav.sqlite"];
     queue = [FMDatabaseQueue databaseQueueWithPath:filePath];
     [queue inDatabase:^(FMDatabase *db) {
-        NSString * createSql = @"CREATE TABLE t_fav (leo_id integer, pic TEXT, title TEXT, poi_name TEXT)";
+        NSString * createSql = @"CREATE TABLE if not exists t_fav (leo_id integer, pic TEXT, title TEXT, poi_name TEXT)";
         BOOL result = [db executeUpdate:createSql];
         if (result) {
             NSLog(@"创建喜欢的表成功");
@@ -46,6 +46,7 @@ static FMDatabaseQueue * queue = nil;
         while (set.next) {
             flag++;
         }
+        [set close];
     }];
     if (flag > 0) {
         return YES;
@@ -79,6 +80,7 @@ static FMDatabaseQueue * queue = nil;
             fav.title = [set stringForColumn:@"title"];
             [array addObject:fav];
         }
+        [set close];
     }];
     return array;
 }

@@ -9,9 +9,11 @@
 #import "HeaderView.h"
 #import "LocationButton.h"
 #import <UIImageView+WebCache.h>
+#import <UCZProgressView.h>
 
 @interface HeaderView ()<UIScrollViewDelegate>
 
+@property(nonatomic, strong)UCZProgressView * progressView;
 //轮播图
 @property(nonatomic, strong)UIScrollView * scrollView;
 @property(nonatomic, strong)NSMutableArray * imagesArray;
@@ -33,6 +35,8 @@
 @property(nonatomic, strong)UIImageView * dotTwoImg;
 @property(nonatomic, strong)UIImageView * rightImg;
 
+@property(nonatomic, strong)NSTimer * timer;
+
 @end
 
 @implementation HeaderView
@@ -52,6 +56,18 @@
     [self initForPriceView];
     [self initForTimeView];
     [self initForDetailName];
+    [self initForTimer];
+}
+#pragma mark
+#pragma mark ========== 定时器
+-(void)initForTimer{
+    _timer  = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(runPic) userInfo:nil repeats:YES];
+}
+-(void)runPic{
+    [UIView animateWithDuration:0.5 animations:^{
+        float  _X = self.scrollView.contentOffset.x+self.width;
+        [self.scrollView setContentOffset:CGPointMake(_X, 0) animated:YES];        
+    }];
 }
 #pragma mark
 #pragma mark ========== 轮播图
@@ -67,17 +83,30 @@
 }
 #pragma mark
 #pragma mark ============ scrollView的代理(轮播处理)
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-    //    设置轮播图
-    NSInteger index = scrollView.contentOffset.x / self.width;
-    if (index == 0) {
-        scrollView.contentOffset = CGPointMake(self.width * (_imagesArray.count-2), 0);
-    }else if (index == _imagesArray.count){
-        
+-(void)movePicture{
+    if (_scrollView.contentOffset.x/self.width == 0) {
+        _scrollView.contentOffset = CGPointMake(self.width*(_imagesArray.count-2), 0) ;
+    }else if (_scrollView.contentOffset.x/self.width == _imagesArray.count-2){
+        _scrollView.contentOffset = CGPointMake(self.width, 0);
     }
+}
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    [UIView animateWithDuration:0.5 animations:^{
+        [self movePicture];
+    }];
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [UIView animateWithDuration:0.5 animations:^{
+        [self movePicture];
+    }];
+    NSLog(@"%@", NSStringFromCGPoint(_scrollView.contentOffset));
+}
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
 }
-
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
+}
 #pragma mark
 #pragma mark ============= 创建title
 -(void)initForTitleView{
@@ -162,13 +191,14 @@
     for (NSInteger i = 0; i < _imagesArray.count; i++) {
         UIImageView * imageView = [[UIImageView alloc] init];
         imageView.frame = CGRectMake(self.scrollView.width*i, 0, self.scrollView.width, self.scrollView.height);
-        [imageView sd_setImageWithURL:[NSURL URLWithString:_imagesArray[i]] placeholderImage:[UIImage imageNamed:@""] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        [imageView sd_setImageWithURL:[NSURL URLWithString:_imagesArray[i]] placeholderImage:[UIImage imageNamed:@"angle-mask@3x"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             imageView.image = image;
             [self.scrollView addSubview:imageView];
         }];
     }
+    _scrollView.contentOffset = CGPointMake(self.width, 0);
 //    创建titlview
     float leftMargin = 10;
     float topMargin = 10;
@@ -197,7 +227,7 @@
 #pragma mark =========== 赋值
 -(void)setHeaderStyle:(NSArray *)imageArray title:(NSString *)title price_info:(NSString *)price_info type:(NSString *)type iconStr:(NSString *)iconStr timeStr:(NSString *)timeStr locationStr:(NSString *)locationStr{
     _imagesArray = [NSMutableArray arrayWithArray:imageArray];
-    [_imagesArray insertObject:imageArray.firstObject atIndex:imageArray.count-1];
+    [_imagesArray insertObject:imageArray.firstObject atIndex:_imagesArray.count];
     [_imagesArray insertObject:imageArray.lastObject atIndex:0];
 //        创建视图
     [self initForView];

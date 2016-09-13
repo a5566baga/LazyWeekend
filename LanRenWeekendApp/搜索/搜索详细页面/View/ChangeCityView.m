@@ -108,7 +108,9 @@
 //选中后跳转
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 #warning 页面跳转传的参数是http://api.lanrenzhoumo.com/wh/common/leos?category=all&city_id=321&page=1
-//    city_id
+    
+    UIViewController * viewController = [[UIViewController alloc] init];
+    self.jumpToCity(viewController);
 }
 //headerView
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

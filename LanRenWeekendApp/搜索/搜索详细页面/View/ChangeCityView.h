@@ -10,4 +10,6 @@
 
 @interface ChangeCityView : UIView
 
+@property(nonatomic, copy)void(^jumpToCity)(UIViewController * viewController);
+
 @end

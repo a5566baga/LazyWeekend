@@ -89,7 +89,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self.searchController.searchBar becomeFirstResponder];
+//    [self.searchController.searchBar becomeFirstResponder];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

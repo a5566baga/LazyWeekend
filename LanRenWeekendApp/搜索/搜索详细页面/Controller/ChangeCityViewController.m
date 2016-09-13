@@ -34,7 +34,6 @@
 
 -(void)exitAction:(UIButton *)button{
     [self dismissViewControllerAnimated:YES completion:^{
-        
     }];
 }
 
@@ -44,6 +43,11 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     ChangeCityView * changCityView = [[ChangeCityView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64)];
     [self.view addSubview:changCityView];
+    
+    [changCityView setJumpToCity:^(UIViewController * viewController) {
+        [self.navigationController pushViewController:viewController animated:YES];
+    }];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

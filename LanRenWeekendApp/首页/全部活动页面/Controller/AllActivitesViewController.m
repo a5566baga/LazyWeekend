@@ -21,6 +21,11 @@
 //    标题栏设计
     [self initForTitle];
 //    主页面设计
+//    [self initForView];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self initForView];
 }
 

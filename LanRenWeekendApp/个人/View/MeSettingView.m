@@ -8,6 +8,7 @@
 
 #import "MeSettingView.h"
 #import "MeSettingCollectionViewCell.h"
+#import "Favourtie.h"
 
 #define CELL_ID @"collection_ID"
 #define CELL_HEADER @"collection_HEADER"
@@ -69,15 +70,16 @@
 #pragma mark ========== collectionView delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 #warning 数据库取出数据的个数
-//    return 10;
-    return 0;
+    NSArray * array = [FavouriteDB queryAllFavourite];
+    return array.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MeSettingCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_ID forIndexPath:indexPath];
     if (cell == nil) {
         cell = [[MeSettingCollectionViewCell alloc] init];
     }
-    
+    Favourtie * fav = [FavouriteDB queryAllFavourite][indexPath.row];
+    [cell setCellStyle:fav.title name:fav.poi_name pic:fav.pic];
     return cell;
 }
 //headerView
@@ -96,6 +98,9 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    页面跳转到二级页面，传参数拼接成一个url
     NSLog(@"%ld 个人cell 选中", (long)indexPath.row);
+    Favourtie * fav = [FavouriteDB queryAllFavourite][indexPath.row];
+    DetailActivtyViewController * detailVC = [[DetailActivtyViewController alloc] init];
+    self.jumpToDetailView(detailVC, fav.leo_id);
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%ld 个人cell 取消", (long)indexPath.row);

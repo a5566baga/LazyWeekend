@@ -11,6 +11,7 @@
 #import "MeSettingHeaderView.h"
 #import "InterestPointViewController.h"
 #import "ReserveViewController.h"
+#import "DetailActivtyViewController.h"
 
 @protocol MeSettingViewProtocal <NSObject>
 
@@ -21,6 +22,8 @@
 @end
 
 @interface MeSettingView : UIView
+
+@property(nonatomic, strong)void(^jumpToDetailView)(DetailActivtyViewController * detailVC, NSInteger leo_id);
 
 @property(nonatomic, strong)MeSettingHeaderView * headerView;
 

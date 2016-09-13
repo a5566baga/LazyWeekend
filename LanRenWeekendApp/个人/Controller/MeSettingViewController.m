@@ -20,11 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initForView];
+    
 }
 #pragma mark
 #pragma mark ========== 隐藏nav
 -(void)viewWillAppear:(BOOL)animated{
+    [self initForView];
     self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
 }
@@ -34,6 +35,11 @@
     MeSettingView * meView = [[MeSettingView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-49)];
     meView.delegate = self;
     [self.view addSubview:meView];
+    typeof(self) myself = self;
+    [meView setJumpToDetailView:^(DetailActivtyViewController * detailVC, NSInteger leo_id) {
+        detailVC.leo_id = leo_id;
+        [myself.navigationController pushViewController:detailVC animated:YES];
+    }];
 }
 
 -(void)jumpToNextRes:(ReserveViewController *)reseverVC{

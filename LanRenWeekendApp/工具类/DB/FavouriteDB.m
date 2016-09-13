@@ -16,7 +16,7 @@ static FMDatabaseQueue * queue = nil;
     NSString * filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"t_fav.sqlite"];
     queue = [FMDatabaseQueue databaseQueueWithPath:filePath];
     [queue inDatabase:^(FMDatabase *db) {
-        NSString * createSql = @"CREATE TABLE if not exists t_fav (leo_id integer, pic TEXT, title TEXT, poi_name TEXT)";
+        NSString * createSql = @"CREATE TABLE if not exists t_fav (leo_id TEXT PRIMARY KEY, pic TEXT, title TEXT, poi_name TEXT)";
         BOOL result = [db executeUpdate:createSql];
         if (result) {
             NSLog(@"创建喜欢的表成功");
@@ -28,8 +28,8 @@ static FMDatabaseQueue * queue = nil;
 
 +(void)addFavourite:(NSInteger)leo_id pic:(NSString *)pic title:(NSString *)title poi_name:(NSString *)poi_name{
     [queue inDatabase:^(FMDatabase *db) {
-       NSString * insertSql = @"INSERT INTO t_fav(leo_id, pic, title, poi_name)";
-        BOOL result = [db executeUpdate:insertSql];
+       NSString * insertSql = @"INSERT INTO t_fav(leo_id, pic, title, poi_name) VALUES(?, ?, ?, ?)";
+        BOOL result = [db executeUpdate:insertSql, @(leo_id).stringValue, pic, title, poi_name];
         if (result) {
             NSLog(@"最爱内容添加成功");
         }else{
@@ -70,7 +70,7 @@ static FMDatabaseQueue * queue = nil;
 +(NSArray<Favourtie *> *)queryAllFavourite{
     __block NSMutableArray<Favourtie *> * array = [NSMutableArray array];
     [queue inDatabase:^(FMDatabase *db) {
-        NSString * querySql = @"SELETE * FROM t_fav";
+        NSString * querySql = @"SELECT * FROM t_fav";
         FMResultSet * set = [db executeQuery:querySql];
         while (set.next) {
             Favourtie * fav = [[Favourtie alloc] init];

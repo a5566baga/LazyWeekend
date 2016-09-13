@@ -7,6 +7,7 @@
 //
 
 #import "MeSettingCollectionViewCell.h"
+#import <UIImageView+WebCache.h>
 
 @interface MeSettingCollectionViewCell ()
 
@@ -31,7 +32,7 @@
 #pragma mark =========== 部署cell界面
 -(void)initForView{
     _picView = [[UIImageView alloc] init];
-    _picView.backgroundColor = [UIColor orangeColor];
+//    _picView.backgroundColor = [UIColor orangeColor];
     [self addSubview:_picView];
     
     _titleLable = [[UILabel alloc] init];
@@ -62,7 +63,7 @@
 -(void)setCellStyle:(NSString *)title name:(NSString *)name pic:(NSString *)pic{
     _titleLable.text = title;
     _nameLabel.text = name;
-    _picView.image = [UIImage imageNamed:pic];
+    [_picView sd_setImageWithURL:[NSURL URLWithString:pic]];
 }
 
 -(void)setSelected:(BOOL)selected{

@@ -27,6 +27,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = YES;
 }
 -(void)viewWillDisappear:(BOOL)animated{

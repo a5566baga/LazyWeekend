@@ -58,7 +58,7 @@ static FMDatabaseQueue * queue = nil;
 +(void)deleteFavouriteItem:(NSInteger)leo_id{
     [queue inDatabase:^(FMDatabase *db) {
        NSString * deleteSql = @"DELETE FROM t_fav WHERE leo_id = ?";
-        BOOL result = [db executeUpdate:deleteSql, leo_id];
+        BOOL result = [db executeUpdate:deleteSql, @(leo_id).stringValue];
         if (result) {
             NSLog(@"最爱项目%ld删除成功", leo_id);
         }else{

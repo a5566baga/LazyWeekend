@@ -38,8 +38,8 @@
 #pragma mark
 #pragma mark =========== 数据
 -(void)initForData{
-    _titleArray = @[@"分享给好友", @"清除缓存", @"给我们一个评价", @"用户反馈", @"检查更新", @"联系我们", @"退出登录"];
-    _icnoArray = @[@"ic_setting_share_app", @"ic_trash", @"ic_star", @"bbs_message", @"ic_update", @"ic_tel", @"ic_logout"];
+    _titleArray = @[@"分享给好友", @"清除缓存", @"用户反馈", @"联系我们", @"退出登录"];
+    _icnoArray = @[@"ic_setting_share_app", @"ic_trash",  @"bbs_message", @"ic_tel", @"ic_logout"];
 }
 
 #pragma mark

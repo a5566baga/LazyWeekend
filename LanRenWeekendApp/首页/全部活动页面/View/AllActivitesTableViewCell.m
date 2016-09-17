@@ -132,8 +132,8 @@
 }
 
 -(void)favAction:(UIButton *)button{
+    button.selected = !button.selected;
     [UIView animateWithDuration:0.4 delay:0.1 options:UIViewAnimationOptionAutoreverse animations:^{
-        button.selected = !button.selected;
         button.imageView.transform = CGAffineTransformMakeScale(1.2, 1.2);
 #warning 收藏写入数据库
         if (button.selected) {
@@ -164,6 +164,10 @@
     _poiLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_titleLabel.frame)+topMaring, self.bgView.width-2*leftMargin, 25);
     
     float timeWidth = [self rowWidthByString:_timeLabel.text font:[UIFont systemFontOfSize:14]];
+    if (timeWidth > 150) {
+        _timeLabel.adjustsFontSizeToFitWidth = YES;
+        timeWidth = 150;
+    }
     _timeLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_poiLabel.frame)+topMaring, timeWidth+leftMargin, 25);
     
     float favWidth = [self rowWidthByString:_favButton.titleLabel.text font:[UIFont systemFontOfSize:14]];

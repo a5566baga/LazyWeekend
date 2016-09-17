@@ -27,13 +27,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setStyleWithImage:@"ic_first_normal" selectImage:@"ic_first_pressed" viewController:[[AllActivitesViewController alloc] init]];
+    [self setStyleWithImage:@"first" selectImage:@"firt_sel" viewController:[[AllActivitesViewController alloc] init]];
     
-    [self setStyleWithImage:@"ic_second_normal" selectImage:@"ic_second_pressed" viewController:[[SearchViewController alloc] init]];
+    [self setStyleWithImage:@"second" selectImage:@"second_sel" viewController:[[SearchViewController alloc] init]];
     
-    [self setStyleWithImage:@"ic_third_normal" selectImage:@"ic_third_pressed" viewController:[[HelpViewController alloc] init]];
+    [self setStyleWithImage:@"third" selectImage:@"third_sel" viewController:[[HelpViewController alloc] init]];
     
-    [self setStyleWithImage:@"ic_fourth_normal" selectImage:@"ic_fourth_pressed" viewController:[[MeSettingViewController alloc] init]];
+    [self setStyleWithImage:@"four" selectImage:@"four_sel" viewController:[[MeSettingViewController alloc] init]];
     
     [self setValue:[[CustomTabBar alloc] init] forKey:@"tabBar"];
     

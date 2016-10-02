@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self getLocation];
 //    标题栏设计
     [self initForTitle];
@@ -73,7 +74,6 @@
 #pragma mark
 #pragma mark ========= 主页面
 -(void)initForView{
-    self.automaticallyAdjustsScrollViewInsets = NO;
     _allActiviesView = [[AllActiviteView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64-49)];
     __weak typeof(self) mySelf = self;
     [_allActiviesView setJumpToDetail:^(DetailActivtyViewController * detailVC, NSInteger leo_id, NSString * imageStr, NSString * titleStr, NSString * nameStr) {
@@ -84,7 +84,6 @@
         [mySelf.navigationController pushViewController:detailVC animated:YES];
     }];
     [self.view addSubview:_allActiviesView];
-//    [_locService stopUserLocationService];
 }
 
 - (void)didReceiveMemoryWarning {

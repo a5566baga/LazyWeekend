@@ -17,6 +17,8 @@
 		BC3F16D31D72EC5C0002A97B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC3F16D21D72EC5C0002A97B /* Assets.xcassets */; };
 		BC3F16D61D72EC5C0002A97B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC3F16D41D72EC5C0002A97B /* LaunchScreen.storyboard */; };
 		BC79C7F21D77094C00F4D39D /* CustomerTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79C7F11D77094C00F4D39D /* CustomerTabBarViewController.m */; };
+		BC7B58631D9FF12B000469E3 /* HotCityDB.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7B58621D9FF12B000469E3 /* HotCityDB.m */; };
+		BC7B58661DA00AC1000469E3 /* HotCity.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7B58651DA00AC1000469E3 /* HotCity.m */; };
 		BCB513BE1D7AF0BF00A29769 /* UserFirstSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513BD1D7AF0BF00A29769 /* UserFirstSettingViewController.m */; };
 		BCB513C11D7B0BE800A29769 /* UserSecondSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513C01D7B0BE800A29769 /* UserSecondSettingViewController.m */; };
 		BCB513CA1D7B0EA200A29769 /* UINavigationItem+MyNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513C91D7B0EA200A29769 /* UINavigationItem+MyNavItem.m */; };
@@ -96,6 +98,10 @@
 		BC3F16D71D72EC5C0002A97B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC79C7F01D77094C00F4D39D /* CustomerTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerTabBarViewController.h; sourceTree = "<group>"; };
 		BC79C7F11D77094C00F4D39D /* CustomerTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerTabBarViewController.m; sourceTree = "<group>"; };
+		BC7B58611D9FF12B000469E3 /* HotCityDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCityDB.h; sourceTree = "<group>"; };
+		BC7B58621D9FF12B000469E3 /* HotCityDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCityDB.m; sourceTree = "<group>"; };
+		BC7B58641DA00AC1000469E3 /* HotCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCity.h; sourceTree = "<group>"; };
+		BC7B58651DA00AC1000469E3 /* HotCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCity.m; sourceTree = "<group>"; };
 		BCB513BC1D7AF0BF00A29769 /* UserFirstSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFirstSettingViewController.h; sourceTree = "<group>"; };
 		BCB513BD1D7AF0BF00A29769 /* UserFirstSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFirstSettingViewController.m; sourceTree = "<group>"; };
 		BCB513BF1D7B0BE800A29769 /* UserSecondSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSecondSettingViewController.h; sourceTree = "<group>"; };
@@ -489,6 +495,8 @@
 				BCB513CD1D7B10E400A29769 /* UserDB.m */,
 				BCB513CF1D7B294800A29769 /* LocationDB.h */,
 				BCB513D01D7B294800A29769 /* LocationDB.m */,
+				BC7B58611D9FF12B000469E3 /* HotCityDB.h */,
+				BC7B58621D9FF12B000469E3 /* HotCityDB.m */,
 				BCD1523E1D86EB6500932F1F /* FavouriteDB.h */,
 				BCD1523F1D86EB6500932F1F /* FavouriteDB.m */,
 				BCD152441D870D6200932F1F /* InterestingPointDB.h */,
@@ -654,12 +662,12 @@
 		BCC2D26D1D7712E900B70A1C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BCB5140A1D7EBAF600A29769 /* CityButtonLayoutImg.h */,
-				BCB5140B1D7EBAF600A29769 /* CityButtonLayoutImg.m */,
 				BCB5140D1D7F0E0700A29769 /* BodyCollectionView.h */,
 				BCB5140E1D7F0E0700A29769 /* BodyCollectionView.m */,
 				BCB514101D7F0F4E00A29769 /* BodyCollectionViewCell.h */,
 				BCB514111D7F0F4E00A29769 /* BodyCollectionViewCell.m */,
+				BCB5140A1D7EBAF600A29769 /* CityButtonLayoutImg.h */,
+				BCB5140B1D7EBAF600A29769 /* CityButtonLayoutImg.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -700,12 +708,12 @@
 			children = (
 				BCC2D27B1D77194A00B70A1C /* MeSettingViewController.h */,
 				BCC2D27C1D77194A00B70A1C /* MeSettingViewController.m */,
-				BCB514481D81125400A29769 /* SettingViewController.h */,
-				BCB514491D81125400A29769 /* SettingViewController.m */,
-				BCF6A96B1D8142220001E62D /* InterestPointViewController.h */,
-				BCF6A96C1D8142220001E62D /* InterestPointViewController.m */,
 				BCD152531D87F39300932F1F /* ReserveViewController.h */,
 				BCD152541D87F39300932F1F /* ReserveViewController.m */,
+				BCF6A96B1D8142220001E62D /* InterestPointViewController.h */,
+				BCF6A96C1D8142220001E62D /* InterestPointViewController.m */,
+				BCB514481D81125400A29769 /* SettingViewController.h */,
+				BCB514491D81125400A29769 /* SettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -758,6 +766,8 @@
 				BCD152391D86D2D700932F1F /* User.m */,
 				BCD1523B1D86E0BE00932F1F /* CityLocation.h */,
 				BCD1523C1D86E0BE00932F1F /* CityLocation.m */,
+				BC7B58641DA00AC1000469E3 /* HotCity.h */,
+				BC7B58651DA00AC1000469E3 /* HotCity.m */,
 				BCD152411D86EB8200932F1F /* Favourtie.h */,
 				BCD152421D86EB8200932F1F /* Favourtie.m */,
 				BCD152471D870D6F00932F1F /* Interest.h */,
@@ -933,6 +943,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7B58631D9FF12B000469E3 /* HotCityDB.m in Sources */,
 				BCF6A9AA1D82E7B80001E62D /* DetailActivtyView.m in Sources */,
 				BC14AFD31D74781500FA0048 /* LoginView.m in Sources */,
 				BCB513D41D7BC36400A29769 /* UserFirstSettingView.m in Sources */,
@@ -994,6 +1005,7 @@
 				BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */,
 				BCB5142F1D801B9400A29769 /* MeSettingCollectionViewCell.m in Sources */,
 				BCB514441D80FAD100A29769 /* ChangeCityTableViewCell.m in Sources */,
+				BC7B58661DA00AC1000469E3 /* HotCity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,6 +1053,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1060,7 +1073,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "20355f24-4b58-4973-90b2-f50f3221e70e";
+				PROVISIONING_PROFILE = "1c8c9831-4472-4273-bf0d-e1172fe9a2ce";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1087,6 +1100,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1099,7 +1113,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "20355f24-4b58-4973-90b2-f50f3221e70e";
+				PROVISIONING_PROFILE = "1c8c9831-4472-4273-bf0d-e1172fe9a2ce";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1111,15 +1125,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "LanRenWeekendApp/工具类/PrefixHeader.pch";
 				INFOPLIST_FILE = LanRenWeekendApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.LanRenWeekendApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1c8c9831-4472-4273-bf0d-e1172fe9a2ce";
 			};
 			name = Debug;
 		};
@@ -1129,15 +1143,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "LanRenWeekendApp/工具类/PrefixHeader.pch";
 				INFOPLIST_FILE = LanRenWeekendApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.LanRenWeekendApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1c8c9831-4472-4273-bf0d-e1172fe9a2ce";
 			};
 			name = Release;
 		};

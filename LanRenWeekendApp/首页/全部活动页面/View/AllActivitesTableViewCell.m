@@ -56,6 +56,12 @@
     }];
     
     _titleLabel.text = model.title;
+    _favButton.selected = [FavouriteDB isFavourit:_model.leo_id];
+    if (_favButton.selected) {
+        _model.collected_num += 1;
+    }else{
+        _model.collected_num -= 1;
+    }
     
     NSString * poi = model.poi;
     double distance = (double)model.distance/1000.0;
@@ -154,7 +160,7 @@
     float leftMargin  = 15;
     float topMaring = 10;
     
-    _picView.frame = CGRectMake(0, -self.width/3.5, self.width, self.width/3*4);
+    _picView.frame = CGRectMake(0, 0, self.width, self.width/3*4);
     
     _bgView.frame = CGRectMake(0, 100, self.width, 120);
     
@@ -203,7 +209,6 @@
 #pragma mark ========= 跳转到二级页面
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-//    NSLog(@"cell");
 }
 
 @end

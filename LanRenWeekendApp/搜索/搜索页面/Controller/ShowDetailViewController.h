@@ -10,6 +10,11 @@
 
 @interface ShowDetailViewController : UIViewController
 
-@property(nonatomic, strong)NSString * category;
+@property(nonatomic, strong)NSString * cityId;
+@property(nonatomic, strong)NSString * searchStr;
+@property(nonatomic, strong)NSString * cityName;
+
+-(void)setCityParamValue:(NSString *)cityStr;
+-(void)setCitySearchStr:(NSString * )searchStr;
 
 @end

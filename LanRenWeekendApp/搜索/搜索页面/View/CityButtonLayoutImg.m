@@ -16,6 +16,7 @@
     self.imageView.frame = rect;
     
     self.titleLabel.frame = CGRectMake(0, 0, 40, 49);
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
 }
 

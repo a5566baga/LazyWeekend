@@ -15,15 +15,26 @@
 #import <MJRefresh.h>
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
+#import <BaiduMapAPI_Base/BMKUserLocation.h>
+#import <BaiduMapAPI_Location/BMKLocationService.h>
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
+#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
+#import <BaiduMapAPI_Cloud/BMKCloudSearchComponent.h>//引入云检索功能所有的头文件
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>//引入定位功能所有的头文件
+#import <BaiduMapAPI_Utils/BMKUtilsComponent.h>//引入计算工具所有的头文件
+#import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
+#import <BaiduMapAPI_Map/BMKMapView.h>//只引入所需的单个头文件
 
 #define CELL_ID @"allActivitesCell"
-@interface AllActiviteView ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+@interface AllActiviteView ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, BMKLocationServiceDelegate, BMKMapViewDelegate,BMKGeoCodeSearchDelegate>
 
 //定位
-@property(nonatomic, strong)CLLocationManager * lm;
-@property(nonatomic, strong  )CLLocation *  OldL;
+@property(nonatomic, strong)BMKLocationService * locService;
+@property(nonatomic, strong)BMKReverseGeoCodeOption *reverseGeoCodeOption;
+@property(nonatomic, strong)BMKGeoCodeSearch *geoCodeSearch; ;
 
-@property(nonatomic, strong)UITableView * myTableView;
+
 //get请求的参数
 @property(nonatomic, assign)float lon;
 @property(nonatomic, assign)float lat;
@@ -43,53 +54,17 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self getLocation];
-        [self initForTableView];
-        [self refresh];
+        
     }
     return self;
 }
--(CLLocationManager *)lm{
-    if (nil == _lm) {
-        _lm = [[CLLocationManager alloc]init];
-
-        _lm.delegate = self;
-        
-        _lm.desiredAccuracy = kCLLocationAccuracyBest;
-        
-        if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
-            _lm.allowsBackgroundLocationUpdates = YES;
-        }
-        
-        [_lm requestAlwaysAuthorization];
-    }
-    return _lm;
-}
-
 #pragma mark
 #pragma mark ======== 定位，确定lon和lat(界面搞定在写)
--(void)getLocation{
-    [self.lm startUpdatingLocation];
-    _lon = 113.556002;
-    _lat = 34.809942;
-}
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray<CLLocation *> *)locations{
-    CLLocation * locaton = locations.lastObject;
-    _lon = locaton.coordinate.longitude;
-    _lat = locaton.coordinate.latitude;
-    __block NSString * cityName = @"";
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder reverseGeocodeLocation:locaton completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-        if (error == nil) {
-            [placemarks enumerateObjectsUsingBlock:^(CLPlacemark * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                cityName = obj.locality;
-                _cityName = cityName;
-            }];
-        }else{
-            NSLog(@"错误：%@", error);
-        }
-    }];
+-(void)setLocation:(float)lon lat:(float)lat{
+    _lon = lon;
+    _lat = lat;
+    [self initForTableView];
+    [self getLocationCity:_lon lat:_lat];
 }
 #pragma mark
 #pragma mark ======== 数据的处理
@@ -125,9 +100,9 @@
         if (_nowPage < _pageTotal) {
             _nowPage++;
         }
+        
         [SVProgressHUD dismiss];
         [self.myTableView.mj_header endRefreshing];
-         self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"对不起，网络出错"];
         NSLog(@"Failed");
@@ -166,6 +141,11 @@
 -(void)refresh{
     self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerAction)];
     [self.myTableView.mj_header beginRefreshing];
+    
+    MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
+    footer.refreshingTitleHidden = YES;
+    footer.stateLabel.hidden = YES;
+    self.myTableView.mj_footer = footer;
 }
 -(void)headerAction{
     [self initForData];
@@ -231,8 +211,39 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%ld", (long)indexPath.section);
     DetailActivtyViewController * detailVC = [[DetailActivtyViewController alloc] init];
-    self.jumpToDetail(detailVC, [_allModelArray[indexPath.section] leo_id]);
+    self.jumpToDetail(detailVC, [_allModelArray[indexPath.section] leo_id], [_allModelArray[indexPath.section] front_cover_image_list].firstObject, [_allModelArray[indexPath.section] title], [_allModelArray[indexPath.section] poi_name]);
 }
-
+#pragma mark
+#pragma mark ============== 工具类
+-(void)getLocationCity:(float)lon lat:(float)lat{
+    if (_reverseGeoCodeOption==nil) {
+        //初始化反地理编码类
+        _reverseGeoCodeOption= [[BMKReverseGeoCodeOption alloc] init];
+        
+        //需要逆地理编码的坐标位置
+        CLLocationCoordinate2D coorDinate = CLLocationCoordinate2DMake(_lat, _lon);
+        _reverseGeoCodeOption.reverseGeoPoint = coorDinate;
+        [_geoCodeSearch reverseGeoCode:_reverseGeoCodeOption];
+        
+        //创建地理编码对象
+        CLGeocoder * geocoder=[[CLGeocoder alloc]init];
+        CLLocation *location=[[CLLocation alloc]initWithLatitude:coorDinate.latitude longitude:coorDinate.longitude];
+        //反地理编码
+        [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            //判断是否有错误或者placemarks是否为空
+            if (error !=nil || placemarks.count==0) {
+                ZZQLog(@"%@",error);
+                return ;
+            }
+            for (CLPlacemark *placemark in placemarks) {
+                //赋值详细地址
+                NSString * cityName= placemark.locality;
+                _cityName = [cityName substringWithRange:NSMakeRange(0, cityName.length-1)];
+                ZZQLog(@"%@", _cityName);
+                [self refresh];
+            }  
+        }];
+    }
+}
 @end
 

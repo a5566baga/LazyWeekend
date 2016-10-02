@@ -70,7 +70,14 @@
     _myLabel.text = model.requirement_text;
     
     _timeLabl.text = model.create_time;
-    
+}
+
+-(void)setCellString:(NSString *)talkStr{
+    CGSize size = CGSizeMake((self.width-20)/2, MAXFLOAT);
+    CGFloat height = [talkStr boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height;
+    self.cellHeight = height;
+
+    _myLabel.text = talkStr;
 }
 
 - (void)awakeFromNib {

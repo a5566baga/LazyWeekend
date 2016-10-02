@@ -45,7 +45,12 @@
     [self addSubview:_locationLabel];
     
     _locationButton = [[UIButton alloc] init];
-    [_locationButton setTitle:@"郑州" forState:UIControlStateNormal];
+    NSString * cityName = [self getLocationCityName];
+    if ([cityName isEqualToString:@""]) {
+        [_locationButton setTitle:@"未知" forState:UIControlStateNormal];
+    }else{
+        [_locationButton setTitle:cityName forState:UIControlStateNormal];
+    }
     [_locationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _locationButton.backgroundColor = [UIColor blackColor];
     _locationButton.layer.cornerRadius = 5;
@@ -69,7 +74,6 @@
     _allCityLabel.font = [UIFont fontWithName:@"Lantinghei_0" size:18];
     _allCityLabel.text = @"全部城市";
     [self addSubview:_allCityLabel];
-    
 }
 
 -(void)layoutSubviews{
@@ -83,21 +87,22 @@
     _recentLabel.frame = CGRectMake(rec_leftMargin, CGRectGetMaxY(_locationButton.frame)+rec_topMargin, 120, 30);
     float rec_width = self.width/5;
     float rec_margin = 40;
-    for (NSInteger i = 0; i < 3; i++) {
+#warning 热门城市
+    for (NSInteger i = 0; i < [HotCityDB queryLocation].count; i++) {
         _recentButton = [[UIButton alloc] init];
         _recentButton.layer.borderWidth = 1;
         _recentButton.layer.borderColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0].CGColor;
         _recentButton.layer.cornerRadius = 5;
         _recentButton.frame = CGRectMake(lo_leftMargin+(rec_width+rec_margin)*i, CGRectGetMaxY(_recentLabel.frame)+rec_topMargin, rec_width, 35);
         [_recentButton setTitleColor:[UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1.0] forState:UIControlStateNormal];
-        [_recentButton setTitle:@"数据库信息" forState:UIControlStateNormal];
+        [_recentButton setTitle:[HotCityDB queryLocation][i].hotCityName forState:UIControlStateNormal];
         _recentButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         _recentButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+        [_recentButton addTarget:self action:@selector(cityAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_recentButton];
     }
     
-    _hotCityLabel.frame = CGRectMake(rec_leftMargin, CGRectGetMaxY(_recentButton.frame)+rec_topMargin, 120, 30);
-    
+    _hotCityLabel.frame = CGRectMake(rec_leftMargin, CGRectGetMaxY(_recentLabel.frame)+2*rec_topMargin+35, 120, 30);
     
     for (NSInteger i = 0; i < _cityArray.count; i++) {
         _hotCityButton = [[UIButton alloc] init];
@@ -105,13 +110,33 @@
         _hotCityButton.layer.borderColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1.0].CGColor;
         _hotCityButton.layer.borderWidth = 1;
         [_hotCityButton setTitleColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0] forState:UIControlStateNormal];
+        [_hotCityButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         [_hotCityButton setTitle:[_cityArray[i] city_name] forState:UIControlStateNormal];
         _hotCityButton.layer.cornerRadius = 5;
+        _hotCityButton.tag = 800+i;
+        [_hotCityButton addTarget:self action:@selector(hotCityAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_hotCityButton];
     }
     
     _allCityLabel.frame = CGRectMake(20, CGRectGetMaxY(_hotCityButton.frame)+20, 120, 35);
-    
+}
+-(void)hotCityAction:(UIButton *)btn{
+    NSInteger index = btn.tag-800;
+    if (![HotCityDB isExistsCity:[_cityArray[index] city_name]]) {
+        if ([HotCityDB queryLocation].count >= 3) {
+            [HotCityDB deleteLocation];
+            [HotCityDB addLocation:[_cityArray[index] city_name] city_id:[_cityArray[index] city_id]];
+        }else{
+            [HotCityDB addLocation:[_cityArray[index] city_name] city_id:[_cityArray[index] city_id]];
+        }        
+    }
+    ShowDetailViewController * showVC = [[ShowDetailViewController alloc] init];
+    self.goToDetailVC(showVC, @([_cityArray[index] city_id]).stringValue, [_cityArray[index] city_name]);
+}
+-(void)cityAction:(UIButton *)btn{
+    ShowDetailViewController * showVC = [[ShowDetailViewController alloc] init];
+    NSString * cityId = [HotCityDB queryLocationByCityName:btn.currentTitle];
+    self.goToDetailVC(showVC, cityId, btn.currentTitle);
 }
 
 -(void)setHotCityArray:(NSArray<CitysModel *> *)cityArray{
@@ -119,6 +144,12 @@
 //    创建
     [self initForView];
 }
-
+#pragma mark
+#pragma mark =========== 工具类
+//获取城市名
+-(NSString *)getLocationCityName{
+    NSString * cityName = [LocationDB queryLocation].firstObject.cityName;
+    return cityName;
+}
 
 @end

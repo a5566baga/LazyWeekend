@@ -54,6 +54,21 @@ static FMDatabaseQueue * queue = nil;
         return NO;
 }
 
++(NSString *)queryUserName{
+    __block NSString * userName;
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString * querrySql = @"SELECT * FROM t_user";
+        FMResultSet * set = [db executeQuery:querrySql];
+        while (set.next) {
+            User * user = [[User alloc] init];
+            user.username = [set stringForColumn:@"username"];
+            userName = user.username;
+        }
+        [set close];
+    }];
+    return  userName;
+}
+
 +(NSArray<User *> *)queryUser{
     __block NSMutableArray<User *> * array = [NSMutableArray array];
     [queue inDatabase:^(FMDatabase *db) {

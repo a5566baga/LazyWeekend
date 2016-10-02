@@ -40,8 +40,42 @@ static FMDatabaseQueue * queue = nil;
 
 +(void)updateData:(NSDictionary *)dataDic{
     [queue inDatabase:^(FMDatabase *db) {
-       NSString * updateSql = @"UPDATE t_interest SET mantain=?, bar=?, music=?, stage=?, pic=?, eat=?, bag=?, movie=?, person=?, basketball=?, leaf=?, shirt=?";
-        BOOL result = [db executeUpdate:updateSql, dataDic[@"周边游"], dataDic[@"酒吧"], dataDic[@"音乐"], dataDic[@"戏剧"], dataDic[@"展览"], dataDic[@"美食"], dataDic[@"购物"], dataDic[@"电影"], dataDic[@"聚会"], dataDic[@"运动"], dataDic[@"公益"], dataDic[@"商业"]];
+        NSString * updateSQL1 = @"UPDATE t_interest SET mantain=?";
+        [db executeUpdate:updateSQL1, dataDic[@"周边游"]];
+        
+        NSString * updateSQL2 = @"UPDATE t_interest SET bar=?";
+       BOOL result = [db executeUpdate:updateSQL2, dataDic[@"酒吧"]];
+        
+        NSString * updateSQL3 = @"UPDATE t_interest SET music=?";
+        [db executeUpdate:updateSQL3, dataDic[@"音乐"]];
+        
+        NSString * updateSQL4 = @"UPDATE t_interest SET stage=?";
+        [db executeUpdate:updateSQL4, dataDic[@"戏剧"]];
+        
+        NSString * updateSQL5 = @"UPDATE t_interest SET pic=?";
+        [db executeUpdate:updateSQL5, dataDic[@"展览"]];
+        
+        NSString * updateSQL6 = @"UPDATE t_interest SET eat=?";
+        [db executeUpdate:updateSQL6, dataDic[@"美食"]];
+        
+        NSString * updateSQL7 = @"UPDATE t_interest SET bag=?";
+        [db executeUpdate:updateSQL7, dataDic[@"购物"]];
+        
+        NSString * updateSQL8 = @"UPDATE t_interest SET movie=?";
+        [db executeUpdate:updateSQL8, dataDic[@"电影"]];
+        
+        NSString * updateSQL9 = @"UPDATE t_interest SET person=?";
+        [db executeUpdate:updateSQL9, dataDic[@"聚会"]];
+        
+        NSString * updateSQL10 = @"UPDATE t_interest SET baskball=?";
+        [db executeUpdate:updateSQL10, dataDic[@"运动"]];
+        
+        NSString * updateSQL11 = @"UPDATE t_interest SET leaf=?";
+        [db executeUpdate:updateSQL11, dataDic[@"公益"]];
+        
+        NSString * updateSQL12 = @"UPDATE t_interest SET shirt=?";
+        [db executeUpdate:updateSQL12, dataDic[@"商业"]];
+        
         if (result) {
             NSLog(@"更新兴趣点成功");
         }else{

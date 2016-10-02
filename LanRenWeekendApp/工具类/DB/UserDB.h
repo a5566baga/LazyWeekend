@@ -17,6 +17,8 @@
  */
 +(BOOL)queryIsExistUser;
 
++(NSString *)queryUserName;
+
 /**  
  * 添加用户
  */

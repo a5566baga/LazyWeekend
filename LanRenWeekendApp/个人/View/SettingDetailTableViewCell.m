@@ -54,18 +54,18 @@
 }
 
 -(void)setCellTitle:(NSString *)title img:(NSString *)imgStr{
+    self.backgroundColor = [UIColor colorWithRed:0.96 green:0.96 blue:0.96 alpha:1.00];
     _titleLabel.text = title;
     _icnoImg.image = [UIImage imageNamed:imgStr];
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    self.backgroundColor = selected ? [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:0.70] : [UIColor whiteColor];
+//    self.backgroundColor = selected ? [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:0.70] : [UIColor whiteColor];
 }
 
 @end

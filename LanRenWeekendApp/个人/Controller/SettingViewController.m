@@ -38,7 +38,11 @@
 #pragma mark
 #pragma mark =========== 数据
 -(void)initForData{
-    _titleArray = @[@"分享给好友", @"清除缓存", @"用户反馈", @"联系我们", @"退出登录"];
+    if ([[UserDB queryUserName] isEqualToString:@""]) {
+        _titleArray = @[@"分享给好友", @"清除缓存", @"用户反馈", @"联系我们", @"登录账号"];
+    }else{
+        _titleArray = @[@"分享给好友", @"清除缓存", @"用户反馈", @"联系我们", @"退出登录"];
+    }
     _icnoArray = @[@"ic_setting_share_app", @"ic_trash",  @"bbs_message", @"ic_tel", @"ic_logout"];
 }
 
@@ -46,7 +50,7 @@
 #pragma mark =========== 主页面设置
 -(void)initForView{
     self.automaticallyAdjustsScrollViewInsets = NO;
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -70,6 +74,9 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ZZQLog(@"%ld", indexPath.row);
 }
 
 - (void)didReceiveMemoryWarning {

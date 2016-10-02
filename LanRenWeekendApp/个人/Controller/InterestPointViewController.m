@@ -8,8 +8,13 @@
 
 #import "InterestPointViewController.h"
 #import "UserSecondSettingVIew.h"
+#import "Interest.h"
 
 @interface InterestPointViewController ()
+
+@property(nonatomic, strong)UserSecondSettingVIew * secondView;
+@property(nonatomic, strong)NSMutableDictionary * mySecSettingDic;
+@property(nonatomic, strong)NSMutableDictionary * myDic;
 
 @end
 
@@ -18,10 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UserSecondSettingVIew * secView = [[UserSecondSettingVIew alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64)];
-    [self.view addSubview:secView];
-    [secView setPostInterestStatus:^(NSMutableDictionary * dic) {
-        NSDictionary * myDic = dic;
+}
+-(void)initForView{
+    _secondView = [[UserSecondSettingVIew alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64)];
+    [self.view addSubview:_secondView];
+    [_secondView setPostInterestStatus:^(NSMutableDictionary * dic) {
+        _myDic = [[NSMutableDictionary alloc] initWithDictionary:dic];
     }];
     
 }
@@ -32,18 +39,28 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.title = @"兴趣标签";
+    
+    UIButton * saveButton = [[UIButton alloc] init];
+    saveButton.frame = CGRectMake(0, 0, 40, 30);
+    [saveButton setTitle:@"保存" forState:UIControlStateNormal];
+    saveButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [saveButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [saveButton addTarget:self action:@selector(saveAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+    
     self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = YES;
+    
+    [self initForView];
+    [_secondView setPostInterestStatus:^(NSMutableDictionary * dic) {
+        _mySecSettingDic = [[NSMutableDictionary alloc] initWithDictionary:dic];
+    }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)saveAction:(UIButton *)button{
+    [InterestingPointDB updateData:_mySecSettingDic];
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
 
 @end

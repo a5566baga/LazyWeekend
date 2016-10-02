@@ -15,7 +15,6 @@
 
 @interface ChangeCityView ()<UITableViewDelegate, UITableViewDataSource>
 
-@property(nonatomic, strong)UITableView * tableView;
 @property(nonatomic, strong)AFHTTPSessionManager * manager;
 
 @property(nonatomic, strong)NSArray <CitysModel *> * cityArray;
@@ -107,10 +106,16 @@
 }
 //选中后跳转
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-#warning 页面跳转传的参数是http://api.lanrenzhoumo.com/wh/common/leos?category=all&city_id=321&page=1
-    
-    UIViewController * viewController = [[UIViewController alloc] init];
-    self.jumpToCity(viewController);
+    if (![HotCityDB isExistsCity:[_allCity[indexPath.section][indexPath.row] city_name]]) {
+        if ([HotCityDB queryLocation].count >= 3) {
+            [HotCityDB deleteLocation];
+            [HotCityDB addLocation:[_allCity[indexPath.section][indexPath.row] city_name] city_id:[(CitysModel *)(_allCity[indexPath.section][indexPath.row]) city_id]];
+        }else{
+            [HotCityDB addLocation:[_allCity[indexPath.section][indexPath.row] city_name] city_id:[(CitysModel *)(_allCity[indexPath.section][indexPath.row]) city_id]];
+        }
+    }
+    ShowDetailViewController * showVC = [[ShowDetailViewController alloc] init];
+    self.jumpToCity(showVC, @([(CitysModel *)(_allCity[indexPath.section][indexPath.row]) city_id]).stringValue, [_allCity[indexPath.section][indexPath.row] city_name]);
 }
 //headerView
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -123,6 +128,9 @@
     if (section == 0) {
         ChangCityHeaderView * headerView = [[ChangCityHeaderView alloc] init];
         [headerView setHotCityArray:_allCity[section]];
+        [headerView setGoToDetailVC:^(ShowDetailViewController * vc, NSString * cityId, NSString * cityName) {
+            self.jumpToCity(vc, cityId, cityName);
+        }];
         return headerView;
     }else{
         UILabel * titleLabel = [[UILabel alloc] init];

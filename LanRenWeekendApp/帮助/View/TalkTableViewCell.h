@@ -13,4 +13,6 @@
 
 -(void)setCellValue:(TalkMessageModel *)model;
 
+-(void)setCellString:(NSString *)talkStr;
+
 @end

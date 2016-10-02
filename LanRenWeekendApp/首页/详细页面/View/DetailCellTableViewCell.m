@@ -47,6 +47,11 @@
         CGSize mySize = CGSizeMake(self.width-20, CGFLOAT_MAX);
         CGSize size = [_dic[@"content"] boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil].size;
         _txtLabel.frame = CGRectMake(10, 10, self.width-20, size.height);
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_txtLabel.text];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:10];
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [_txtLabel.text length])];
+        _txtLabel.attributedText = attributedString;
     }else{
         NSArray * size = _dic[@"size"];
         float width = [size[0] floatValue];

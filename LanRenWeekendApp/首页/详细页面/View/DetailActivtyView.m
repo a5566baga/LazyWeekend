@@ -158,7 +158,26 @@
     return headerView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 700;
+    float height = self.width;
+    float titleHeight = [self rowHeightByString:_title font:[UIFont systemFontOfSize:24]]+10;
+    height += 80;
+    float timeHeight = [self rowHeightByString:_timeDic[@"info"] font:[UIFont systemFontOfSize:18]]+10;
+    float locationHeight = [self rowHeightByString:[NSString stringWithFormat:@"%@ · %@", _address, _poi] font:[UIFont systemFontOfSize:18]]+10;
+    height += 40+titleHeight+timeHeight+locationHeight+20;
+    return height;
+}
+-(float)rowHeightByString:(NSString *)content font:(UIFont *)font{
+    CGSize mySize = CGSizeMake(self.width-40, CGFLOAT_MAX);
+    CGSize size = [content boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
+    return size.height;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y > 40) {
+        self.changeNavbar();
+    }else{
+        self.changeNavbarBack();
+    }
 }
 
 @end

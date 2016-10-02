@@ -58,7 +58,7 @@ static FMDatabaseQueue * queue = nil;
 +(NSArray<CityLocation *> *)queryLocation{
     NSMutableArray<CityLocation *> * array = [NSMutableArray array];
     [queue inDatabase:^(FMDatabase *db) {
-        NSString * querySql = @"SELETE * FROM t_cityLocation";
+        NSString * querySql = @"SELECT * FROM t_cityLocation";
         FMResultSet * set = [db executeQuery:querySql];
         while(set.next) {
             CityLocation * cityLocation = [[CityLocation alloc] init];

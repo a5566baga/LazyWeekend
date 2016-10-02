@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailActivtyViewController : UIViewController
+
 @property(nonatomic, assign)NSInteger leo_id;
+@property(nonatomic, strong)NSString * imageStr;
+@property(nonatomic, strong)NSString * titleStr;
+@property(nonatomic, strong)NSString * nameStr;
+
 @end

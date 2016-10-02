@@ -94,15 +94,13 @@
     return cell;
 }
 
+//选择的类型
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-#warning 拼接数据接口
     NSString * paramer = [_modelArray[indexPath.row] cn_name];
     ShowDetailViewController * showDetailVC = [[ShowDetailViewController alloc] init];
-    self.jumpToShowDetailVC(showDetailVC, paramer);
-    NSLog(@"select === %ld", (long)indexPath.row);
+    self.jumpToShowDetailVC(showDetailVC, paramer, paramer);
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cancel === %ld", (long)indexPath.row);
 }
 
 /*

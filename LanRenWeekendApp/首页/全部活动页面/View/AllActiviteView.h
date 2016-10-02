@@ -11,6 +11,9 @@
 
 @interface AllActiviteView : UIView
 
-@property(nonatomic, copy)void(^jumpToDetail)(DetailActivtyViewController * detailVC, NSInteger leo_id);
+@property(nonatomic, copy)void(^jumpToDetail)(DetailActivtyViewController * detailVC, NSInteger leo_id, NSString * imageStr, NSString * titleStr, NSString * nameStr);
+@property(nonatomic, strong)UITableView * myTableView;
+
+-(void)setLocation:(float)lon lat:(float)lat;
 
 @end

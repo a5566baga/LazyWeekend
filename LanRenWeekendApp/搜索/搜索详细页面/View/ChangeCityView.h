@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShowDetailViewController.h"
 
 @interface ChangeCityView : UIView
 
-@property(nonatomic, copy)void(^jumpToCity)(UIViewController * viewController);
+@property(nonatomic, strong)UITableView * tableView;
+@property(nonatomic, copy)void(^jumpToCity)(ShowDetailViewController * viewController, NSString * cityId, NSString * cityName);
 
 @end

@@ -10,8 +10,9 @@
 #import "CityButtonLayoutImg.h"
 #import "BodyCollectionView.h"
 #import "ChangeCityViewController.h"
+#import "ShowDetailViewController.h"
 
-@interface SearchViewController ()<UISearchResultsUpdating, UISearchControllerDelegate>
+@interface SearchViewController ()<UISearchResultsUpdating, UISearchControllerDelegate,UISearchBarDelegate>
 
 //titleView
 @property(nonatomic, strong)UISearchController * searchController;
@@ -33,12 +34,18 @@
 #pragma mark
 #pragma mark ========== 一个Button一个搜索
 -(void)initForTitleView{
-#warning 这里的Button参数也是第一次进来的时候定位获得的
     _citySelButton = [CityButtonLayoutImg buttonWithType:UIButtonTypeCustom];
     [_citySelButton setImage:[UIImage imageNamed:@"ic_nav_down"] forState:UIControlStateNormal];
     [_citySelButton setImage:[UIImage imageNamed:@"ic_nav_down"] forState:UIControlStateHighlighted];
     _citySelButton.frame = CGRectMake(0, 0, 60, 49);
-    NSAttributedString * string = [[NSAttributedString alloc] initWithString:@"郑州" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light"size:18]}];
+    
+    NSString * cityName = [self getLocationCityName];
+    NSAttributedString * string = nil;
+    if ([cityName isEqualToString:@""]) {
+         string = [[NSAttributedString alloc] initWithString:@"未知" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light"size:18]}];
+    }else{
+        string = [[NSAttributedString alloc] initWithString:cityName attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light"size:18]}];
+    }
     [_citySelButton setAttributedTitle:string forState:UIControlStateNormal];
     _citySelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_citySelButton];
@@ -47,6 +54,7 @@
     _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     _searchController.searchResultsUpdater = self;
     _searchController.delegate = self;
+    _searchController.searchBar.delegate = self;
     _searchController.dimsBackgroundDuringPresentation = NO;
     _searchController.hidesNavigationBarDuringPresentation = NO;
     _searchController.obscuresBackgroundDuringPresentation = NO;
@@ -72,7 +80,13 @@
 #pragma mark
 #pragma mark =========== searchController的代理方法
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
-    
+}
+//向详细页面传参数
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    ShowDetailViewController * showDetailVC = [[ShowDetailViewController alloc] init];
+    [showDetailVC setCityName:searchBar.text];
+    [showDetailVC setCitySearchStr:searchBar.text];
+    [self.navigationController pushViewController:showDetailVC animated:YES];
 }
 #pragma mark
 #pragma mark =========== 主页面的内容
@@ -81,29 +95,27 @@
     [self.view addSubview:_collectionView];
     
     typeof(self) myself = self;
-    [_collectionView setJumpToShowDetailVC:^(ShowDetailViewController * showDetailVC, NSString * category) {
-        showDetailVC.category = category;
+    [_collectionView setJumpToShowDetailVC:^(ShowDetailViewController * showDetailVC, NSString * category, NSString * cityName) {
+        [showDetailVC setCitySearchStr:category];
+        [showDetailVC setCityName:cityName];
         [myself.navigationController pushViewController:showDetailVC animated:YES];
     }];
-    
 }
+
+#pragma mark
+#pragma mark ========= 工具类
+-(NSString *)getLocationCityName{
+    NSString * cityName = [LocationDB queryLocation].firstObject.cityName;
+    return cityName;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
 //    [self.searchController.searchBar becomeFirstResponder];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -13,7 +13,7 @@
 #import <AFNetworking.h>
 #import <MJExtension.h>
 
-@interface TalkTableView ()<UITableViewDelegate, UITableViewDataSource>
+@interface TalkTableView ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property(nonatomic, strong)UITableView * tableView;
 @property(nonatomic, strong)UIView * textBgView;
@@ -24,6 +24,8 @@
 @property(nonatomic, strong)NSArray<TalkMessageModel *> * modelArray;
 @property(nonatomic, strong)NSMutableArray<TalkMessageModel *> * revModelArray;
 
+@property(nonatomic, strong)NSMutableArray * commentStr;
+
 @end
 
 @implementation TalkTableView
@@ -32,7 +34,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initForData];
+//        [self initForData];
         [self noticeFicKeyBoard];
         [self initForView];
     }
@@ -88,10 +90,25 @@
     _textField = [[UITextField alloc] init];
     NSDictionary * dic = @{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light" size:18], NSForegroundColorAttributeName:[UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0]};
     NSAttributedString * string = [[NSAttributedString alloc] initWithString:@"告诉我你的周末需求吧 · · · " attributes:dic];
+    _textField.delegate = self;
     [_textField setAttributedPlaceholder:string];
     [self.textBgView addSubview:_textField];
-
 }
+-(NSMutableArray *)commentStr{
+    if (_commentStr == nil) {
+        _commentStr = [[NSMutableArray alloc] init];
+    }
+    return _commentStr;
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    NSString * str = textField.text;
+    [self.commentStr addObject:str];
+    [_tableView reloadData];
+    _textField.text = nil;
+    return YES;
+}
+
+
 -(void)layoutSubviews{
     [super layoutSubviews];
     _textBgView.frame = CGRectMake(0, self.height-40, self.width, 40);
@@ -106,7 +123,8 @@
 #pragma mark
 #pragma mark =========== tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  _revModelArray.count;
+//    return  _revModelArray.count;
+    return _commentStr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TalkTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
@@ -115,14 +133,23 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor colorWithRed:1.00 green:0.99 blue:0.97 alpha:1.00];
-    [cell setCellValue:_revModelArray[indexPath.row]];
+//    [cell setCellValue:_revModelArray[indexPath.row]];
+    [cell setCellString:_commentStr[indexPath.row]];
 //    自动降到底部
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [_revModelArray[indexPath.row] cellHeight];
+//    return [_revModelArray[indexPath.row] cellHeight];
+    return [self cellHeight:indexPath.row];
 }
+
+-(float)cellHeight:(NSInteger)index{
+    CGSize size = CGSizeMake(([UIScreen mainScreen].bounds.size.width-20)/2, MAXFLOAT);
+    CGFloat height = [self.commentStr[index] boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height;
+    return height + 60;
+}
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TalkHeaderView * headerView = [[TalkHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.width, 200)];
     headerView.backgroundColor = [UIColor colorWithRed:1.00 green:0.99 blue:0.97 alpha:1.00];

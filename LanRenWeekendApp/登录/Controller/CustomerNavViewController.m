@@ -36,8 +36,6 @@
             [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
             button.size = CGSizeMake(30, 30);
             viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-            
-            
         }else{
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setImage:[UIImage imageNamed:@"ic_nav_left"] forState:UIControlStateNormal];

@@ -53,7 +53,7 @@
     if (![sexStr isEqualToString:@"未知"] && ![nowstatusStr isEqualToString:@"未知"]) {
 #warning DB Save
 //        写入数据库
-        [UserDB addNewUser:@"匿名用户" icon:@"" sex:sexStr nowStatus:nowstatusStr];
+        [UserDB addNewUser:@"" icon:@"" sex:sexStr nowStatus:nowstatusStr];
 //        视图跳转
         UserSecondSettingViewController * secondVC = [[UserSecondSettingViewController alloc] init];
         [self.navigationController pushViewController:secondVC animated:YES];

@@ -42,7 +42,7 @@ static FMDatabaseQueue * queue = nil;
     __block int flag = 0;
     [queue inDatabase:^(FMDatabase *db) {
        NSString * querySql = @"SELECT * FROM t_fav WHERE leo_id = ?";
-        FMResultSet * set = [db executeQuery:querySql, leo_id];
+        FMResultSet * set = [db executeQuery:querySql, @(leo_id).stringValue];
         while (set.next) {
             flag++;
         }
@@ -60,9 +60,9 @@ static FMDatabaseQueue * queue = nil;
        NSString * deleteSql = @"DELETE FROM t_fav WHERE leo_id = ?";
         BOOL result = [db executeUpdate:deleteSql, @(leo_id).stringValue];
         if (result) {
-            NSLog(@"最爱项目%ld删除成功", leo_id);
+            NSLog(@"最爱项目%ld删除成功", (long)leo_id);
         }else{
-            NSLog(@"最爱项目%ld删除失败", leo_id);
+            NSLog(@"最爱项目%ld删除失败", (long)leo_id);
         }
     }];
 }

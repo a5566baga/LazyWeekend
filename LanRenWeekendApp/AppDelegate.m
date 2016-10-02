@@ -14,6 +14,7 @@
 
 @property(nonatomic, strong)UserDB * userDB;
 @property(nonatomic, strong)LocationDB * locationDB;
+@property(nonatomic, strong)HotCityDB * hotCityDB;
 @property(nonatomic, strong)FavouriteDB * favouriteDB;
 @property(nonatomic, strong)InterestingPointDB * interDB;
 
@@ -28,13 +29,15 @@
     _locationDB = [[LocationDB alloc] init];
     _favouriteDB = [[FavouriteDB alloc] init];
     _interDB = [[InterestingPointDB alloc] init];
-    ZZQLog(@"%@%@%@ %@", _userDB, _locationDB, _favouriteDB, _interDB);
+    _hotCityDB = [[HotCityDB alloc] init];
+    ZZQLog(@"%@%@%@ %@ %@", _userDB, _locationDB, _favouriteDB, _interDB, _hotCityDB);
     
     
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _window.backgroundColor = [UIColor whiteColor];
     CustomerTabBarViewController * customerTabBarVC = [[CustomerTabBarViewController alloc] init];
-    customerTabBarVC.tabBar.backgroundColor = [UIColor whiteColor];
+//    customerTabBarVC.tabBar.backgroundColor = [UIColor whiteColor];
+//    _window.rootViewController = customerTabBarVC;
     
 #warning RootController change
     if ([UserDB queryIsExistUser]) {
@@ -46,7 +49,7 @@
         UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:mainVC];
         _window.rootViewController = nvc;
     }
-    
+     
     [_window makeKeyAndVisible];
     return YES;
 }

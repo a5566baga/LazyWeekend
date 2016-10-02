@@ -7,6 +7,7 @@
 //
 
 #import "ShowDetailViewController.h"
+#import <FMDB.h>
 
 @interface ShowDetailViewController ()
 
@@ -18,13 +19,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = _cityName;
+    ZZQLog(@"%@", _cityId);
+    ZZQLog(@"%@", _searchStr);
+    ZZQLog(@"%@", _cityName);
 }
 
--(void)setCategory:(NSString *)category{
-    _category = category;
-//    可以创建视图
+-(void)setCityParamValue:(NSString *)cityStr{
+    _cityId = cityStr;
 }
 
+-(void)setCitySearchStr:(NSString *)searchStr{
+    _searchStr = searchStr;
+}
+#warning 页面跳转传的参数是http://api.lanrenzhoumo.com/wh/common/leos?category=all&city_id=321&page=1 城市的
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

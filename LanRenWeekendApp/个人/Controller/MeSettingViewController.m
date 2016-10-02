@@ -20,18 +20,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 #pragma mark
 #pragma mark ========== 隐藏nav
 -(void)viewWillAppear:(BOOL)animated{
-    [self initForView];
-    self.navigationController.navigationBar.hidden = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = NO;
+    [self initForView];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
 }
 #pragma mark
 #pragma mark ========== 创建collectionView
 -(void)initForView{
+    if (![[UserDB queryUserName] isEqualToString:@""]) {
+        self.title = [UserDB queryUserName];
+    }else{
+        self.title = @"匿名用户";
+    }
+    
     MeSettingView * meView = [[MeSettingView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-49)];
     meView.delegate = self;
     [self.view addSubview:meView];

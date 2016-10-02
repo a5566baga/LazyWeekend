@@ -10,7 +10,7 @@
 #import "ChangeCityView.h"
 
 @interface ChangeCityViewController ()
-
+@property(nonatomic, strong)ChangeCityView * changCityView;
 @end
 
 @implementation ChangeCityViewController
@@ -41,14 +41,21 @@
 #pragma mark =========== 创建地理位置的视图
 -(void)initForView{
     self.automaticallyAdjustsScrollViewInsets = NO;
-    ChangeCityView * changCityView = [[ChangeCityView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64)];
-    [self.view addSubview:changCityView];
+    _changCityView = [[ChangeCityView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64)];
+    [self.view addSubview:_changCityView];
     
-    [changCityView setJumpToCity:^(UIViewController * viewController) {
-        [self.navigationController pushViewController:viewController animated:YES];
+    __weak typeof(self) mySelf = self;
+    [_changCityView setJumpToCity:^(ShowDetailViewController * vc, NSString * cityId, NSString * cityName) {
+        [vc setCityParamValue:cityId];
+        [vc setCityName:cityName];
+        [mySelf.navigationController pushViewController:vc animated:YES];
     }];
-    
 }
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [_changCityView.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

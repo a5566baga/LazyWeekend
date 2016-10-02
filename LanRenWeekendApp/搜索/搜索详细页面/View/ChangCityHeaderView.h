@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CitysModel.h"
+#import "ShowDetailViewController.h"
 
 @interface ChangCityHeaderView : UIView
+
+@property(nonatomic, copy)void(^goToDetailVC)(ShowDetailViewController * vc, NSString * cityId, NSString * cityName);
 
 -(void)setHotCityArray:(NSArray<CitysModel *> *)cityArray;
 

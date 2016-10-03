@@ -66,9 +66,17 @@
     NSString * poi = model.poi;
     double distance = (double)model.distance/1000.0;
     NSString * category = model.category;
-    _poiLabel.text = [NSString stringWithFormat:@"%@ · %.1lfkm · %@", poi, distance, category];
+    if (distance != 0.0) {
+        _poiLabel.text = [NSString stringWithFormat:@"%@ · %.1lfkm · %@", poi, distance, category];
+    }else{
+        _poiLabel.text = [NSString stringWithFormat:@"%@ · %@", poi, category];
+    }
     
-    _timeLabel.text = model.time_info;
+    if (![model.time_info isEqualToString:@""]) {
+        _timeLabel.text = model.time_info;
+    }else{
+        _timeLabel.alpha = 0;
+    }
     
     _priceLabel.text = [NSString stringWithFormat:@"￥%ld",(long)model.price];
     

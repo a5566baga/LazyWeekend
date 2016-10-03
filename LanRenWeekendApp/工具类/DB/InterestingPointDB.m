@@ -83,7 +83,6 @@ static FMDatabaseQueue * queue = nil;
         }
     }];
 }
-
 +(NSArray<Interest *> *)queryAllData{
     __block NSMutableArray * array = [NSMutableArray array];
     [queue inDatabase:^(FMDatabase *db) {

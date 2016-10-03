@@ -8,10 +8,12 @@
 
 #import "SettingViewController.h"
 #import "SettingDetailTableViewCell.h"
+#import "MainViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <ShareSDKUI/SSUIShareActionSheetStyle.h>
+#import <UIImageView+WebCache.h>
 
 @interface SettingViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -90,13 +92,27 @@
         [self shareButtonAction:tableView];
     }else if (indexPath.row == 1){
 //        清除缓存
-        
+        float ImageCache = [[SDImageCache sharedImageCache]getSize]/1000/1000;
+        [self initForCancelView:[NSString stringWithFormat:@"清除缓存%.2lfMB", ImageCache]];
+        [[SDImageCache sharedImageCache] clearDisk];
+        [self showAlertView];
     }else if (indexPath.row == 2){
 //        用户反馈
+        [self initForCancelView:@"还未开放"];
+        [self showAlertView];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://a5566baga@126.com"]];
     }else if (indexPath.row == 3){
-//        练习我们
+//        联系我们
+        [self initForCancelView:@"还未开放"];
+        [self showAlertView];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://15670276702"]];
     }else if (indexPath.row == 4){
 //        登录账号/退出账号
+            [UserDB deleteAllUser];
+            [InterestingPointDB deleteAllData];
+            MainViewController * mainVC = [[MainViewController alloc] init];
+            UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:mainVC];
+            [UIApplication sharedApplication].keyWindow.rootViewController = nvc;
     }
 }
 -(void)shareButtonAction:(id)gender{
@@ -161,6 +177,7 @@
     _textAlertLabel.font = [UIFont systemFontOfSize:15];
     _textAlertLabel.textColor = [UIColor whiteColor];
     _textAlertLabel.text = text;
+    _textAlertLabel.adjustsFontSizeToFitWidth = YES;
     [self.alertCancelView addSubview:_textAlertLabel];
 }
 -(void)showAlertView{

@@ -41,6 +41,7 @@
 		BC7B58B71DA1FAE7000469E3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7B58B61DA1FAE7000469E3 /* libsqlite3.tbd */; };
 		BC7B58B91DA1FB06000469E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7B58B81DA1FB06000469E3 /* MessageUI.framework */; };
 		BC7B58BD1DA227A9000469E3 /* mountain_199.1960199005px_1200341_easyicon.net.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7B58BC1DA227A9000469E3 /* mountain_199.1960199005px_1200341_easyicon.net.png */; };
+		BC7B58C31DA2A42B000469E3 /* ShowDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7B58C21DA2A42B000469E3 /* ShowDetailView.m */; };
 		BCB513BE1D7AF0BF00A29769 /* UserFirstSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513BD1D7AF0BF00A29769 /* UserFirstSettingViewController.m */; };
 		BCB513C11D7B0BE800A29769 /* UserSecondSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513C01D7B0BE800A29769 /* UserSecondSettingViewController.m */; };
 		BCB513CA1D7B0EA200A29769 /* UINavigationItem+MyNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513C91D7B0EA200A29769 /* UINavigationItem+MyNavItem.m */; };
@@ -160,6 +161,8 @@
 		BC7B58B61DA1FAE7000469E3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		BC7B58B81DA1FB06000469E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BC7B58BC1DA227A9000469E3 /* mountain_199.1960199005px_1200341_easyicon.net.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain_199.1960199005px_1200341_easyicon.net.png; sourceTree = "<group>"; };
+		BC7B58C11DA2A42B000469E3 /* ShowDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailView.h; sourceTree = "<group>"; };
+		BC7B58C21DA2A42B000469E3 /* ShowDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailView.m; sourceTree = "<group>"; };
 		BCB513BC1D7AF0BF00A29769 /* UserFirstSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFirstSettingViewController.h; sourceTree = "<group>"; };
 		BCB513BD1D7AF0BF00A29769 /* UserFirstSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFirstSettingViewController.m; sourceTree = "<group>"; };
 		BCB513BF1D7B0BE800A29769 /* UserSecondSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSecondSettingViewController.h; sourceTree = "<group>"; };
@@ -841,6 +844,8 @@
 				BCB514111D7F0F4E00A29769 /* BodyCollectionViewCell.m */,
 				BCB5140A1D7EBAF600A29769 /* CityButtonLayoutImg.h */,
 				BCB5140B1D7EBAF600A29769 /* CityButtonLayoutImg.m */,
+				BC7B58C11DA2A42B000469E3 /* ShowDetailView.h */,
+				BC7B58C21DA2A42B000469E3 /* ShowDetailView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1181,6 +1186,7 @@
 				BCF6A9E21D83E26A0001E62D /* DetailCellTableViewCell.m in Sources */,
 				BCF6A96D1D8142220001E62D /* InterestPointViewController.m in Sources */,
 				BCD1523A1D86D2D700932F1F /* User.m in Sources */,
+				BC7B58C31DA2A42B000469E3 /* ShowDetailView.m in Sources */,
 				BCB514471D81009600A29769 /* CitysModel.m in Sources */,
 				BCB514091D7E8B9F00A29769 /* UIImage+LoadImg.m in Sources */,
 				BCB5142F1D801B9400A29769 /* MeSettingCollectionViewCell.m in Sources */,

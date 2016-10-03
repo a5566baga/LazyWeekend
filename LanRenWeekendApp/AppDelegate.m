@@ -51,6 +51,7 @@
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _window.backgroundColor = [UIColor whiteColor];
     CustomerTabBarViewController * customerTabBarVC = [[CustomerTabBarViewController alloc] init];
+    
 //    customerTabBarVC.tabBar.backgroundColor = [UIColor whiteColor];
 //    _window.rootViewController = customerTabBarVC;
     

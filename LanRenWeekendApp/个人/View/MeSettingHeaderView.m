@@ -8,6 +8,8 @@
 
 #import "MeSettingHeaderView.h"
 #import "SettingButton.h"
+#import "User.h"
+#import <UIButton+WebCache.h>
 
 @interface MeSettingHeaderView ()
 
@@ -63,8 +65,14 @@
     [self.bgImageView addSubview:_titleLabel];
     
     _iconButton = [[UIButton alloc] init];
-    [_iconButton setBackgroundImage:[UIImage imageNamed:@"default_avatar"] forState:UIControlStateNormal];
-    [_iconButton setBackgroundImage:[UIImage imageNamed:@"default_avatar"] forState:UIControlStateHighlighted];
+    if (![[UserDB queryUserName] isEqualToString:@""]) {
+        User * user = [UserDB queryUser].firstObject;
+        [_iconButton sd_setBackgroundImageWithURL:[NSURL URLWithString:user.icon] forState:UIControlStateNormal];
+        [_iconButton sd_setBackgroundImageWithURL:[NSURL URLWithString:user.icon] forState:UIControlStateHighlighted];
+    }else{
+        [_iconButton setBackgroundImage:[UIImage imageNamed:@"default_avatar"] forState:UIControlStateNormal];
+        [_iconButton setBackgroundImage:[UIImage imageNamed:@"default_avatar"] forState:UIControlStateHighlighted];
+    }
     _iconButton.layer.borderColor = [UIColor blackColor].CGColor;
     _iconButton.layer.borderWidth = 1;
     [_iconButton setBackgroundColor:[UIColor whiteColor]];
@@ -122,7 +130,7 @@
 }
 
 -(void)userLoginAction:(UIButton *)button{
-    NSLog(@"loginAction");
+    ZZQLog(@"loginAction");
     if (true) {
 //        登录成功，不操作
         
@@ -133,7 +141,7 @@
 }
 //预定
 -(void)reserveAction:(UIButton *)button{
-    NSLog(@"reserve");
+    ZZQLog(@"reserve");
     _reserveVC = [[ReserveViewController alloc] init];
     _reserveVC.view.backgroundColor = [UIColor whiteColor];
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumpToReserveViewController:)]) {
@@ -142,7 +150,7 @@
 }
 //兴趣
 -(void)interestAction:(UIButton *)button{
-    NSLog(@"interest");
+    ZZQLog(@"interest");
     _interestVC = [[InterestPointViewController alloc] init];
     _interestVC.view.backgroundColor = [UIColor whiteColor];
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumoToInterestViewController:)]){
@@ -151,7 +159,7 @@
 }
 //设置
 -(void)settingAction:(UIButton *)button{
-    NSLog(@"setting");
+    ZZQLog(@"setting");
     _settingVC = [[SettingViewController alloc] init];
     _settingVC.view.backgroundColor = [UIColor whiteColor];
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(jumpToSettingViewController:)]) {

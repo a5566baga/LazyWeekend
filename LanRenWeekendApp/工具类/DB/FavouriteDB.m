@@ -19,9 +19,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * createSql = @"CREATE TABLE if not exists t_fav (leo_id TEXT PRIMARY KEY, pic TEXT, title TEXT, poi_name TEXT)";
         BOOL result = [db executeUpdate:createSql];
         if (result) {
-            NSLog(@"创建喜欢的表成功");
+            ZZQLog(@"创建喜欢的表成功");
         }else{
-            NSLog(@"创建喜欢的表失败");
+            ZZQLog(@"创建喜欢的表失败");
         }
     }];
 }
@@ -31,9 +31,9 @@ static FMDatabaseQueue * queue = nil;
        NSString * insertSql = @"INSERT INTO t_fav(leo_id, pic, title, poi_name) VALUES(?, ?, ?, ?)";
         BOOL result = [db executeUpdate:insertSql, @(leo_id).stringValue, pic, title, poi_name];
         if (result) {
-            NSLog(@"最爱内容添加成功");
+            ZZQLog(@"最爱内容添加成功");
         }else{
-            NSLog(@"最爱内容添加失败");
+            ZZQLog(@"最爱内容添加失败");
         }
     }];
 }
@@ -60,9 +60,9 @@ static FMDatabaseQueue * queue = nil;
        NSString * deleteSql = @"DELETE FROM t_fav WHERE leo_id = ?";
         BOOL result = [db executeUpdate:deleteSql, @(leo_id).stringValue];
         if (result) {
-            NSLog(@"最爱项目%ld删除成功", (long)leo_id);
+            ZZQLog(@"最爱项目%ld删除成功", (long)leo_id);
         }else{
-            NSLog(@"最爱项目%ld删除失败", (long)leo_id);
+            ZZQLog(@"最爱项目%ld删除失败", (long)leo_id);
         }
     }];
 }

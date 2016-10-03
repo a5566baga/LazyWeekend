@@ -57,7 +57,7 @@
 //处理位置坐标更新
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
-    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    ZZQLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     if ((NSInteger)_lon != (NSInteger)userLocation.location.coordinate.longitude || (NSInteger)_lat != (NSInteger)userLocation.location.coordinate.latitude) {
         _lon = userLocation.location.coordinate.longitude;
         _lat = userLocation.location.coordinate.latitude;

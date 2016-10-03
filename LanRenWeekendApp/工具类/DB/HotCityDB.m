@@ -21,9 +21,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * createSql = @"CREATE TABLE if not exists t_hotCity (cityID INTEGER PRIMARY KEY AUTOINCREMENT, cityName TEXT UNIQUE, city_id TEXT)";
         BOOL result = [db executeUpdate:createSql];
         if (result) {
-            NSLog(@"热门城市创建成功");
+            ZZQLog(@"热门城市创建成功");
         }else{
-            NSLog(@"热门城市创建失败");
+            ZZQLog(@"热门城市创建失败");
         }
     }];
 }
@@ -32,9 +32,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * insertSql = @"INSERT INTO t_hotCity(cityName, city_id) VALUES(?, ?)";
         BOOL result = [db executeUpdate:insertSql, cityName, @(city_id).stringValue];
         if (result) {
-            NSLog(@"插入热门城市成功");
+            ZZQLog(@"插入热门城市成功");
         }else{
-            NSLog(@"插入热门城市失败");
+            ZZQLog(@"插入热门城市失败");
         }
     }];
 }

@@ -19,9 +19,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * createSql = @"CREATE TABLE if not exists t_interest (mantain integer, bar integer, music integer, stage integer, pic integer, eat integer, bag integer, movie integer, person integer, baskball integer, leaf integer, shirt integer)";
         BOOL result = [db executeUpdate:createSql];
         if (result) {
-            NSLog(@"创建兴趣表成功");
+            ZZQLog(@"创建兴趣表成功");
         }else{
-            NSLog(@"创建兴趣表失败");
+            ZZQLog(@"创建兴趣表失败");
         }
     }];
 }
@@ -31,9 +31,9 @@ static FMDatabaseQueue * queue = nil;
        NSString * insertSql = @"INSERT INTO t_interest(mantain, bar, music, stage, pic, eat, bag, movie, person, baskball, leaf, shirt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         BOOL result = [db executeUpdate:insertSql, dataDic[@"周边游"], dataDic[@"酒吧"], dataDic[@"音乐"], dataDic[@"戏剧"], dataDic[@"展览"], dataDic[@"美食"], dataDic[@"购物"], dataDic[@"电影"], dataDic[@"聚会"], dataDic[@"运动"], dataDic[@"公益"], dataDic[@"商业"]];
         if (result) {
-            NSLog(@"插入兴趣点内容成功");
+            ZZQLog(@"插入兴趣点内容成功");
         }else{
-            NSLog(@"插入兴趣点内容失败");
+            ZZQLog(@"插入兴趣点内容失败");
         }
     }];
 }
@@ -77,9 +77,9 @@ static FMDatabaseQueue * queue = nil;
         [db executeUpdate:updateSQL12, dataDic[@"商业"]];
         
         if (result) {
-            NSLog(@"更新兴趣点成功");
+            ZZQLog(@"更新兴趣点成功");
         }else{
-            NSLog(@"更新兴趣点失败");
+            ZZQLog(@"更新兴趣点失败");
         }
     }];
 }
@@ -115,9 +115,9 @@ static FMDatabaseQueue * queue = nil;
        NSString * deleteSql = @"DELETE FROM t_interest";
         BOOL result = [db executeUpdate:deleteSql];
         if (result) {
-            NSLog(@"兴趣表删除成功");
+            ZZQLog(@"兴趣表删除成功");
         }else{
-            NSLog(@"兴趣表删除失败");
+            ZZQLog(@"兴趣表删除失败");
         }
     }];
 }

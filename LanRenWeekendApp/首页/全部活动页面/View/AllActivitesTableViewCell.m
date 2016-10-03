@@ -39,7 +39,7 @@
 -(void)setCellStyle:(AllActiviteModel *)model{
     [self initForCellView];
     _model = model;
-#warning 动态加载
+//动态加载
 //    动态展示
     _progressView = [[UCZProgressView alloc] init];
     _progressView.center = CGPointMake(self.width/2, self.width/2);
@@ -141,7 +141,7 @@
     button.selected = !button.selected;
     [UIView animateWithDuration:0.4 delay:0.1 options:UIViewAnimationOptionAutoreverse animations:^{
         button.imageView.transform = CGAffineTransformMakeScale(1.2, 1.2);
-#warning 收藏写入数据库
+//收藏写入数据库
         if (button.selected) {
             _model.collected_num += 1;
             [FavouriteDB addFavourite:_model.leo_id pic:_model.front_cover_image_list.firstObject title:_model.title poi_name:_model.poi_name];

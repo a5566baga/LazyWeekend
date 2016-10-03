@@ -32,7 +32,6 @@
 -(void)setCitySearchStr:(NSString *)searchStr{
     _searchStr = searchStr;
 }
-#warning 页面跳转传的参数是http://api.lanrenzhoumo.com/wh/common/leos?category=all&city_id=321&page=1 城市的
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

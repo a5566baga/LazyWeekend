@@ -10,4 +10,9 @@
 
 @interface UserFirstSettingViewController : UIViewController
 
+@property(nonatomic, strong)NSString * nickName;
+@property(nonatomic, strong)NSString * iconStr;
+
+-(void)setUserInfo:(NSString *)nickName iconStr:(NSString *)iconStr;
+
 @end

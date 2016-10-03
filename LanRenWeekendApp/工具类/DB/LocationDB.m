@@ -22,9 +22,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * createSql = @"CREATE TABLE if not exists t_cityLocation (cityName TEXT, lon TEXT, lat TEXT)";
         BOOL result = [db executeUpdate:createSql];
         if (result) {
-            NSLog(@"地理位置表创建成功");
+            ZZQLog(@"地理位置表创建成功");
         }else{
-            NSLog(@"地理位置表创建失败");
+            ZZQLog(@"地理位置表创建失败");
         }
     }];
 }
@@ -36,9 +36,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * insertSql = @"INSERT INTO t_cityLocation(cityName, lon, lat) VALUES(?, ?, ?)";
         BOOL result = [db executeUpdate:insertSql, cityName, lonStr, latStr];
         if (result) {
-            NSLog(@"插入城市地理位置成功");
+            ZZQLog(@"插入城市地理位置成功");
         }else{
-            NSLog(@"插入城市地理位置失败");
+            ZZQLog(@"插入城市地理位置失败");
         }
     }];
 }
@@ -48,9 +48,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * deleteSql = @"DELETE FROM t_cityLocation";
         BOOL result = [db executeUpdate:deleteSql];
         if (result) {
-            NSLog(@"删除成功");
+            ZZQLog(@"删除成功");
         }else{
-            NSLog(@"删除失败");
+            ZZQLog(@"删除失败");
         }
     }];
 }

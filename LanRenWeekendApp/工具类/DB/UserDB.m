@@ -19,9 +19,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * createSql = @"CREATE TABLE if not exists t_user (username TEXT, icon text, sex TEXT,nowstarus TEXT)";
         BOOL result = [db executeUpdate:createSql];
         if (result) {
-            NSLog(@"创建用户表成功");
+            ZZQLog(@"创建用户表成功");
         }else{
-            NSLog(@"创建用户表失败");
+            ZZQLog(@"创建用户表失败");
         }
     }];
 }
@@ -31,9 +31,9 @@ static FMDatabaseQueue * queue = nil;
         NSString * addSql = @"INSERT INTO t_user(username, icon, sex, nowstarus) VALUES(?, ?, ?, ?) ";
         BOOL result = [db executeUpdate:addSql, username, icon, sex, nowStaus];
         if (result) {
-            NSLog(@"用户表插入成功");
+            ZZQLog(@"用户表插入成功");
         }else{
-            NSLog(@"用户表插入失败");
+            ZZQLog(@"用户表插入失败");
         }
     }];
 }
@@ -77,7 +77,8 @@ static FMDatabaseQueue * queue = nil;
         while(set.next) {
             User * user = [[User alloc] init];
             user.username = [set stringForColumn:@"username"];
-            user.icon = [set stringForColumn:@"sex"];
+            user.sex = [set stringForColumn:@"sex"];
+            user.icon = [set stringForColumn:@"icon"];
             user.nowStatus = [set stringForColumn:@"nowstarus"];
             [array addObject:user];
         }
@@ -91,9 +92,9 @@ static FMDatabaseQueue * queue = nil;
        NSString * deleSql = @"DELETE FROM t_user";
         BOOL result = [db executeUpdate:deleSql];
         if (result) {
-            NSLog(@"删除成功");
+            ZZQLog(@"删除成功");
         }else{
-            NSLog(@"删除失败");
+            ZZQLog(@"删除失败");
         }
     }];
 }

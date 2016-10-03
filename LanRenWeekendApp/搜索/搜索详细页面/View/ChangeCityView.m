@@ -36,7 +36,6 @@
     }
     return self;
 }
-#warning 这个页面还没完成
 #pragma mark
 #pragma mark ============ 请求数据
 -(AFHTTPSessionManager *)manager{
@@ -62,7 +61,7 @@
         }
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"失败");
+        ZZQLog(@"失败");
     }];
 }
 #pragma mark
@@ -143,11 +142,11 @@
 }
 //设置侧边索引栏
 -(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
-    NSLog(@"");
+    ZZQLog(@"");
     return _cityNameArray;
 }
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
-    NSLog(@"index == %ld", (long)index);
+    ZZQLog(@"index == %ld", (long)index);
     return index;
 }
 //侧边栏消失出现

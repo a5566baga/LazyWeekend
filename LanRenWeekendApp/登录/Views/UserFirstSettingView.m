@@ -7,6 +7,7 @@
 //
 
 #import "UserFirstSettingView.h"
+#import <UIImageView+WebCache.h>
 
 #define SEX_KEY @"性别"
 #define STATUS_KEY @"当前状态"
@@ -38,7 +39,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initForView];
+//        [self initForView];
     }
     return self;
 }
@@ -51,11 +52,22 @@
     [_mySettingDic setObject:@"未知" forKey:STATUS_KEY];
     
     _userImage = [[UIImageView alloc] init];
-    _userImage.image = [UIImage imageNamed:@"default_avatar"];
+    if (_iconStr != nil) {
+        [_userImage sd_setImageWithURL:[NSURL URLWithString:_iconStr]];
+    }else{
+        _userImage.image = [UIImage imageNamed:@"default_avatar"];
+    }
+    _userImage.clipsToBounds = YES;
+    _userImage.userInteractionEnabled = YES;
+    _userImage.layer.masksToBounds = YES;
     [self addSubview:_userImage];
     
     _usernameLabel = [[UILabel alloc] init];
-    _usernameLabel.text = @"匿名用户";
+    if (_nickName != nil) {
+        _usernameLabel.text = _nickName;
+    }else{
+        _usernameLabel.text = @"匿名用户";
+    }
     _usernameLabel.textAlignment = NSTextAlignmentCenter;
     _usernameLabel.textColor = [UIColor colorWithRed:0.098 green:0.098 blue:0.098 alpha:1.0];
     _usernameLabel.font = [UIFont fontWithName:@"Gotham-Light" size:20];
@@ -193,12 +205,18 @@
 #pragma mark ========== 设置控件的大小位置
 -(void)layoutSubviews{
     [super layoutSubviews];
+    for (UIView * view in self.subviews) {
+        [view removeFromSuperview];
+    }
+    [self initForView];
     self.postDic(_mySettingDic);
     float margin = 10;
     float leftMargin = self.width/3;
     float topMagin = self.height/13;
     float iconWidth = leftMargin-2*margin;
+    
     _userImage.frame = CGRectMake(leftMargin+margin, topMagin, iconWidth, iconWidth);
+    _userImage.layer.cornerRadius = iconWidth/2;
     
     _usernameLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_userImage.frame)+1.5*margin, leftMargin, 30);
     _sexLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_usernameLabel.frame)+1.5*margin, leftMargin, 15);
@@ -214,6 +232,11 @@
     _marryButton.frame = CGRectMake(leftMargin+margin, CGRectGetMaxY(_parentButton.frame)+1.5*margin, leftMargin+2*margin, 25);
     
     _singleButton.frame = CGRectMake(leftMargin+margin, CGRectGetMaxY(_marryButton.frame)+1.5*margin, leftMargin, 25);
+}
+
+-(void)setUserInfo:(NSString *)nickName iconStr:(NSString *)iconStr{
+    _nickName = nickName;
+    _iconStr = iconStr;
 }
 
 @end

@@ -16,6 +16,9 @@
 
 @interface DetailActivtyViewController ()
 
+@property(nonatomic, strong)UIView * alertCancelView;
+@property(nonatomic, strong)UILabel * textAlertLabel;
+
 @end
 
 @implementation DetailActivtyViewController
@@ -96,32 +99,20 @@
                    {
                        case SSDKResponseStateSuccess:
                        {
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
+                           [self initForCancelView:@"分享成功"];
+                           [self showAlertView];
                            break;
                        }
                        case SSDKResponseStateFail:
                        {
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:[NSString stringWithFormat:@"%@", error]
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
+                           [self initForCancelView:@"分享失败"];
+                           [self showAlertView];
                            break;
                        }
                        case SSDKResponseStateCancel:
                        {
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
+                           [self initForCancelView:@"分享已取消"];
+                           [self showAlertView];
                            break;
                        }
                        default:
@@ -129,11 +120,35 @@
                    }
                }];
 }
-
+//提示取消分享视图
+-(void)initForCancelView:(NSString *)text{
+    float letf = self.view.width/3;
+    _alertCancelView = [[UIView alloc] initWithFrame:CGRectMake(letf, self.view.height*0.8, letf, 30)];
+    _alertCancelView.backgroundColor = [UIColor blackColor];
+    _alertCancelView.alpha = 0;
+    _alertCancelView.layer.cornerRadius = 5;
+    _alertCancelView.clipsToBounds = YES;
+    [self.view addSubview:_alertCancelView];
+    
+    _textAlertLabel = [[UILabel alloc] initWithFrame:_alertCancelView.bounds];
+    _textAlertLabel.textAlignment = NSTextAlignmentCenter;
+    _textAlertLabel.font = [UIFont systemFontOfSize:15];
+    _textAlertLabel.textColor = [UIColor whiteColor];
+    _textAlertLabel.text = text;
+    [self.alertCancelView addSubview:_textAlertLabel];
+}
+-(void)showAlertView{
+    [UIView animateWithDuration:0.8 animations:^{
+        _alertCancelView.alpha = 0.7;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.4 animations:^{
+            _alertCancelView.alpha = 0;
+        }];
+    }];
+}
 -(void)backAvtion:(UIButton *)button{
     [self.navigationController popViewControllerAnimated:YES];
 }
-#warning message
 -(void)favButtonBlack:(UIButton *)button{
     if (button.selected) {
         [FavouriteDB deleteFavouriteItem:_leo_id];

@@ -79,7 +79,7 @@
 }
 -(void)initForData{
     [self getLocationCity:_lon lat:_lat];
-#warning 写入数据库
+//写入数据库
     [LocationDB deleteLocation];
     if (_cityName != nil) {
         [LocationDB addLocation:_cityName lon:_lon lat:_lat];

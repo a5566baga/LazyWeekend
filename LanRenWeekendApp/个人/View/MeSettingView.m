@@ -70,7 +70,7 @@
 #pragma mark
 #pragma mark ========== collectionView delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-#warning 数据库取出数据的个数
+//数据库取出数据的个数
     NSArray * array = [FavouriteDB queryAllFavourite];
     return array.count;
 }
@@ -99,13 +99,13 @@
 //是否中的cell
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    页面跳转到二级页面，传参数拼接成一个url
-    NSLog(@"%ld 个人cell 选中", (long)indexPath.row);
+    ZZQLog(@"%ld 个人cell 选中", (long)indexPath.row);
     Favourtie * fav = [FavouriteDB queryAllFavourite][indexPath.row];
     DetailActivtyViewController * detailVC = [[DetailActivtyViewController alloc] init];
     self.jumpToDetailView(detailVC, fav.leo_id);
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld 个人cell 取消", (long)indexPath.row);
+    ZZQLog(@"%ld 个人cell 取消", (long)indexPath.row);
 }
 
 #pragma mark

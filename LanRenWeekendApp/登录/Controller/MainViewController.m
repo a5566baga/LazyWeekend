@@ -22,7 +22,11 @@
     [loginView setJumpToMain:^(UserFirstSettingViewController * viewController) {
         [self.navigationController pushViewController:viewController animated:YES];
     }];
-    [loginView jumpToMain];
+    
+    [loginView setJumpToMainByOtherWay:^(UserFirstSettingViewController * firstVC, NSString * nickName, NSString * iconStr) {
+        [firstVC setUserInfo:nickName iconStr:iconStr];
+        [self.navigationController pushViewController:firstVC animated:YES];
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

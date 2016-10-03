@@ -46,19 +46,21 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)nextButtonAction:(UIButton *)button{
-//    NSLog(@"%@", _mySettingDic);
 //    回调字典
     NSString * sexStr = _mySettingDic[@"性别"];
     NSString * nowstatusStr = _mySettingDic[@"当前状态"];
     if (![sexStr isEqualToString:@"未知"] && ![nowstatusStr isEqualToString:@"未知"]) {
-#warning DB Save
 //        写入数据库
-        [UserDB addNewUser:@"" icon:@"" sex:sexStr nowStatus:nowstatusStr];
+        if (_nickName != nil && _iconStr != nil) {
+            [UserDB addNewUser:_nickName icon:_iconStr sex:sexStr nowStatus:nowstatusStr];
+        }else{
+            [UserDB addNewUser:@"" icon:@"" sex:sexStr nowStatus:nowstatusStr];
+        }
 //        视图跳转
         UserSecondSettingViewController * secondVC = [[UserSecondSettingViewController alloc] init];
         [self.navigationController pushViewController:secondVC animated:YES];
     }else{
-        NSLog(@"信息填写不完全");
+        ZZQLog(@"信息填写不完全");
         UILabel * errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width/3, self.view.height, self.view.width/3, 25)];
         errorLabel.text = @"信息填写不完全";
         errorLabel.backgroundColor = [UIColor colorWithRed:0.098 green:0.098 blue:0.098 alpha:1.0];
@@ -84,14 +86,18 @@
             }];
         }];
     }
-    
 }
 
 #pragma mark
 #pragma mark ============ 设置页面内容
 -(void)initForView{
     _firstView = [[UserFirstSettingView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64)];
+    [_firstView setUserInfo:_nickName iconStr:_iconStr];
     [self.view addSubview:_firstView];
+}
+-(void)setUserInfo:(NSString *)nickName iconStr:(NSString *)iconStr{
+    _nickName = nickName;
+    _iconStr = iconStr;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -52,7 +52,7 @@
 }
 -(void)initForData{
     _revModelArray = [[NSMutableArray alloc] init];
-#warning 参数尚未决定是存到数据库还是网络请求
+//参数尚未决定是存到数据库还是网络请求
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     params[@""] = @"";
     [self.manager GET:@"http://api.lanrenzhoumo.com/tailor/requirement/list?start_id=&session_id=00004061a9f934aa1954907af22163863e8d00" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

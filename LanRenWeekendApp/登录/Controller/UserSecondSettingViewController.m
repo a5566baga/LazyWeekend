@@ -43,7 +43,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)nextButtonAction:(UIButton *)button{
-#warning DB Save
+//DB Save
 //    用block跳转。把内容提交到数据库
     [InterestingPointDB insertNewData:_mySecSettingDic];
     CustomerTabBarViewController * tabBarController = [[CustomerTabBarViewController alloc] init];

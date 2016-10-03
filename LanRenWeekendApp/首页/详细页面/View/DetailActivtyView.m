@@ -93,7 +93,7 @@
         [self initForView];
         [_tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"");
+        ZZQLog(@"");
         [SVProgressHUD dismiss];
     }];
 }

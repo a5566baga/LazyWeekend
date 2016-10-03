@@ -9,7 +9,7 @@
 #import "ChangCityHeaderView.h"
 
 @interface ChangCityHeaderView ()
-#warning 位置
+
 //读取数据库中，自己存储的本地地址
 @property(nonatomic, strong)UILabel * locationLabel;
 @property(nonatomic, strong)UIButton * locationButton;
@@ -87,7 +87,7 @@
     _recentLabel.frame = CGRectMake(rec_leftMargin, CGRectGetMaxY(_locationButton.frame)+rec_topMargin, 120, 30);
     float rec_width = self.width/5;
     float rec_margin = 40;
-#warning 热门城市
+//热门城市
     for (NSInteger i = 0; i < [HotCityDB queryLocation].count; i++) {
         _recentButton = [[UIButton alloc] init];
         _recentButton.layer.borderWidth = 1;

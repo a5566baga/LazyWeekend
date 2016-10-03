@@ -10,6 +10,11 @@
 
 @interface UserFirstSettingView : UIView
 
+@property(nonatomic, strong)NSString * nickName;
+@property(nonatomic, strong)NSString * iconStr;
+
 @property(nonatomic, copy)void(^postDic)(NSMutableDictionary * dic);
+
+-(void)setUserInfo:(NSString *)nickName iconStr:(NSString *)iconStr;
 
 @end

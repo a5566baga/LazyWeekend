@@ -114,14 +114,14 @@ static NSString * cellId = @"cellID";
 }
 //选中
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    //    NSLog(@"selected === %ld", indexPath.row);
+    //    ZZQLog(@"selected === %ld", indexPath.row);
     [self.interestStatus setObject:@(1) forKey:_titleArray[indexPath.row]];
     
     self.postInterestStatus(self.interestStatus);
 }
 //取消
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cancel === %ld", (long)indexPath.row);
+    ZZQLog(@"cancel === %ld", (long)indexPath.row);
     [self.interestStatus setObject:@(0) forKey:_titleArray[indexPath.row]];
     
     self.postInterestStatus(self.interestStatus);

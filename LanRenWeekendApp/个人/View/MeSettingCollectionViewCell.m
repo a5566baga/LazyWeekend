@@ -68,7 +68,7 @@
 
 -(void)setSelected:(BOOL)selected{
     [super setSelected:selected];
-    NSLog(@"个人页的cell");
+    ZZQLog(@"个人页的cell");
 }
 
 @end

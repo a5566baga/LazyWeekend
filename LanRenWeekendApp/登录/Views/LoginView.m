@@ -108,14 +108,12 @@
      {
          if (state == SSDKResponseStateSuccess)
          {
-             NSLog(@"uid=%@",user.uid);
-             NSLog(@"%@",user.credential);
-             NSLog(@"token=%@",user.credential.token);
-             NSLog(@"nickname=%@",user.nickname);
+             UserFirstSettingViewController * userFirstSettingView = [[UserFirstSettingViewController alloc] init];
+             self.jumpToMainByOtherWay(userFirstSettingView, user.nickname, user.icon);
          }
          else
          {
-             NSLog(@"%@",error);
+             ZZQLog(@"%@",error);
          }
          
      }];
@@ -130,14 +128,12 @@
      {
          if (state == SSDKResponseStateSuccess)
          {
-             NSLog(@"uid=%@",user.uid);
-             NSLog(@"%@",user.credential);
-             NSLog(@"token=%@",user.credential.token);
-             NSLog(@"nickname=%@",user.nickname);
+             UserFirstSettingViewController * userFirstSettingView = [[UserFirstSettingViewController alloc] init];
+             self.jumpToMainByOtherWay(userFirstSettingView, user.nickname, user.icon);
          }
          else
          {
-             NSLog(@"%@",error);
+             ZZQLog(@"%@",error);
          }
          
      }];

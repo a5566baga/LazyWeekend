@@ -78,9 +78,14 @@
     return _manager;
 }
 -(void)initForData{
+    [self getLocationCity:_lon lat:_lat];
 #warning 写入数据库
     [LocationDB deleteLocation];
-    [LocationDB addLocation:_cityName lon:_lon lat:_lat];
+    if (_cityName != nil) {
+        [LocationDB addLocation:_cityName lon:_lon lat:_lat];
+    }else{
+        [LocationDB addLocation:nil lon:_lon lat:_lat];
+    }
     
     _allModelArray = [[NSMutableArray alloc] init];
     [SVProgressHUD showWithStatus:@"加载中"];
@@ -105,9 +110,9 @@
         [self.myTableView.mj_header endRefreshing];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"对不起，网络出错"];
-        NSLog(@"Failed");
-        NSLog(@"%@", error);
+        ZZQLog(@"%@", error);
         [self.myTableView.mj_header endRefreshing];
+        [self initForErrorView];
     }];
 }
 #pragma mark
@@ -131,9 +136,9 @@
         }
         [self.myTableView.mj_footer endRefreshing];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Failed");
-        NSLog(@"%@", error);
+        ZZQLog(@"%@", error);
         [self.myTableView.mj_footer endRefreshing];
+        [self initForErrorView];
     }];
 }
 #pragma mark
@@ -156,13 +161,35 @@
 #pragma mark
 #pragma mark ======== tableView的创建
 -(void)initForTableView{
-    _myTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStyleGrouped];
-    _myTableView.showsHorizontalScrollIndicator = NO;
-    _myTableView.showsVerticalScrollIndicator = NO;
-    _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _myTableView.delegate = self;
-    _myTableView.dataSource = self;
-    [self addSubview:_myTableView];
+    if (_lat != 0 && _lon !=0) {
+        _myTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStyleGrouped];
+        _myTableView.showsHorizontalScrollIndicator = NO;
+        _myTableView.showsVerticalScrollIndicator = NO;
+        _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _myTableView.delegate = self;
+        _myTableView.dataSource = self;
+        [self addSubview:_myTableView];
+    }else{
+        [self initForErrorView];
+    }
+    [self refresh];
+}
+-(void)initForErrorView{
+    for (UIView * view in self.subviews) {
+        [view removeFromSuperview];
+    }
+    UIImageView * errPic = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    errPic.image = [UIImage imageNamed:@"ic_cat_shock_gray"];
+    errPic.center = CGPointMake(self.width/2, self.height/2-50);
+    [self addSubview:errPic];
+    UILabel * errLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(errPic.frame), 200, 40)];
+    errLabel.center = CGPointMake(self.width/2, errPic.center.y+30);
+    errLabel.text = @"对不起  出错了";
+    errLabel.numberOfLines = 0;
+    errLabel.textColor = [UIColor colorWithRed:0.75 green:0.74 blue:0.76 alpha:1.00];
+    errLabel.textAlignment = NSTextAlignmentCenter;
+    errLabel.font = [UIFont systemFontOfSize:15];
+    [self addSubview:errLabel];
 }
 #pragma mark
 #pragma mark ======== layoutSubviews布局
@@ -209,41 +236,45 @@
     return 0.1;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld", (long)indexPath.section);
+    ZZQLog(@"%ld", (long)indexPath.section);
     DetailActivtyViewController * detailVC = [[DetailActivtyViewController alloc] init];
     self.jumpToDetail(detailVC, [_allModelArray[indexPath.section] leo_id], [_allModelArray[indexPath.section] front_cover_image_list].firstObject, [_allModelArray[indexPath.section] title], [_allModelArray[indexPath.section] poi_name]);
 }
 #pragma mark
 #pragma mark ============== 工具类
 -(void)getLocationCity:(float)lon lat:(float)lat{
-    if (_reverseGeoCodeOption==nil) {
-        //初始化反地理编码类
-        _reverseGeoCodeOption= [[BMKReverseGeoCodeOption alloc] init];
-        
-        //需要逆地理编码的坐标位置
-        CLLocationCoordinate2D coorDinate = CLLocationCoordinate2DMake(_lat, _lon);
-        _reverseGeoCodeOption.reverseGeoPoint = coorDinate;
-        [_geoCodeSearch reverseGeoCode:_reverseGeoCodeOption];
-        
-        //创建地理编码对象
-        CLGeocoder * geocoder=[[CLGeocoder alloc]init];
-        CLLocation *location=[[CLLocation alloc]initWithLatitude:coorDinate.latitude longitude:coorDinate.longitude];
-        //反地理编码
-        [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-            //判断是否有错误或者placemarks是否为空
-            if (error !=nil || placemarks.count==0) {
-                ZZQLog(@"%@",error);
-                return ;
+    //初始化反地理编码类
+    _reverseGeoCodeOption= [[BMKReverseGeoCodeOption alloc] init];
+    
+    //需要逆地理编码的坐标位置
+    CLLocationCoordinate2D coorDinate = CLLocationCoordinate2DMake(_lat, _lon);
+    _reverseGeoCodeOption.reverseGeoPoint = coorDinate;
+    [_geoCodeSearch reverseGeoCode:_reverseGeoCodeOption];
+    
+    //创建地理编码对象
+    CLGeocoder * geocoder=[[CLGeocoder alloc]init];
+    CLLocation *location=[[CLLocation alloc]initWithLatitude:coorDinate.latitude longitude:coorDinate.longitude];
+    //反地理编码
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        //判断是否有错误或者placemarks是否为空
+        if (error !=nil || placemarks.count==0) {
+            ZZQLog(@"%@",error);
+            return ;
+        }
+        for (CLPlacemark *placemark in placemarks) {
+            //赋值详细地址
+            NSString * cityName= placemark.locality;
+            _cityName = [cityName substringWithRange:NSMakeRange(0, cityName.length-1)];
+            ZZQLog(@"cityName___%@", _cityName);
+            [LocationDB deleteLocation];
+            if (_cityName != nil) {
+                [LocationDB addLocation:_cityName lon:_lon lat:_lat];
+            }else{
+                [LocationDB addLocation:nil lon:_lon lat:_lat];
             }
-            for (CLPlacemark *placemark in placemarks) {
-                //赋值详细地址
-                NSString * cityName= placemark.locality;
-                _cityName = [cityName substringWithRange:NSMakeRange(0, cityName.length-1)];
-                ZZQLog(@"%@", _cityName);
-                [self refresh];
-            }  
-        }];
-    }
+//            [self refresh];
+        }
+    }];
 }
 @end
 

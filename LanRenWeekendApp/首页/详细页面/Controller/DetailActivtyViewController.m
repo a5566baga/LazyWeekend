@@ -12,8 +12,6 @@
 
 @interface DetailActivtyViewController ()
 
-
-
 @end
 
 @implementation DetailActivtyViewController

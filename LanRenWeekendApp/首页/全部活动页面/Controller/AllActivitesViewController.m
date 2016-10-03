@@ -35,6 +35,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    _locService.delegate = self;
     if (_allActiviesView != nil) {
         [_allActiviesView.myTableView reloadData];
     }

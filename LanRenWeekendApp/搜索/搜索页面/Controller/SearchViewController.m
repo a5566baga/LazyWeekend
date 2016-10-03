@@ -31,6 +31,12 @@
 //    设置view的内容
     [self initForView];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+//    NSString * cityName = [self getLocationCityName];
+//    [_citySelButton setTitle:cityName forState:UIControlStateNormal];
+    [self initForTitleView];
+}
 #pragma mark
 #pragma mark ========== 一个Button一个搜索
 -(void)initForTitleView{
@@ -41,11 +47,7 @@
     
     NSString * cityName = [self getLocationCityName];
     NSAttributedString * string = nil;
-    if ([cityName isEqualToString:@""]) {
-         string = [[NSAttributedString alloc] initWithString:@"未知" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light"size:18]}];
-    }else{
-        string = [[NSAttributedString alloc] initWithString:cityName attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light"size:18]}];
-    }
+    string = [[NSAttributedString alloc] initWithString:cityName attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light"size:18]}];
     [_citySelButton setAttributedTitle:string forState:UIControlStateNormal];
     _citySelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_citySelButton];
@@ -105,14 +107,15 @@
 #pragma mark
 #pragma mark ========= 工具类
 -(NSString *)getLocationCityName{
-    NSString * cityName = [LocationDB queryLocation].firstObject.cityName;
+    NSString * cityName;
+    if ([LocationDB queryLocation].firstObject.cityName != nil) {
+        cityName = [LocationDB queryLocation].firstObject.cityName;
+    }else{
+        cityName = @"未知";
+    }
     return cityName;
 }
 
-
--(void)viewWillAppear:(BOOL)animated{
-//    [self.searchController.searchBar becomeFirstResponder];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     

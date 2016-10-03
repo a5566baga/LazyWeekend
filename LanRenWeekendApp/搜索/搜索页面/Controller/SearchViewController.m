@@ -70,7 +70,7 @@
     self.definesPresentationContext = YES;
     
     UIButton *canceLBtn = [_searchController.searchBar valueForKey:@"cancelButton"];
-    NSAttributedString * cancelStr = [[NSAttributedString alloc] initWithString:@"取消" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light"size:18],}];
+    NSAttributedString * cancelStr = [[NSAttributedString alloc] initWithString:@"取消" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Gotham-Light"size:16],}];
     [canceLBtn setAttributedTitle:cancelStr forState:UIControlStateNormal];
     [canceLBtn setTitleColor:[UIColor colorWithRed:0.098 green:0.098 blue:0.098 alpha:1.0] forState:UIControlStateNormal];
 }

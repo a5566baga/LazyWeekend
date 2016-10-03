@@ -8,6 +8,10 @@
 
 #import "SettingViewController.h"
 #import "SettingDetailTableViewCell.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKExtension/ShareSDK+Extension.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
 
 @interface SettingViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -77,7 +81,80 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ZZQLog(@"%ld", indexPath.row);
+    if (indexPath.row == 0) {
+//        分享
+        [self shareButtonAction:tableView];
+    }else if (indexPath.row == 1){
+//        清除缓存
+        
+    }else if (indexPath.row == 2){
+//        用户反馈
+    }else if (indexPath.row == 3){
+//        练习我们
+    }else if (indexPath.row == 4){
+//        登录账号/退出账号
+    }
 }
+-(void)shareButtonAction:(id)gender{
+    NSString * shareUrl = @"http://lanrenzhoumo.com/";
+    //    第三方分享
+    [SSUIShareActionSheetStyle setShareActionSheetStyle:ShareActionSheetStyleSimple];
+    //1、创建分享参数
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    NSArray* imageArray = @[[UIImage imageNamed:@"mountain_199.1960199005px_1200341_easyicon.net"]];
+    if (imageArray)
+    {
+        [shareParams SSDKSetupShareParamsByText:@"一起在城市中寻找快乐吧~~~"
+                                         images:imageArray
+                                            url:[NSURL URLWithString:shareUrl]
+                                          title:@"周末去哪耍"
+                                           type:SSDKContentTypeImage];
+    }
+    
+    //2、分享
+    [ShareSDK showShareActionSheet:gender
+                             items:nil
+                       shareParams:shareParams
+               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                   
+                   switch (state)
+                   {
+                       case SSDKResponseStateSuccess:
+                       {
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                               message:nil
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
+                           break;
+                       }
+                       case SSDKResponseStateFail:
+                       {
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                               message:[NSString stringWithFormat:@"%@", error]
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
+                           break;
+                       }
+                       case SSDKResponseStateCancel:
+                       {
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                               message:nil
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
+                           break;
+                       }
+                       default:
+                           break;
+                   }
+               }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

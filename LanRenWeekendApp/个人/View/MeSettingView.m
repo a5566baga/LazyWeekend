@@ -39,6 +39,7 @@
 #pragma mark =========== 请求数据
 -(void)initForDataFromDB{
 // 请求的数据是在收藏的那里点击按钮之后
+    
 }
 
 
@@ -87,6 +88,7 @@
     _headerView = (MeSettingHeaderView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:CELL_HEADER forIndexPath:indexPath];
     _headerView.backgroundColor = [UIColor whiteColor];
     _headerView.delegate = self;
+//    [_headerView setMeheaderValue:nil icon:nil];
     return _headerView;
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{

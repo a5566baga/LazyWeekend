@@ -7,6 +7,14 @@
 //登录界面
 
 #import "LoginView.h"
+#import <ShareSDKExtension/SSEThirdPartyLoginHelper.h>
+
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//微信SDK头文件
+#import "WXApi.h"
+//新浪微博SDK头文件
+#import "WeiboSDK.h"
 
 @interface LoginView ()
 
@@ -95,11 +103,44 @@
 
 -(void)weiboLogin:(UIButton *)button{
 //    微博登录
+    [ShareSDK getUserInfo:SSDKPlatformTypeSinaWeibo
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             NSLog(@"uid=%@",user.uid);
+             NSLog(@"%@",user.credential);
+             NSLog(@"token=%@",user.credential.token);
+             NSLog(@"nickname=%@",user.nickname);
+         }
+         else
+         {
+             NSLog(@"%@",error);
+         }
+         
+     }];
+    
+    
     
 }
 -(void)weixinLogin:(UIButton *)button{
 //    微信登录
-    
+    [ShareSDK getUserInfo:SSDKPlatformTypeWechat
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             NSLog(@"uid=%@",user.uid);
+             NSLog(@"%@",user.credential);
+             NSLog(@"token=%@",user.credential.token);
+             NSLog(@"nickname=%@",user.nickname);
+         }
+         else
+         {
+             NSLog(@"%@",error);
+         }
+         
+     }];
 }
 -(void)nologinAction:(UIButton *)button{
 //    不登录

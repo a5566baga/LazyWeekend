@@ -9,6 +9,10 @@
 #import "DetailActivtyViewController.h"
 #import "DetailActivtyView.h"
 #import <SVProgressHUD.h>
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKExtension/ShareSDK+Extension.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
 
 @interface DetailActivtyViewController ()
 
@@ -65,9 +69,67 @@
     UIBarButtonItem * backBar = [UIBarButtonItem itemWithImage:@"ic_nav_left" HightImage:@"ic_nav_left" target:self action:@selector(backAvtion:)];
     self.navigationItem.leftBarButtonItem = backBar;
 }
+
 -(void)shareButton:(UIButton *)button{
+    NSString * urlStr = [NSString stringWithFormat:@"http://api.lanrenzhoumo.com/wh/common/leo_detail?leo_id=%ld", _leo_id];
 //    第三方分享
+    [SSUIShareActionSheetStyle setShareActionSheetStyle:ShareActionSheetStyleSimple];
+    //1、创建分享参数
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    NSArray* imageArray = @[_imageStr];
+    if (imageArray)
+    {
+        [shareParams SSDKSetupShareParamsByText:_titleStr
+                                         images:imageArray
+                                            url:[NSURL URLWithString:urlStr]
+                                          title:_nameStr
+                                           type:SSDKContentTypeImage];
+    }
+    
+    //2、分享
+    [ShareSDK showShareActionSheet:button
+                             items:nil
+                       shareParams:shareParams
+               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                   
+                   switch (state)
+                   {
+                       case SSDKResponseStateSuccess:
+                       {
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                               message:nil
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
+                           break;
+                       }
+                       case SSDKResponseStateFail:
+                       {
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                               message:[NSString stringWithFormat:@"%@", error]
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
+                           break;
+                       }
+                       case SSDKResponseStateCancel:
+                       {
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                               message:nil
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
+                           break;
+                       }
+                       default:
+                           break;
+                   }
+               }];
 }
+
 -(void)backAvtion:(UIButton *)button{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -90,6 +152,8 @@
 }
 -(void)helpBar:(UIButton *)button{
 //    帮助
+    [self.navigationController popViewControllerAnimated:YES];
+    self.tabBarController.selectedIndex = 2;
 }
 #pragma mark
 #pragma mark ============ 初始化界面
@@ -113,7 +177,6 @@
         self.navigationItem.leftBarButtonItem = backBar;
     }];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

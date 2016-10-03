@@ -23,7 +23,7 @@
 
 @property(nonatomic, assign)id<SettingViewControllerProtocol> delegate;
 
--(void)setMeheaderValue:(NSString *)name icon:(NSData *)iconImg;
+-(void)setMeheaderValue:(NSString *)name icon:(NSString *)iconImg;
 
 
 @end

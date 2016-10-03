@@ -45,6 +45,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 /*
 #pragma mark - Navigation
 

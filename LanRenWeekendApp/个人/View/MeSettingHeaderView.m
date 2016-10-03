@@ -125,6 +125,7 @@
     NSLog(@"loginAction");
     if (true) {
 //        登录成功，不操作
+        
     }else{
 //        未登录出现登录界面
         
@@ -192,10 +193,10 @@
 
 #pragma mark
 #pragma mark =========== 从数据库中拿值出来传参
--(void)setMeheaderValue:(NSString *)name icon:(NSData *)iconImg{
+-(void)setMeheaderValue:(NSString *)name icon:(NSString *)iconImg{
     _titleLabel.text = name;
-    [_iconButton setBackgroundImage:[UIImage imageWithData:iconImg] forState:UIControlStateNormal];
-    [_iconButton setBackgroundImage:[UIImage imageWithData:iconImg] forState:UIControlStateHighlighted];
+    [_iconButton setBackgroundImage:[UIImage imageNamed:iconImg] forState:UIControlStateNormal];
+    [_iconButton setBackgroundImage:[UIImage imageNamed:iconImg] forState:UIControlStateHighlighted];
 }
 
 @end

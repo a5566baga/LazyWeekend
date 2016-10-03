@@ -37,11 +37,14 @@
 #pragma mark
 #pragma mark ========== 创建collectionView
 -(void)initForView{
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+    label.font = [UIFont fontWithName:@"Gotham-Light" size:17];
     if (![[UserDB queryUserName] isEqualToString:@""]) {
-        self.title = [UserDB queryUserName];
+        label.text = [UserDB queryUserName];
     }else{
-        self.title = @"匿名用户";
+        label.text = @"匿名用户";
     }
+    self.navigationItem.titleView = label;
     
     MeSettingView * meView = [[MeSettingView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-49)];
     meView.delegate = self;
@@ -65,17 +68,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

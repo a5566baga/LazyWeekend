@@ -49,7 +49,7 @@
 //    回调字典
     NSString * sexStr = _mySettingDic[@"性别"];
     NSString * nowstatusStr = _mySettingDic[@"当前状态"];
-    if (![sexStr isEqualToString:@"未知"] && ![nowstatusStr isEqualToString:@"未知"]) {
+//    if (![sexStr isEqualToString:@"未知"] && ![nowstatusStr isEqualToString:@"未知"]) {
 //        写入数据库
         if (_nickName != nil && _iconStr != nil) {
             [UserDB addNewUser:_nickName icon:_iconStr sex:sexStr nowStatus:nowstatusStr];
@@ -59,7 +59,8 @@
 //        视图跳转
         UserSecondSettingViewController * secondVC = [[UserSecondSettingViewController alloc] init];
         [self.navigationController pushViewController:secondVC animated:YES];
-    }else{
+//    }else{
+    /*
         ZZQLog(@"信息填写不完全");
         UILabel * errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width/3, self.view.height, self.view.width/3, 25)];
         errorLabel.text = @"信息填写不完全";
@@ -86,6 +87,7 @@
             }];
         }];
     }
+     */
 }
 
 #pragma mark
@@ -106,6 +108,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     [self initForView];
     [_firstView setPostDic:^(NSMutableDictionary * dic) {

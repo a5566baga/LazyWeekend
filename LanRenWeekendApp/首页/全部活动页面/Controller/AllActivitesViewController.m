@@ -19,6 +19,10 @@
 @property(nonatomic, assign)float lat;
 
 @property(nonatomic, strong)AllActiviteView * allActiviesView;
+@property(nonatomic, strong)UITapGestureRecognizer * tapForRefush;
+@property(nonatomic, strong)UIView * tapView;
+
+
 @end
 
 @implementation AllActivitesViewController
@@ -31,6 +35,7 @@
     [self initForTitle];
     //    主页面设计
     [self initForView];
+    [self initForTap];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -43,9 +48,28 @@
     }
 }
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     _locService.delegate = nil;
 }
+#pragma mark
+#pragma mark ============ 点击手势
+-(void)initForTap{
+    _tapView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64-49)];
+    [self.view addSubview:_tapView];
+    UILabel * errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _tapView.width, 20)];
+    errorLabel.text = @"请点击重试";
+    errorLabel.center = _tapView.center;
+    errorLabel.textAlignment = NSTextAlignmentCenter;
+    errorLabel.font = [UIFont systemFontOfSize:16];
+    [_tapView addSubview:errorLabel];
+    _tapForRefush = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getLocation)];
+    _tapForRefush.numberOfTapsRequired = 1;
+    [_tapView addGestureRecognizer:_tapForRefush];
+}
+#pragma mark
+#pragma mark =========== 定位
 -(void)getLocation{
+    ZZQLog(@"===========Location");
     //初始化BMKLocationService
     _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
@@ -62,6 +86,7 @@
         _lon = userLocation.location.coordinate.longitude;
         _lat = userLocation.location.coordinate.latitude;
         [_allActiviesView setLocation:_lon lat:_lat];
+        [_tapView removeFromSuperview];
     }
 }
 
@@ -79,6 +104,7 @@
 -(void)initForView{
     _allActiviesView = [[AllActiviteView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64-49)];
     __weak typeof(self) mySelf = self;
+    [self.view addSubview:_allActiviesView];
     [_allActiviesView setJumpToDetail:^(DetailActivtyViewController * detailVC, NSInteger leo_id, NSString * imageStr, NSString * titleStr, NSString * nameStr) {
         detailVC.leo_id = leo_id;
         detailVC.imageStr = imageStr;
@@ -86,22 +112,11 @@
         detailVC.nameStr = nameStr;
         [mySelf.navigationController pushViewController:detailVC animated:YES];
     }];
-    [self.view addSubview:_allActiviesView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

@@ -30,6 +30,7 @@
     [self initForView];
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
@@ -37,6 +38,7 @@
     self.tabBarController.tabBar.hidden = YES;
 }
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
     self.tabBarController.tabBar.hidden = NO;
 }
@@ -74,7 +76,7 @@
 }
 
 -(void)shareButton:(UIButton *)button{
-    NSString * urlStr = [NSString stringWithFormat:@"http://api.lanrenzhoumo.com/wh/common/leo_detail?leo_id=%ld", _leo_id];
+    NSString * urlStr = [NSString stringWithFormat:@"http://api.lanrenzhoumo.com/wh/common/leo_detail?leo_id=%ld", (long)_leo_id];
 //    第三方分享
     [SSUIShareActionSheetStyle setShareActionSheetStyle:ShareActionSheetStyleSimple];
     //1、创建分享参数
@@ -185,11 +187,17 @@
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
         [self initForTitleViewBlack];
     }];
+    
     [detailView setChangeNavbarBack:^{
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
         [self initForTitleView];
         UIBarButtonItem * backBar = [UIBarButtonItem itemWithImage:@"ic_nav_left_white" HightImage:@"ic_nav_left_white" target:self action:@selector(backAvtion:)];
         self.navigationItem.leftBarButtonItem = backBar;
+    }];
+    
+    [detailView setJumpToMap:^(MapDetailViewController * mapVC, float lon, float lat, NSString * poi, NSString * address) {
+        [mapVC setLocation:lon lat:lat poi:poi address:address];
+        [self.navigationController pushViewController:mapVC animated:YES];
     }];
 }
 - (void)didReceiveMemoryWarning {

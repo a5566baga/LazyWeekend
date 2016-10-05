@@ -46,7 +46,7 @@
 #pragma mark
 #pragma mark ========== 创建tableView
 -(void)initForTableView{
-    ZZQLog(@"%ld", _allModelArray.count);
+//    ZZQLog(@"%ld", _allModelArray.count);
     if (_allModelArray.count != 0) {
         _tableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStyleGrouped];
         _tableView.showsHorizontalScrollIndicator = NO;
@@ -122,7 +122,7 @@
     for (AllActiviteModel * model in tempArr) {
         [_allModelArray addObject:model];
     }
-    ZZQLog(@"数组长度 %ld", _allModelArray.count);
+//    ZZQLog(@"数组长度 %ld", _allModelArray.count);
     [self initForTableView];
     [self refresh];
 }
@@ -131,7 +131,7 @@
     for (AllActiviteModel * model in tempArr) {
         [self.allModelArray addObject:model];
     }
-    ZZQLog(@"数组长度 %ld", _allModelArray.count);
+//    ZZQLog(@"数组长度 %ld", _allModelArray.count);
 //    [_tableView reloadData];
 }
 

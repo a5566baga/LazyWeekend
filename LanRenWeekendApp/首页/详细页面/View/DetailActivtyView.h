@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MapDetailViewController.h"
 
 @interface DetailActivtyView : UIView
 
@@ -17,6 +18,8 @@
 @property(nonatomic, strong)NSString * imageStr;
 @property(nonatomic, strong)NSString * titleStr;
 @property(nonatomic, strong)NSString * nameStr;
+
+@property(nonatomic, strong)void(^jumpToMap)(MapDetailViewController * mapVC, float lon, float lat, NSString * poi, NSString * address);
 
 -(void)setLeo_id:(NSInteger)leo_id;
 

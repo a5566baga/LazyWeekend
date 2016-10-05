@@ -31,11 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    初始化数据
+    //    初始化数据
     [self initForData];
-//    设置titleView
+    //    设置titleView
     [self initForTitleView];
-//    创建view
+    //    创建view
     [self initForView];
 }
 #pragma mark
@@ -86,33 +86,34 @@
     return 50;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ZZQLog(@"%ld", indexPath.row);
+    //    ZZQLog(@"%ld", indexPath.row);
     if (indexPath.row == 0) {
-//        分享
+        //        分享
         [self shareButtonAction:tableView];
     }else if (indexPath.row == 1){
-//        清除缓存
+        //        清除缓存
         float ImageCache = [[SDImageCache sharedImageCache]getSize]/1000/1000;
         [self initForCancelView:[NSString stringWithFormat:@"清除缓存%.2lfMB", ImageCache]];
         [[SDImageCache sharedImageCache] clearDisk];
         [self showAlertView];
     }else if (indexPath.row == 2){
-//        用户反馈
+        //        用户反馈
         [self initForCancelView:@"还未开放"];
         [self showAlertView];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://a5566baga@126.com"]];
     }else if (indexPath.row == 3){
-//        联系我们
+        //        联系我们
         [self initForCancelView:@"还未开放"];
         [self showAlertView];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://15670276702"]];
+        //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://15670276702"]];
     }else if (indexPath.row == 4){
-//        登录账号/退出账号
-            [UserDB deleteAllUser];
-            [InterestingPointDB deleteAllData];
-            MainViewController * mainVC = [[MainViewController alloc] init];
-            UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:mainVC];
-            [UIApplication sharedApplication].keyWindow.rootViewController = nvc;
+        //        登录账号/退出账号
+        [UserDB deleteAllUser];
+        [FavouriteDB deleteAllFavouriteItem];
+        [InterestingPointDB deleteAllData];
+        MainViewController * mainVC = [[MainViewController alloc] init];
+        UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:mainVC];
+        [UIApplication sharedApplication].keyWindow.rootViewController = nvc;
     }
 }
 -(void)shareButtonAction:(id)gender{
@@ -186,6 +187,7 @@
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.4 animations:^{
             _alertCancelView.alpha = 0;
+        }completion:^(BOOL finished) {
         }];
     }];
 }
@@ -196,18 +198,19 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = YES;
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

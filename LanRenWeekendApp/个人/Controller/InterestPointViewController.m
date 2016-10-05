@@ -39,6 +39,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.title = @"兴趣标签";
     
     UIButton * saveButton = [[UIButton alloc] init];

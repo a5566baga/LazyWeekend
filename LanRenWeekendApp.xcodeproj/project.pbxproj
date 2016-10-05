@@ -42,6 +42,7 @@
 		BC7B58B91DA1FB06000469E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7B58B81DA1FB06000469E3 /* MessageUI.framework */; };
 		BC7B58BD1DA227A9000469E3 /* mountain_199.1960199005px_1200341_easyicon.net.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7B58BC1DA227A9000469E3 /* mountain_199.1960199005px_1200341_easyicon.net.png */; };
 		BC7B58C31DA2A42B000469E3 /* ShowDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7B58C21DA2A42B000469E3 /* ShowDetailView.m */; };
+		BC9F9ED11DA54DB10083B89E /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F9ED01DA54DB10083B89E /* MapDetailViewController.m */; };
 		BCB513BE1D7AF0BF00A29769 /* UserFirstSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513BD1D7AF0BF00A29769 /* UserFirstSettingViewController.m */; };
 		BCB513C11D7B0BE800A29769 /* UserSecondSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513C01D7B0BE800A29769 /* UserSecondSettingViewController.m */; };
 		BCB513CA1D7B0EA200A29769 /* UINavigationItem+MyNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB513C91D7B0EA200A29769 /* UINavigationItem+MyNavItem.m */; };
@@ -163,6 +164,8 @@
 		BC7B58BC1DA227A9000469E3 /* mountain_199.1960199005px_1200341_easyicon.net.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain_199.1960199005px_1200341_easyicon.net.png; sourceTree = "<group>"; };
 		BC7B58C11DA2A42B000469E3 /* ShowDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailView.h; sourceTree = "<group>"; };
 		BC7B58C21DA2A42B000469E3 /* ShowDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailView.m; sourceTree = "<group>"; };
+		BC9F9ECF1DA54DB10083B89E /* MapDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailViewController.h; sourceTree = "<group>"; };
+		BC9F9ED01DA54DB10083B89E /* MapDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailViewController.m; sourceTree = "<group>"; };
 		BCB513BC1D7AF0BF00A29769 /* UserFirstSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFirstSettingViewController.h; sourceTree = "<group>"; };
 		BCB513BD1D7AF0BF00A29769 /* UserFirstSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFirstSettingViewController.m; sourceTree = "<group>"; };
 		BCB513BF1D7B0BE800A29769 /* UserSecondSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSecondSettingViewController.h; sourceTree = "<group>"; };
@@ -375,9 +378,9 @@
 		BC14AFC71D74754200FA0048 /* 地址页面 */ = {
 			isa = PBXGroup;
 			children = (
-				BCC2D2611D77117C00B70A1C /* Controller */,
-				BCC2D2621D77117C00B70A1C /* Model */,
-				BCC2D2631D77117C00B70A1C /* View */,
+				BC9F9ECC1DA54D990083B89E /* Controller */,
+				BC9F9ECD1DA54D990083B89E /* Model */,
+				BC9F9ECE1DA54D990083B89E /* View */,
 			);
 			path = "地址页面";
 			sourceTree = "<group>";
@@ -664,6 +667,29 @@
 			path = Required;
 			sourceTree = "<group>";
 		};
+		BC9F9ECC1DA54D990083B89E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC9F9ECF1DA54DB10083B89E /* MapDetailViewController.h */,
+				BC9F9ED01DA54DB10083B89E /* MapDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BC9F9ECD1DA54D990083B89E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC9F9ECE1DA54D990083B89E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BCB513CB1D7B10B400A29769 /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,27 +762,6 @@
 			sourceTree = "<group>";
 		};
 		BCC2D2601D77116D00B70A1C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		BCC2D2611D77117C00B70A1C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		BCC2D2621D77117C00B70A1C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		BCC2D2631D77117C00B70A1C /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -1177,6 +1182,7 @@
 				BCD1523D1D86E0BE00932F1F /* CityLocation.m in Sources */,
 				BCD152491D870D6F00932F1F /* Interest.m in Sources */,
 				BCD1524C1D87F00400932F1F /* ShowDetailViewController.m in Sources */,
+				BC9F9ED11DA54DB10083B89E /* MapDetailViewController.m in Sources */,
 				BCD152551D87F39300932F1F /* ReserveViewController.m in Sources */,
 				BCB513F81D7DDADF00A29769 /* AutoFitImageButton.m in Sources */,
 				BCB5141E1D7F977C00A29769 /* TalkHeaderView.m in Sources */,
@@ -1259,7 +1265,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "1c8c9831-4472-4273-bf0d-e1172fe9a2ce";
+				PROVISIONING_PROFILE = "d9ef61a0-bc69-41a8-9d34-b5146274ac27";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1299,7 +1305,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "1c8c9831-4472-4273-bf0d-e1172fe9a2ce";
+				PROVISIONING_PROFILE = "d9ef61a0-bc69-41a8-9d34-b5146274ac27";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1311,8 +1317,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1331,7 +1337,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.LanRenWeekendApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c8c9831-4472-4273-bf0d-e1172fe9a2ce";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1341,8 +1347,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1361,7 +1367,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.LanRenWeekendApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c8c9831-4472-4273-bf0d-e1172fe9a2ce";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

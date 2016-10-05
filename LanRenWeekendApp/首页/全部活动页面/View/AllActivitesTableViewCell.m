@@ -154,7 +154,11 @@
             _model.collected_num += 1;
             [FavouriteDB addFavourite:_model.leo_id pic:_model.front_cover_image_list.firstObject title:_model.title poi_name:_model.poi_name];
         }else{
-            _model.collected_num -= 1;
+            if (_model.collected_num == 0) {
+                _model.collected_num = 0;
+            }else{
+                _model.collected_num -= 1;
+            }
             [FavouriteDB deleteFavouriteItem:_model.leo_id];
         }
         [button setTitle:[NSString stringWithFormat:@"%ld人收藏", (long)_model.collected_num] forState:UIControlStateNormal];

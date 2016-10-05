@@ -20,6 +20,7 @@
 *  删除最爱信息(取消操作)
 */
 +(void)deleteFavouriteItem:(NSInteger)leo_id;
++(void)deleteAllFavouriteItem;
 /**
 *   查询产品是否为最爱的
 */

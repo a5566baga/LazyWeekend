@@ -67,6 +67,18 @@ static FMDatabaseQueue * queue = nil;
     }];
 }
 
++(void)deleteAllFavouriteItem{
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString * deleteSql = @"DELETE FROM t_fav";
+        BOOL result = [db executeUpdate:deleteSql];
+        if (result) {
+            ZZQLog(@"最爱项目删除成功");
+        }else{
+            ZZQLog(@"最爱项目删除失败");
+        }
+    }];
+}
+
 +(NSArray<Favourtie *> *)queryAllFavourite{
     __block NSMutableArray<Favourtie *> * array = [NSMutableArray array];
     [queue inDatabase:^(FMDatabase *db) {

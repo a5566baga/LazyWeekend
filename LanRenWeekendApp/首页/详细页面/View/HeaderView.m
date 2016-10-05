@@ -36,6 +36,11 @@
 @property(nonatomic, strong)UIImageView * rightImg;
 
 @property(nonatomic, strong)NSTimer * timer;
+//坐标
+@property(nonatomic, assign)float lat;
+@property(nonatomic, assign)float lon;
+@property(nonatomic, strong)NSString * poi;
+@property(nonatomic, strong)NSString * address;
 
 @end
 
@@ -149,6 +154,7 @@
 }
 -(void)gotoLocation:(UIButton *)button{
 #warning 跳转地图
+    self.setLocation(_lon, _lat, _poi, _address);
 }
 #pragma mark
 #pragma mark ========== 详情页面题目
@@ -231,6 +237,13 @@
     _typeNameLabel.text = type;
     _timeLabel.text = timeStr;
     [_locationButton setTitle:locationStr forState:UIControlStateNormal];
+}
+-(void)setLocation:(NSString *)lon lat:(NSString *)lat poi:(NSString *)poi address:(NSString *)address{
+    _lon = [lon floatValue];
+    _lat = [lat floatValue];
+    _poi = poi;
+    _address = address;
+    ZZQLog(@"%f %f poi:%@ address:%@", _lon, _lat, _poi, _address);
 }
 
 #pragma mark

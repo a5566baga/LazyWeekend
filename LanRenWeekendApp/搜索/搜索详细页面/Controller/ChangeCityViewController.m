@@ -53,6 +53,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [_changCityView.tableView reloadData];
 }
 

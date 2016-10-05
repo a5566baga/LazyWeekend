@@ -63,6 +63,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self initForView];
     [_secondView setPostInterestStatus:^(NSMutableDictionary * dic) {
         _mySecSettingDic = [[NSMutableDictionary alloc] initWithDictionary:dic];

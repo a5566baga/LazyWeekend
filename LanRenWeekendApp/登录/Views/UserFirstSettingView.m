@@ -219,13 +219,13 @@
     _userImage.layer.cornerRadius = iconWidth/2;
     
     _usernameLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_userImage.frame)+1.5*margin, leftMargin, 30);
-    _sexLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_usernameLabel.frame)+1.5*margin, leftMargin, 15);
+    _sexLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_usernameLabel.frame)+1.5*margin, leftMargin, 20);
     
     _maleButton.frame = CGRectMake(leftMargin, CGRectGetMaxY(_sexLabel.frame)+1.5*margin, leftMargin/2, 25);
     
     _femaleButton.frame = CGRectMake(1.5*leftMargin, CGRectGetMaxY(_sexLabel.frame)+1.5*margin, leftMargin/2, 25);
     
-    _nowstatusLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_femaleButton.frame)+2*margin, leftMargin, 15);
+    _nowstatusLabel.frame = CGRectMake(leftMargin, CGRectGetMaxY(_femaleButton.frame)+2*margin, leftMargin, 20);
     
     _parentButton.frame = CGRectMake(leftMargin+margin, CGRectGetMaxY(_nowstatusLabel.frame)+1.5*margin, leftMargin, 25);
     

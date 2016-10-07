@@ -46,6 +46,8 @@
 @property(nonatomic, strong)NSArray<AllActiviteModel *> * modelArray;
 @property(nonatomic, strong)NSMutableArray<AllActiviteModel *> * allModelArray;
 
+@property(nonatomic, strong)UITapGestureRecognizer * refushTap;
+
 @end
 
 @implementation AllActiviteView
@@ -190,6 +192,14 @@
     errLabel.textAlignment = NSTextAlignmentCenter;
     errLabel.font = [UIFont systemFontOfSize:15];
     [self addSubview:errLabel];
+    
+    _refushTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(initForRefush)];
+    _refushTap.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:_refushTap];
+}
+-(void)initForRefush{
+    [self initForTableView];
+    [self initForData];
 }
 #pragma mark
 #pragma mark ======== layoutSubviews布局

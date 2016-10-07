@@ -165,6 +165,9 @@
 }
 //提示取消分享视图
 -(void)initForCancelView:(NSString *)text{
+    if (_alertCancelView != nil) {
+        [_alertCancelView removeFromSuperview];
+    }
     float letf = self.view.width/3;
     _alertCancelView = [[UIView alloc] initWithFrame:CGRectMake(letf, self.view.height*0.7, letf, 30)];
     _alertCancelView.backgroundColor = [UIColor blackColor];

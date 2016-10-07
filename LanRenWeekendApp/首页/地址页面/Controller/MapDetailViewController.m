@@ -7,9 +7,10 @@
 //
 
 #import "MapDetailViewController.h"
+#import <BaiduMapAPI_Map/BMKMapView.h>
 
 @interface MapDetailViewController ()
-
+@property(nonatomic, strong)BMKMapView * mapView;
 @end
 
 @implementation MapDetailViewController
@@ -41,7 +42,11 @@
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = NO;
 }
-
+#pragma mark
+#pragma mark ============ 地图view
+-(void)initForMapView{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

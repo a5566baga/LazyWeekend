@@ -203,7 +203,7 @@
     
     [detailView setJumpToMap:^(MapDetailViewController * mapVC, float lon, float lat, NSString * poi, NSString * address) {
         [mapVC setLocation:lon lat:lat poi:poi address:address];
-        [self.navigationController pushViewController:mapVC animated:YES];
+//        [self.navigationController pushViewController:mapVC animated:YES];
     }];
 }
 - (void)didReceiveMemoryWarning {

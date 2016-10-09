@@ -31,7 +31,7 @@
 #pragma mark ========== 设置navigationBar样式
 -(void)initForTitleView{
     //    中间标题
-    self.navigationItem.titleView = [UINavigationItem setTitleViewWithTitle:@"选择您的兴趣标签" font:[UIFont fontWithName:@"Gotham-Light" size:17]];
+    self.navigationItem.titleView = [UINavigationItem setTitleViewWithTitle:@"选择您的兴趣标签(可选)" font:[UIFont fontWithName:@"Gotham-Light" size:17]];
     //    返回按钮
     UIBarButtonItem * backItem = [UIBarButtonItem itemWithImage:@"ic_nav_left" HightImage:@"ic_nav_left_white" target:self action:@selector(backButtonAction:)];
     self.navigationItem.leftBarButtonItem = backItem;

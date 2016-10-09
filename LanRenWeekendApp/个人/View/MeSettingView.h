@@ -25,6 +25,9 @@
 
 @property(nonatomic, strong)void(^jumpToDetailView)(DetailActivtyViewController * detailVC, NSInteger leo_id);
 
+@property(nonatomic, strong)void(^changeWhriteTitle)();
+@property(nonatomic, strong)void(^changeBlackTitle)();
+
 @property(nonatomic, strong)MeSettingHeaderView * headerView;
 
 @property(nonatomic, assign)id<MeSettingViewProtocal> delegate;

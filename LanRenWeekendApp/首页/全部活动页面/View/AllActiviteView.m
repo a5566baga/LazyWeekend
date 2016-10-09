@@ -32,7 +32,7 @@
 //定位
 @property(nonatomic, strong)BMKLocationService * locService;
 @property(nonatomic, strong)BMKReverseGeoCodeOption *reverseGeoCodeOption;
-@property(nonatomic, strong)BMKGeoCodeSearch *geoCodeSearch; ;
+@property(nonatomic, strong)BMKGeoCodeSearch *geoCodeSearch;
 
 
 //get请求的参数
@@ -66,6 +66,7 @@
     _lon = lon;
     _lat = lat;
     [self initForTableView];
+    [self initForData];
     [self getLocationCity:_lon lat:_lat];
 }
 #pragma mark
@@ -147,7 +148,7 @@
 #pragma mark ======== 数据刷新方式
 -(void)refresh{
     self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerAction)];
-    [self.myTableView.mj_header beginRefreshing];
+//    [self.myTableView.mj_header beginRefreshing];
     
     MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
     footer.refreshingTitleHidden = YES;
@@ -155,6 +156,7 @@
     self.myTableView.mj_footer = footer;
 }
 -(void)headerAction{
+    self.changCity();
     [self initForData];
 }
 -(void)footerAction{
@@ -254,7 +256,9 @@
 #pragma mark ============== 工具类
 -(void)getLocationCity:(float)lon lat:(float)lat{
     //初始化反地理编码类
-    _reverseGeoCodeOption= [[BMKReverseGeoCodeOption alloc] init];
+    if (_reverseGeoCodeOption == nil) {
+        _reverseGeoCodeOption= [[BMKReverseGeoCodeOption alloc] init];
+    }
     
     //需要逆地理编码的坐标位置
     CLLocationCoordinate2D coorDinate = CLLocationCoordinate2DMake(_lat, _lon);
@@ -282,7 +286,6 @@
             }else{
                 [LocationDB addLocation:nil lon:_lon lat:_lat];
             }
-//            [self refresh];
         }
     }];
 }

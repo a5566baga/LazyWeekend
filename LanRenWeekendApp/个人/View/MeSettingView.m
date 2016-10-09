@@ -17,8 +17,6 @@
 @property(nonatomic, strong)UICollectionViewFlowLayout * layout;
 @property(nonatomic, strong)UICollectionView * collectionView;
 
-
-
 @end
 
 @implementation MeSettingView
@@ -107,7 +105,13 @@
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     ZZQLog(@"%ld 个人cell 取消", (long)indexPath.row);
 }
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y > 40) {
+        self.changeWhriteTitle();
+    }else if(scrollView.contentOffset.y < 40){
+        self.changeBlackTitle();
+    }
+}
 #pragma mark
 #pragma mark ========== 页面的设置跳转
 -(void)jumpToReserveViewController:(ReserveViewController *)reserveVC{

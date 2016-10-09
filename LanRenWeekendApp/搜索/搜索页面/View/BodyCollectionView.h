@@ -10,6 +10,8 @@
 #import "ShowDetailViewController.h"
 @interface BodyCollectionView : UIView
 
+@property(nonatomic, strong)UICollectionView * collectionView;
+
 @property(nonatomic, copy)void(^jumpToShowDetailVC)(ShowDetailViewController * showDetailVC, NSString * catery, NSString * cityName);
 
 @end

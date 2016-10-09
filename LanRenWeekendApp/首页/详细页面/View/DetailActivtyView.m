@@ -95,6 +95,7 @@
         [SVProgressHUD dismiss];
         [self initForView];
         [_tableView reloadData];
+        self.downLoadFinish();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         ZZQLog(@"");
         [SVProgressHUD dismiss];
@@ -130,7 +131,7 @@
     if ([_descriptionArray[indexPath.row][@"type"] isEqualToString:@"text"]) {
         CGSize mySize = CGSizeMake(self.width-20, CGFLOAT_MAX);
         CGSize size = [_descriptionArray[indexPath.row][@"content"] boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil].size;
-        return size.height + 20;
+        return size.height + 10*size.height/21;
     }else{
         NSArray * size = _descriptionArray[indexPath.row][@"size"];
         float width = [size[0] floatValue];

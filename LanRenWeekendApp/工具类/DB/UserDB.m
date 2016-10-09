@@ -48,7 +48,7 @@ static FMDatabaseQueue * queue = nil;
         }
         [set close];
     }];
-    if (flag == 1) {
+    if (flag != 0) {
         return YES;
     }else
         return NO;

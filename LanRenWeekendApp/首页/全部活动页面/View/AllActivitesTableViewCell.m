@@ -60,7 +60,10 @@
     if (_favButton.selected) {
         _model.collected_num += 1;
     }else{
-        _model.collected_num -= 1;
+        if (_model.collected_num == 0) {
+            _model.collected_num = 0;
+        }else
+            _model.collected_num -= 1;
     }
     
     NSString * poi = model.poi;

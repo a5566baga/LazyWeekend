@@ -17,7 +17,6 @@
 @interface BodyCollectionView ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property(nonatomic, strong)UICollectionViewFlowLayout * layout;
-@property(nonatomic, strong)UICollectionView * collectionView;
 
 @property(nonatomic, strong)NSArray * titleArray;
 @property(nonatomic, strong)NSArray * imgArray;

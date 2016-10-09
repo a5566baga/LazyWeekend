@@ -13,6 +13,7 @@
 
 @property(nonatomic, copy)void(^changeNavbar)();
 @property(nonatomic, copy)void(^changeNavbarBack)();
+@property(nonatomic, copy)void(^downLoadFinish)();
 
 @property(nonatomic, assign)NSInteger leo_id;
 @property(nonatomic, strong)NSString * imageStr;

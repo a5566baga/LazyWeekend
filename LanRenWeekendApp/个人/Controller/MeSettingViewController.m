@@ -56,6 +56,14 @@
         detailVC.leo_id = leo_id;
         [myself.navigationController pushViewController:detailVC animated:YES];
     }];
+    
+    [meView setChangeBlackTitle:^{
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
+    }];
+    
+    [meView setChangeWhriteTitle:^{
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+    }];
 }
 
 -(void)jumpToNextRes:(ReserveViewController *)reseverVC{

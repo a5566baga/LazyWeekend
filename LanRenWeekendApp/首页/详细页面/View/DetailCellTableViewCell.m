@@ -46,7 +46,7 @@
     if ([_dic[@"type"] isEqualToString:@"text"]) {
         CGSize mySize = CGSizeMake(self.width-20, CGFLOAT_MAX);
         CGSize size = [_dic[@"content"] boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil].size;
-        _txtLabel.frame = CGRectMake(10, 10, self.width-20, size.height);
+        _txtLabel.frame = CGRectMake(10, 0, self.width-20, size.height+10*size.height/21);
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_txtLabel.text];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setLineSpacing:10];

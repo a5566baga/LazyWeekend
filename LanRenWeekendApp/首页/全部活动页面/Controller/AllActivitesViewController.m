@@ -42,7 +42,10 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
     self.tabBarController.tabBar.hidden = NO;
-    _locService.delegate = self;
+    if (_locService != nil) {
+        _locService.delegate = self;
+        [_locService startUserLocationService];
+    }
     if (_allActiviesView != nil) {
         [_allActiviesView.myTableView reloadData];
     }
@@ -54,7 +57,7 @@
 #pragma mark
 #pragma mark ============ 点击手势
 -(void)initForTap{
-    _tapView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64-49)];
+    _tapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
     [self.view addSubview:_tapView];
     UILabel * errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _tapView.width, 20)];
     errorLabel.text = @"请点击重试";
@@ -88,6 +91,7 @@
         [_allActiviesView setLocation:_lon lat:_lat];
         [_tapView removeFromSuperview];
     }
+    [_locService stopUserLocationService];
 }
 
 #pragma mark
@@ -104,7 +108,6 @@
 -(void)initForView{
     _allActiviesView = [[AllActiviteView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64-49)];
     __weak typeof(self) mySelf = self;
-    [self.view addSubview:_allActiviesView];
     [_allActiviesView setJumpToDetail:^(DetailActivtyViewController * detailVC, NSInteger leo_id, NSString * imageStr, NSString * titleStr, NSString * nameStr) {
         detailVC.leo_id = leo_id;
         detailVC.imageStr = imageStr;
@@ -112,6 +115,11 @@
         detailVC.nameStr = nameStr;
         [mySelf.navigationController pushViewController:detailVC animated:YES];
     }];
+    
+    [_allActiviesView setChangCity:^{
+        [mySelf.locService startUserLocationService];
+    }];
+    [self.view addSubview:_allActiviesView];
 }
 
 - (void)didReceiveMemoryWarning {

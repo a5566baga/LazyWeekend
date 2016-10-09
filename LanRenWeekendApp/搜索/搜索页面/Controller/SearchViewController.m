@@ -27,7 +27,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
 //    设置nav的内容
-    [self initForTitleView];
+//    [self initForTitleView];
 //    设置view的内容
     [self initForView];
 }

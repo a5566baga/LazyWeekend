@@ -8,6 +8,7 @@
 
 #import "DetailActivtyViewController.h"
 #import "DetailActivtyView.h"
+#import "HelpViewController.h"
 #import <SVProgressHUD.h>
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
@@ -32,7 +33,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = YES;
@@ -169,8 +170,9 @@
 }
 -(void)helpBar:(UIButton *)button{
 //    帮助
-    [self.navigationController popViewControllerAnimated:YES];
-    self.tabBarController.selectedIndex = 2;
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+//    self.tabBarController.selectedIndex = 2;
 }
 #pragma mark
 #pragma mark ============ 初始化界面
@@ -182,6 +184,10 @@
     detailView.titleStr = self.titleStr;
     detailView.nameStr = self.nameStr;
     [self.view addSubview:detailView];
+    
+    [detailView setDownLoadFinish:^{
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
+    }];
     
     [detailView setChangeNavbar:^{
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];

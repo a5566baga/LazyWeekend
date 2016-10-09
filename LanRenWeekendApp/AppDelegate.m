@@ -19,6 +19,14 @@
 #import "WXApi.h"
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
+#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
+#import <BaiduMapAPI_Cloud/BMKCloudSearchComponent.h>//引入云检索功能所有的头文件
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>//引入定位功能所有的头文件
+#import <BaiduMapAPI_Utils/BMKUtilsComponent.h>//引入计算工具所有的头文件
+#import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
+#import <BaiduMapAPI_Map/BMKMapView.h>//只引入所需的单个头文件
 
 
 #define SHARE_KEY @"179dc208e6be3"
@@ -30,6 +38,8 @@
 @property(nonatomic, strong)FavouriteDB * favouriteDB;
 @property(nonatomic, strong)InterestingPointDB * interDB;
 
+@property(nonatomic, strong)BMKMapManager* mapManager;
+
 @end
 
 @implementation AppDelegate
@@ -38,6 +48,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self sharedAction];
+    
+    _mapManager = [[BMKMapManager alloc]init];
+    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
+    BOOL ret = [_mapManager start:@"Gs1NbdQK9BmXbr2jHc5meEvO6UE5Nw4x"  generalDelegate:nil];
+    if (!ret) {
+        ZZQLog(@"百度地图创建失败");
+    }
     
     
     _userDB = [[UserDB alloc] init];
@@ -118,8 +135,8 @@
                       break;
                   case SSDKPlatformTypeQQ:
                       //设置QQ应用信息，其中authType设置为只用SSO形式授权
-                      [appInfo SSDKSetupQQByAppId:@"100371282"
-                                           appKey:@"aed9b0303e3ed1e27bae87c33761161d"
+                      [appInfo SSDKSetupQQByAppId:@"1105736660"
+                                           appKey:@"IeOecwvqqMUxD5Jc"
                                          authType:SSDKAuthTypeSSO];
                       break;
                   default:

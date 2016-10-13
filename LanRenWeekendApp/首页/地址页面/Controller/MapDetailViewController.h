@@ -15,6 +15,6 @@
 @property(nonatomic, strong)NSString * poi;
 @property(nonatomic, strong)NSString * address;
 
--(void)setLocation:(float)lon lat:(float)lat poi:(NSString *)poi address:(NSString *)address;
+-(void)setLocation:(float)lon lat:(float)lat poi:(NSString *)poi address:(NSString *)address picId:(NSInteger)picId;
 
 @end

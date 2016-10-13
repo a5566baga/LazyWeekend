@@ -11,11 +11,11 @@
 @interface HeaderView : UIView
 
 
-@property(nonatomic, copy)void(^setLocation)(float lon, float lat, NSString * poi, NSString * address);
+@property(nonatomic, copy)void(^setLocation)(float lon, float lat, NSString * poi, NSString * address, NSInteger picId);
 /**
  *  添加header的内容
  */
 -(void)setHeaderStyle:(NSArray *)imageArray title:(NSString *)title price_info:(NSString *)price_info type:(NSString *)type iconStr:(NSString *)iconStr timeStr:(NSString *)timeStr locationStr:(NSString *)locationStr;
--(void)setLocation:(NSString *)lon lat:(NSString *)lat poi:(NSString *)poi address:(NSString *)address;
+-(void)setLocation:(NSString *)lon lat:(NSString *)lat poi:(NSString *)poi address:(NSString *)address picId:(NSInteger)picId;
 
 @end

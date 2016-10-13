@@ -159,10 +159,11 @@
     HeaderView * headerView = [[HeaderView alloc] init];
     headerView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1.0];
     [headerView setHeaderStyle:_images title:_title price_info:_price_info type:_categoryDic[@"cn_name"] iconStr:_categoryDic[@"icon_view"] timeStr:_timeDic[@"info"] locationStr:[NSString stringWithFormat:@"%@ · %@", _address, _poi]];
-    [headerView setLocation:_locationDic[@"lon"] lat:_locationDic[@"lat"] poi:_poi address:_address];
-    [headerView setSetLocation:^(float lon, float lat, NSString * poi, NSString * address) {
+    
+    [headerView setLocation:_locationDic[@"lon"] lat:_locationDic[@"lat"] poi:_poi address:_address picId:[_resultDic[@"template_id"] integerValue]];
+    [headerView setSetLocation:^(float lon, float lat, NSString * poi, NSString * address, NSInteger picId) {
         MapDetailViewController * mapVC = [[MapDetailViewController alloc] init];
-        self.jumpToMap(mapVC, lon, lat, _poi, _address);
+        self.jumpToMap(mapVC, lon, lat, _poi, _address, picId);
     }];
     return headerView;
 }

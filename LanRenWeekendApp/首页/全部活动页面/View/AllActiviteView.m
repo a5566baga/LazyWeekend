@@ -65,6 +65,7 @@
 -(void)setLocation:(float)lon lat:(float)lat{
     _lon = lon;
     _lat = lat;
+    [SVProgressHUD showWithStatus:@"加载中"];
     [self initForTableView];
     [self initForData];
     [self getLocationCity:_lon lat:_lat];
@@ -91,7 +92,7 @@
     }
     
     _allModelArray = [[NSMutableArray alloc] init];
-    [SVProgressHUD showWithStatus:@"加载中"];
+//    [SVProgressHUD showWithStatus:@"加载中"];
     
     _nowPage = 1;
     NSMutableDictionary * dataDic = [NSMutableDictionary dictionary];

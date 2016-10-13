@@ -41,6 +41,7 @@
 @property(nonatomic, assign)float lon;
 @property(nonatomic, strong)NSString * poi;
 @property(nonatomic, strong)NSString * address;
+@property(nonatomic, assign)NSInteger picId;
 
 @end
 
@@ -154,7 +155,7 @@
 }
 -(void)gotoLocation:(UIButton *)button{
 #warning 跳转地图
-    self.setLocation(_lon, _lat, _poi, _address);
+    self.setLocation(_lon, _lat, _poi, _address,_picId);
 }
 #pragma mark
 #pragma mark ========== 详情页面题目
@@ -238,11 +239,12 @@
     _timeLabel.text = timeStr;
     [_locationButton setTitle:locationStr forState:UIControlStateNormal];
 }
--(void)setLocation:(NSString *)lon lat:(NSString *)lat poi:(NSString *)poi address:(NSString *)address{
+-(void)setLocation:(NSString *)lon lat:(NSString *)lat poi:(NSString *)poi address:(NSString *)address picId:(NSInteger)picId{
     _lon = [lon floatValue];
     _lat = [lat floatValue];
     _poi = poi;
     _address = address;
+    _picId = picId;
     ZZQLog(@"%f %f poi:%@ address:%@", _lon, _lat, _poi, _address);
 }
 

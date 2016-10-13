@@ -20,7 +20,7 @@
 @property(nonatomic, strong)NSString * titleStr;
 @property(nonatomic, strong)NSString * nameStr;
 
-@property(nonatomic, strong)void(^jumpToMap)(MapDetailViewController * mapVC, float lon, float lat, NSString * poi, NSString * address);
+@property(nonatomic, strong)void(^jumpToMap)(MapDetailViewController * mapVC, float lon, float lat, NSString * poi, NSString * address, NSInteger picId);
 
 -(void)setLeo_id:(NSInteger)leo_id;
 

@@ -26,13 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     // Do any additional setup after loading the view.
     [self initForTitleView];
     [self initForView];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.automaticallyAdjustsScrollViewInsets = NO;
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"mask"] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     self.navigationController.navigationBar.hidden = NO;
@@ -201,9 +201,9 @@
         self.navigationItem.leftBarButtonItem = backBar;
     }];
     
-    [detailView setJumpToMap:^(MapDetailViewController * mapVC, float lon, float lat, NSString * poi, NSString * address) {
-        [mapVC setLocation:lon lat:lat poi:poi address:address];
-//        [self.navigationController pushViewController:mapVC animated:YES];
+    [detailView setJumpToMap:^(MapDetailViewController * mapVC, float lon, float lat, NSString * poi, NSString * address, NSInteger picId) {
+        [mapVC setLocation:lon lat:lat poi:poi address:address picId:picId];
+        [self.navigationController pushViewController:mapVC animated:YES];
     }];
 }
 - (void)didReceiveMemoryWarning {

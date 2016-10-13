@@ -1265,7 +1265,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d9ef61a0-bc69-41a8-9d34-b5146274ac27";
+				PROVISIONING_PROFILE = "710cd460-54c3-4f69-b72d-250f417e68b9";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1305,7 +1305,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "d9ef61a0-bc69-41a8-9d34-b5146274ac27";
+				PROVISIONING_PROFILE = "710cd460-54c3-4f69-b72d-250f417e68b9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1317,8 +1317,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1337,7 +1337,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.LanRenWeekendApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "710cd460-54c3-4f69-b72d-250f417e68b9";
 			};
 			name = Debug;
 		};
@@ -1347,8 +1347,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanChongchong China Henan province (P28THB67HH)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1367,7 +1367,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.LanRenWeekendApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "710cd460-54c3-4f69-b72d-250f417e68b9";
 			};
 			name = Release;
 		};

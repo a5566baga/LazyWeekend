@@ -73,10 +73,6 @@
 		<string>Gotham-Light.otf</string>
 		<string>Lantinghei_0.ttf</string>
 	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -14,6 +14,7 @@ static FMDatabaseQueue * queue = nil;
 +(void)initialize{
     //确定一个路径
     NSString * filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"t_user.sqlite"];
+    NSLog(@"%@", filePath);
     queue = [FMDatabaseQueue databaseQueueWithPath:filePath];
     [queue inDatabase:^(FMDatabase *db) {
         NSString * createSql = @"CREATE TABLE if not exists t_user (username TEXT, icon text, sex TEXT,nowstarus TEXT)";

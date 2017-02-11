@@ -9,8 +9,11 @@
 #import "AllActivitesViewController.h"
 #import "AllActiviteView.h"
 #import "AllActiviteModel.h"
+#import <SVProgressHUD.h>
 #import <BaiduMapAPI_Base/BMKUserLocation.h>
 #import <BaiduMapAPI_Location/BMKLocationService.h>
+#import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudIM/AVIMMessage.h>
 
 @interface AllActivitesViewController ()<BMKLocationServiceDelegate>
 //定位
@@ -53,6 +56,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     _locService.delegate = nil;
+    [SVProgressHUD dismiss];
 }
 #pragma mark
 #pragma mark ============ 点击手势

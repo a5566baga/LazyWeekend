@@ -42,7 +42,7 @@
 //动态加载
 //    动态展示
     _progressView = [[UCZProgressView alloc] init];
-    _progressView.center = CGPointMake(self.width/2, self.width/2);
+    _progressView.center = CGPointMake(self.width/2-10, self.width/2);
     _progressView.size = CGSizeMake(60, 60);
     _progressView.indeterminate = YES;
     _progressView.translatesAutoresizingMaskIntoConstraints = NO;

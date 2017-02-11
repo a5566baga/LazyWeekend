@@ -42,6 +42,7 @@
     [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
     self.tabBarController.tabBar.hidden = NO;
+    [SVProgressHUD dismiss];
 }
 //白色的nav
 -(void)initForTitleView{

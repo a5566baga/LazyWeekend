@@ -11,6 +11,7 @@
 #import "BodyCollectionView.h"
 #import "ChangeCityViewController.h"
 #import "ShowDetailViewController.h"
+#import <SVProgressHUD.h>
 
 @interface SearchViewController ()<UISearchResultsUpdating, UISearchControllerDelegate,UISearchBarDelegate>
 
@@ -36,6 +37,10 @@
 //    NSString * cityName = [self getLocationCityName];
 //    [_citySelButton setTitle:cityName forState:UIControlStateNormal];
     [self initForTitleView];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 #pragma mark
 #pragma mark ========== 一个Button一个搜索

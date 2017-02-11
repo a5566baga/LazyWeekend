@@ -27,9 +27,12 @@
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>//引入计算工具所有的头文件
 #import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
 #import <BaiduMapAPI_Map/BMKMapView.h>//只引入所需的单个头文件
+#import <AVOSCloud/AVOSCloud.h>//引入learncloud
 
 
 #define SHARE_KEY @"179dc208e6be3"
+#define Cloud_AppID @"eLKs2wqwPVA6xCDmRMvAHUnW-gzGzoHsz"
+#define Cloud_KEY @"UjvKUkTa4Gr1G3knh4QcTO9j"
 @interface AppDelegate ()
 
 @property(nonatomic, strong)UserDB * userDB;
@@ -68,6 +71,8 @@
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _window.backgroundColor = [UIColor whiteColor];
     CustomerTabBarViewController * customerTabBarVC = [[CustomerTabBarViewController alloc] init];
+    // MARK:后台注册
+    [AVOSCloud setApplicationId:Cloud_AppID clientKey:Cloud_KEY];
     
 //    customerTabBarVC.tabBar.backgroundColor = [UIColor whiteColor];
 //    _window.rootViewController = customerTabBarVC;

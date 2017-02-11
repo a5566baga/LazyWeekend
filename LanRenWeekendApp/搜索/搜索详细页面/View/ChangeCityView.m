@@ -1,4 +1,3 @@
-//
 //  ChangeCityView.m
 //  LanRenWeekendApp
 //
